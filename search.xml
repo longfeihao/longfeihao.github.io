@@ -96,6 +96,34 @@
       </tags>
   </entry>
   <entry>
+    <title>SSH配置</title>
+    <url>/2020/05/17/ssh/</url>
+    <content><![CDATA[<h1 id="SSH配置"><a href="#SSH配置" class="headerlink" title="SSH配置"></a>SSH配置</h1><h2 id="SSH连接服务器"><a href="#SSH连接服务器" class="headerlink" title="SSH连接服务器"></a>SSH连接服务器</h2><p>SSH连接服务器也可以直接使用<code>ssh user@ip -p port</code>来连接，但是有两个缺点：</p>
+<ol>
+<li>繁琐，每次连接的命令太长</li>
+<li>安全性不好，所有人都可以连接</li>
+</ol>
+<p>因此，我们使用密钥连接.</p>
+<h3 id="生成密钥"><a href="#生成密钥" class="headerlink" title="生成密钥"></a>生成密钥</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -b 4096 -C <span class="string">"hlf.hao"</span></span><br></pre></td></tr></table></figure>
+<p>全部按<code>Enter</code>，最后会在<code>~/.ssh/</code>文件夹下生成<code>id_rsa</code>和<code>id_rsa.pub</code>文件，分别为密钥和公钥</p>
+<h3 id="远程服务器连接"><a href="#远程服务器连接" class="headerlink" title="远程服务器连接"></a>远程服务器连接</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkdir .ssh</span><br><span class="line">touch .ssh/authorized_keys</span><br><span class="line">chmod 700 .ssh</span><br><span class="line">chmod 644 .ssh/authorized_keys</span><br></pre></td></tr></table></figure>
+<p>然后把公钥复制到<code>authorized_keys</code>文件内</p>
+<h3 id="使用ssh连接远程服务器"><a href="#使用ssh连接远程服务器" class="headerlink" title="使用ssh连接远程服务器"></a>使用ssh连接远程服务器</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh user@ip -p port -i id_rsa_path</span><br></pre></td></tr></table></figure>
+<p>这样还是太麻烦了，可以把服务器信息存在本地配置文件中</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># vim ~/.ssh/config</span></span><br><span class="line">Host XXX</span><br><span class="line">    Hostname ip</span><br><span class="line">    User user</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa</span><br></pre></td></tr></table></figure>
+<p>可以通过<code>ssh XXX</code>直接连接</p>
+<h2 id="SSH连接GitHub"><a href="#SSH连接GitHub" class="headerlink" title="SSH连接GitHub"></a>SSH连接GitHub</h2><h3 id="配置本地git"><a href="#配置本地git" class="headerlink" title="配置本地git"></a>配置本地git</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global user.name <span class="string">"username"</span></span><br><span class="line">git config --global user.email <span class="string">"email"</span></span><br></pre></td></tr></table></figure>
+<p>把公钥添加到github网站上,验证是否成功<code>ssh -T git@github.com</code><br>提示如下信息，说明连接成功</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Hi &lt;username&gt;! You&#39;ve successfully authenticated, but GitHub does not provide </span><br><span class="line">shell access.</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>SSH</category>
+      </categories>
+      <tags>
+        <tag>ssh</tag>
+        <tag>github</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>The Tutorial</title>
     <url>/2020/05/16/tutorial/</url>
     <content><![CDATA[<p>This is some sample</p>

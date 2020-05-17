@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://longfeihao.github.io/"/>
-  <updated>2020-05-17T09:34:22.565Z</updated>
+  <updated>2020-05-17T09:42:49.860Z</updated>
   <id>https://longfeihao.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>SSH配置</title>
+    <link href="https://longfeihao.github.io/2020/05/17/ssh/"/>
+    <id>https://longfeihao.github.io/2020/05/17/ssh/</id>
+    <published>2020-05-17T09:38:51.000Z</published>
+    <updated>2020-05-17T09:42:49.860Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="SSH配置"><a href="#SSH配置" class="headerlink" title="SSH配置"></a>SSH配置</h1><h2 id="SSH连接服务器"><a href="#SSH连接服务器" class="headerlink" title="SSH连接服务器"></a>SSH连接服务器</h2><p>SSH连接服务器也可以直接使用<code>ssh user@ip -p port</code>来连接，但是有两个缺点：</p><ol><li>繁琐，每次连接的命令太长</li><li>安全性不好，所有人都可以连接</li></ol><p>因此，我们使用密钥连接.</p><h3 id="生成密钥"><a href="#生成密钥" class="headerlink" title="生成密钥"></a>生成密钥</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -b 4096 -C <span class="string">"hlf.hao"</span></span><br></pre></td></tr></table></figure><p>全部按<code>Enter</code>，最后会在<code>~/.ssh/</code>文件夹下生成<code>id_rsa</code>和<code>id_rsa.pub</code>文件，分别为密钥和公钥</p><h3 id="远程服务器连接"><a href="#远程服务器连接" class="headerlink" title="远程服务器连接"></a>远程服务器连接</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir .ssh</span><br><span class="line">touch .ssh/authorized_keys</span><br><span class="line">chmod 700 .ssh</span><br><span class="line">chmod 644 .ssh/authorized_keys</span><br></pre></td></tr></table></figure><p>然后把公钥复制到<code>authorized_keys</code>文件内</p><h3 id="使用ssh连接远程服务器"><a href="#使用ssh连接远程服务器" class="headerlink" title="使用ssh连接远程服务器"></a>使用ssh连接远程服务器</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh user@ip -p port -i id_rsa_path</span><br></pre></td></tr></table></figure><p>这样还是太麻烦了，可以把服务器信息存在本地配置文件中</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># vim ~/.ssh/config</span></span><br><span class="line">Host XXX</span><br><span class="line">    Hostname ip</span><br><span class="line">    User user</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa</span><br></pre></td></tr></table></figure><p>可以通过<code>ssh XXX</code>直接连接</p><h2 id="SSH连接GitHub"><a href="#SSH连接GitHub" class="headerlink" title="SSH连接GitHub"></a>SSH连接GitHub</h2><h3 id="配置本地git"><a href="#配置本地git" class="headerlink" title="配置本地git"></a>配置本地git</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">"username"</span></span><br><span class="line">git config --global user.email <span class="string">"email"</span></span><br></pre></td></tr></table></figure><p>把公钥添加到github网站上,验证是否成功<code>ssh -T git@github.com</code><br>提示如下信息，说明连接成功</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Hi &lt;username&gt;! You&#39;ve successfully authenticated, but GitHub does not provide </span><br><span class="line">shell access.</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      SSH连接远程服务器和Github
+    
+    </summary>
+    
+    
+      <category term="SSH" scheme="https://longfeihao.github.io/categories/SSH/"/>
+    
+    
+      <category term="ssh" scheme="https://longfeihao.github.io/tags/ssh/"/>
+    
+      <category term="github" scheme="https://longfeihao.github.io/tags/github/"/>
+    
+  </entry>
   
   <entry>
     <title>Jupyter画图中文乱码问题</title>
