@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://longfeihao.github.io/"/>
-  <updated>2020-05-17T05:28:31.692Z</updated>
+  <updated>2020-05-17T09:34:22.565Z</updated>
   <id>https://longfeihao.github.io/</id>
   
   <author>
@@ -15,6 +15,56 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Jupyter画图中文乱码问题</title>
+    <link href="https://longfeihao.github.io/2020/05/17/jupyter-font/"/>
+    <id>https://longfeihao.github.io/2020/05/17/jupyter-font/</id>
+    <published>2020-05-17T09:25:44.000Z</published>
+    <updated>2020-05-17T09:34:22.565Z</updated>
+    
+    <content type="html"><![CDATA[<p>SimHet字体:<br>链接: <a href="https://pan.baidu.com/s/1436h3-j0dkROeGsxpKbNiA" target="_blank" rel="noopener">https://pan.baidu.com/s/1436h3-j0dkROeGsxpKbNiA</a> 提取码: kmtj</p><h2 id="字体复制到matplotlib包中"><a href="#字体复制到matplotlib包中" class="headerlink" title="字体复制到matplotlib包中"></a>字体复制到<code>matplotlib</code>包中</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 以conda为例</span><br><span class="line">lib/python3.7/site-packages/matplotlib/mpl-data/fonts/ttf/</span><br></pre></td></tr></table></figure><h2 id="修改配置matplotlibrc"><a href="#修改配置matplotlibrc" class="headerlink" title="修改配置matplotlibrc"></a>修改配置<code>matplotlibrc</code></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 以conda为例</span><br><span class="line">lib/python3.7/site-packages/matplotlib/mpl-data/matplotlibrc</span><br></pre></td></tr></table></figure><p>修改如下让内容:</p><ol><li>font.family : sans.serif 取消注释</li><li>添加字体 font.sans.serif: SimHei, …</li><li>axes.unicode_minus: False 取消注释</li></ol><h2 id="删除matplotlib缓存"><a href="#删除matplotlib缓存" class="headerlink" title="删除matplotlib缓存"></a>删除matplotlib缓存</h2><p>macOS: <code>~/matplotlib</code><br>Linux: <code>~/.cache/matplotlib</code></p><svg style="display: none" id="MJX-SVG-global-cache"><defs></defs></svg>]]></content>
+    
+    <summary type="html">
+    
+      解决Linux/macOs中jupyter画图中文乱码问题
+    
+    </summary>
+    
+    
+      <category term="Python" scheme="https://longfeihao.github.io/categories/Python/"/>
+    
+    
+      <category term="python" scheme="https://longfeihao.github.io/tags/python/"/>
+    
+      <category term="jupyter" scheme="https://longfeihao.github.io/tags/jupyter/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>服务器安装Jupyter</title>
+    <link href="https://longfeihao.github.io/2020/05/17/install-jupyter/"/>
+    <id>https://longfeihao.github.io/2020/05/17/install-jupyter/</id>
+    <published>2020-05-17T09:14:40.000Z</published>
+    <updated>2020-05-17T09:23:38.340Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install jupyter</span><br></pre></td></tr></table></figure><h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><ol><li><p>初始化配置文件</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter notebook --generate-config</span><br></pre></td></tr></table></figure></li><li><p>配置<code>~/.jupyter/jupyter_notebook_config.py</code></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 修改其中如下字段</span></span><br><span class="line">c.NotebookApp.open_brower = False</span><br><span class="line">c.NotebookApp.ip = <span class="string">'*'</span></span><br><span class="line">c.NotebookApp.port = 8899</span><br></pre></td></tr></table></figure></li><li><p>设置密码</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter notebook password</span><br></pre></td></tr></table></figure></li><li><p>额外可以安装<code>jupyterlab</code>,比原始<code>jupyter</code>好看一点</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install jupyterlab</span><br></pre></td></tr></table></figure></li></ol><h2 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 原始jupyter</span></span><br><span class="line">jupyter notebook</span><br><span class="line"><span class="comment">#  jupyterlab</span></span><br><span class="line">jupyter lab</span><br></pre></td></tr></table></figure><svg style="display: none" id="MJX-SVG-global-cache"><defs></defs></svg>]]></content>
+    
+    <summary type="html">
+    
+      用于远程使用jupyter
+    
+    </summary>
+    
+    
+      <category term="Python" scheme="https://longfeihao.github.io/categories/Python/"/>
+    
+    
+      <category term="python" scheme="https://longfeihao.github.io/tags/python/"/>
+    
+      <category term="jupyter" scheme="https://longfeihao.github.io/tags/jupyter/"/>
+    
+  </entry>
   
   <entry>
     <title>Pyenv开发环境配置</title>
@@ -40,29 +90,6 @@
   </entry>
   
   <entry>
-    <title>Hexo NexT配置说明</title>
-    <link href="https://longfeihao.github.io/2020/05/16/hexo-config/"/>
-    <id>https://longfeihao.github.io/2020/05/16/hexo-config/</id>
-    <published>2020-05-15T16:00:00.000Z</published>
-    <updated>2020-05-17T05:24:16.470Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="安装环境"><a href="#安装环境" class="headerlink" title="安装环境"></a>安装环境</h1><p>Git, nodejs<br>参考: <a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="noopener">nodejs安装</a></p><p>安装nodejs包：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm install -g  hexo-cli</span><br><span class="line">npm install hexo-genertor-search --save</span><br><span class="line">npm install hexo-generator-searchdb --save</span><br><span class="line">npm install hexo-generator-feed --save</span><br><span class="line">npm install hexo-filter-mathjax</span><br></pre></td></tr></table></figure><h2 id="hexo博客搭建"><a href="#hexo博客搭建" class="headerlink" title="hexo博客搭建"></a>hexo博客搭建</h2><p>初始化：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init &lt;folder&gt;</span><br><span class="line">$ <span class="built_in">cd</span> &lt;folder&gt;</span><br><span class="line">$ npm install</span><br></pre></td></tr></table></figure><p>设定主题为NexT<br>参考: <a href="https://theme-next.iissnan.com/" target="_blank" rel="noopener">NexT</a></p><h2 id="知乎微博等自定义图标"><a href="#知乎微博等自定义图标" class="headerlink" title="知乎微博等自定义图标"></a>知乎微博等自定义图标</h2><p>参考: <a href="https://blog.dlzhang.com/posts/32/" target="_blank" rel="noopener">图标问题</a></p><h2 id="一些配置细节"><a href="#一些配置细节" class="headerlink" title="一些配置细节"></a>一些配置细节</h2><p>一共两个配置文件，都是<code>_config.yaml</code>。分别称为主配置文件和主题配置文件。细节可根据说明配置。</p><h3 id="评论系统"><a href="#评论系统" class="headerlink" title="评论系统"></a>评论系统</h3><p>比较简单的一个是valine,详细配置可参考<br><a href="https://qianfanguojin.github.io/2019/07/23/Hexo%E5%8D%9A%E5%AE%A2%E8%BF%9B%E9%98%B6%EF%BC%9A%E4%B8%BANext%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0Valine%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/" target="_blank" rel="noopener">valine配置</a></p><h3 id="标签云"><a href="#标签云" class="headerlink" title="标签云"></a>标签云</h3><p>如果想tag安装文字云的形式展示，可参考<a href="https://github.com/MikeCoder/hexo-tag-cloud" target="_blank" rel="noopener">tagcloud</a></p><h3 id="其他配置"><a href="#其他配置" class="headerlink" title="其他配置"></a>其他配置</h3><p>如相册，广告等设置可参考<a href="https://www.qtmuniao.com/2019/10/16/hexo-theme-landscaping/" target="_blank" rel="noopener">其他配置</a></p><h2 id="发布到github上"><a href="#发布到github上" class="headerlink" title="发布到github上"></a>发布到github上</h2><p>参考: <a href="https://hexo.io/docs/one-command-deployment" target="_blank" rel="noopener">deploy</a></p><h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><p>本地部署: <code>hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</code><br>博客部署: <code>hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</code><br>新建博客: <code>hexo new [layout] &lt;title&gt;</code></p><p>参考: <a href="https://hexo.io/zh-cn/docs/writing" target="_blank" rel="noopener">写作</a></p>]]></content>
-    
-    <summary type="html">
-    
-      github创建博客说明
-    
-    </summary>
-    
-    
-      <category term="Others" scheme="https://longfeihao.github.io/categories/Others/"/>
-    
-    
-      <category term="hexo-next" scheme="https://longfeihao.github.io/tags/hexo-next/"/>
-    
-  </entry>
-  
-  <entry>
     <title>The Tutorial</title>
     <link href="https://longfeihao.github.io/2020/05/16/tutorial/"/>
     <id>https://longfeihao.github.io/2020/05/16/tutorial/</id>
@@ -82,6 +109,29 @@
     
     
       <category term="tutorial" scheme="https://longfeihao.github.io/tags/tutorial/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo NexT配置说明</title>
+    <link href="https://longfeihao.github.io/2020/05/16/hexo-config/"/>
+    <id>https://longfeihao.github.io/2020/05/16/hexo-config/</id>
+    <published>2020-05-15T16:00:00.000Z</published>
+    <updated>2020-05-17T05:24:16.470Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="安装环境"><a href="#安装环境" class="headerlink" title="安装环境"></a>安装环境</h1><p>Git, nodejs<br>参考: <a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="noopener">nodejs安装</a></p><p>安装nodejs包：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm install -g  hexo-cli</span><br><span class="line">npm install hexo-genertor-search --save</span><br><span class="line">npm install hexo-generator-searchdb --save</span><br><span class="line">npm install hexo-generator-feed --save</span><br><span class="line">npm install hexo-filter-mathjax</span><br></pre></td></tr></table></figure><h2 id="hexo博客搭建"><a href="#hexo博客搭建" class="headerlink" title="hexo博客搭建"></a>hexo博客搭建</h2><p>初始化：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init &lt;folder&gt;</span><br><span class="line">$ <span class="built_in">cd</span> &lt;folder&gt;</span><br><span class="line">$ npm install</span><br></pre></td></tr></table></figure><p>设定主题为NexT<br>参考: <a href="https://theme-next.iissnan.com/" target="_blank" rel="noopener">NexT</a></p><h2 id="知乎微博等自定义图标"><a href="#知乎微博等自定义图标" class="headerlink" title="知乎微博等自定义图标"></a>知乎微博等自定义图标</h2><p>参考: <a href="https://blog.dlzhang.com/posts/32/" target="_blank" rel="noopener">图标问题</a></p><h2 id="一些配置细节"><a href="#一些配置细节" class="headerlink" title="一些配置细节"></a>一些配置细节</h2><p>一共两个配置文件，都是<code>_config.yaml</code>。分别称为主配置文件和主题配置文件。细节可根据说明配置。</p><h3 id="评论系统"><a href="#评论系统" class="headerlink" title="评论系统"></a>评论系统</h3><p>比较简单的一个是valine,详细配置可参考<br><a href="https://qianfanguojin.github.io/2019/07/23/Hexo%E5%8D%9A%E5%AE%A2%E8%BF%9B%E9%98%B6%EF%BC%9A%E4%B8%BANext%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0Valine%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/" target="_blank" rel="noopener">valine配置</a></p><h3 id="标签云"><a href="#标签云" class="headerlink" title="标签云"></a>标签云</h3><p>如果想tag安装文字云的形式展示，可参考<a href="https://github.com/MikeCoder/hexo-tag-cloud" target="_blank" rel="noopener">tagcloud</a></p><h3 id="其他配置"><a href="#其他配置" class="headerlink" title="其他配置"></a>其他配置</h3><p>如相册，广告等设置可参考<a href="https://www.qtmuniao.com/2019/10/16/hexo-theme-landscaping/" target="_blank" rel="noopener">其他配置</a></p><h2 id="发布到github上"><a href="#发布到github上" class="headerlink" title="发布到github上"></a>发布到github上</h2><p>参考: <a href="https://hexo.io/docs/one-command-deployment" target="_blank" rel="noopener">deploy</a></p><h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><p>本地部署: <code>hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</code><br>博客部署: <code>hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</code><br>新建博客: <code>hexo new [layout] &lt;title&gt;</code></p><p>参考: <a href="https://hexo.io/zh-cn/docs/writing" target="_blank" rel="noopener">写作</a></p>]]></content>
+    
+    <summary type="html">
+    
+      github创建博客说明
+    
+    </summary>
+    
+    
+      <category term="Others" scheme="https://longfeihao.github.io/categories/Others/"/>
+    
+    
+      <category term="hexo-next" scheme="https://longfeihao.github.io/tags/hexo-next/"/>
     
   </entry>
   
