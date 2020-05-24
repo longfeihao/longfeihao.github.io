@@ -1,508 +1,215 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search>
-  <entry>
-    <title>服务器安装Jupyter</title>
-    <url>/2020/05/17/install-jupyter/</url>
-    <content><![CDATA[<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">conda install jupyter</span><br></pre></td></tr></table></figure>
-
-<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><ol>
-<li><p>初始化配置文件</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">jupyter notebook --generate-config</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>配置<code>~/.jupyter/jupyter_notebook_config.py</code></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 修改其中如下字段</span></span><br><span class="line">c.NotebookApp.open_brower = False</span><br><span class="line">c.NotebookApp.ip = <span class="string">'*'</span></span><br><span class="line">c.NotebookApp.port = 8899</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>设置密码</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">jupyter notebook password</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>额外可以安装<code>jupyterlab</code>,比原始<code>jupyter</code>好看一点</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">conda install jupyterlab</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<h2 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 原始jupyter</span></span><br><span class="line">jupyter notebook</span><br><span class="line"><span class="comment">#  jupyterlab</span></span><br><span class="line">jupyter lab</span><br></pre></td></tr></table></figure>
-
-<svg style="display: none" id="MJX-SVG-global-cache"><defs/></svg>]]></content>
+<search> 
+  
+  
+    
+    <entry>
+      <title>论文笔记- Pre-Trained Models for Natural Language Processing</title>
+      <link href="/2020/05/23/ptm-survey/"/>
+      <url>/2020/05/23/ptm-survey/</url>
+      
+        <content type="html"><![CDATA[<p>本文对NLP预训练模型做了一个全面的总结 <a href="https://arxiv.org/abs/2003.08271" target="_blank" rel="noopener">Pre-trained Models for Natural Language Processing: A Survey</a></p><p>解决NLP问题的深度学习网络一般有: convolutional neural networks (CNNs), recurrent neural networks (RNNs), graph-based neural networks (GNNs), attention mechanism.</p><h2 id="Pre-trained-Models-for-NLP-PTMs-总览"><a href="#Pre-trained-Models-for-NLP-PTMs-总览" class="headerlink" title="Pre-trained Models for NLP (PTMs) 总览"></a>Pre-trained Models for NLP (PTMs) 总览</h2><p><img src="/2020/05/23/ptm-survey/fig3.png" alt="Taxonomy"></p><h3 id="PTMs的优势"><a href="#PTMs的优势" class="headerlink" title="PTMs的优势"></a>PTMs的优势</h3><ol><li>从大语料库中学到通用的representations，用以帮助下游任务</li><li>PTMs提供了更好的模型初始参数</li><li>可以看做一个正则化，防止在小数据集上overfitting</li></ol><h3 id="PTMs的发展"><a href="#PTMs的发展" class="headerlink" title="PTMs的发展"></a>PTMs的发展</h3><p>第一代 PTMs:</p><ul><li><a href="https://arxiv.org/abs/1310.4546" target="_blank" rel="noopener">Skip-Gram</a></li><li>Word2Vec</li><li><a href="https://nlp.stanford.edu/projects/glove/" target="_blank" rel="noopener">GloVe </a></li></ul><p>这些模型context-free而且不能捕捉文本的高层表示, 如 polysemous disambiguation, syntactic structures, semantic roles, anaphora</p><p>第二代PTMs:</p><ul><li><a href="https://arxiv.org/abs/1708.00107" target="_blank" rel="noopener">CoVe </a></li><li><a href="https://arxiv.org/abs/1802.05365" target="_blank" rel="noopener">ELMo </a></li><li><a href="https://arxiv.org/abs/1801.06146" target="_blank" rel="noopener">ULMFiT</a></li><li><a href="https://s3-us-west-2.amazonaws.com/openai-assets/research-covers/language-unsupervised/language_understanding_paper.pdf" target="_blank" rel="noopener">OpenAI GPT</a></li><li><a href="https://arxiv.org/abs/1810.04805" target="_blank" rel="noopener">BERT </a></li></ul><h3 id="PTMs分类"><a href="#PTMs分类" class="headerlink" title="PTMs分类"></a>PTMs分类</h3><p><strong>Representation type</strong></p><ul><li>non-contextual models</li><li>contextual models</li></ul><p><img src="/2020/05/23/ptm-survey/tab2.png" alt="Representation"></p><p><strong>Architectures</strong></p><ul><li>LSTM</li><li>Transformer Encoder</li><li>Transformer Decoder</li><li>full Transofrmer</li></ul><p><strong>Pre-Training Task Types</strong></p><p><strong>Extensions</strong></p><ul><li>Knowledge-enriched PTMs<ul><li>linguistic</li><li>semantic</li><li>commomsense</li><li>factual</li><li>domain-specific knowledge</li></ul></li><li>Multiligual and language-specific PTMs<ul><li>Multilingual PTMs<ul><li>cross-lingual language understanding</li><li>cross-lingual language generation</li></ul></li><li>Language-specific PTMs</li></ul></li><li>Multi-Modal PTMs<ul><li>Video-Text PTMs <a href="https://arxiv.org/abs/1906.05743" target="_blank" rel="noopener">CBT</a>, <a href="https://arxiv.org/abs/1904.01766" target="_blank" rel="noopener">VideoBERT</a>, <a href="https://arxiv.org/abs/2002.06353" target="_blank" rel="noopener">ViLM</a></li><li>Image-Text PTMs [ViLBERT, LXMERT, VisualBERT, B2Ts, VLBERT, Unicoder-VL, UNITER]</li><li>Audio-Text PTMs [SpeechBERT]</li></ul></li><li>Compressed PTMs<ul><li>model prruning: 去除不重要的参数</li><li>weight quantization: 用比特表示参数</li><li>parameter sharing: 类似结构共享参数</li><li>knowledge distillation: 训练一个学会更小的学生模型学习原始模型<ul><li>distillation from soft target probabilities [DistillBERT]</li><li>distillation from other knowledge [TinyBERT, MobileBERT, MimiLM]</li><li>distillation fto other stuctures</li></ul></li><li>model replacing: 用更紧凑的模型取代原模型</li></ul></li><li>…</li></ul><p><img src="/2020/05/23/ptm-survey/tab3.png" alt="tab3"></p><h3 id="PTMs任务"><a href="#PTMs任务" class="headerlink" title="PTMs任务"></a>PTMs任务</h3><p>机器学习可以分为Supervised Learning (SL)，Unsupervised Learning (UL)，Self-Supervised Learing (SSL)</p><ul><li><p>Language Modeling (LM)</p></li><li><p>Masked Language Modeling (MLM) </p></li><li><p>Seq2Seq MLM  <em>[used in <a href="https://arxiv.org/abs/1905.02450" target="_blank" rel="noopener">MASS</a>, <a href="https://arxiv.org/abs/1910.10683" target="_blank" rel="noopener">T5</a> and benefit the Seq2Seq downstream tasks]</em></p></li><li><p>Enhanced MLM (E-MLM) <em>[<a href="https://arxiv.org/abs/1907.11692" target="_blank" rel="noopener">RoBERTa</a> &lt;- BERT, UniLM, <a href="https://arxiv.org/abs/1901.07291v1" target="_blank" rel="noopener">XLM</a> &lt;- MLM, <a href="https://arxiv.org/abs/1907.10529" target="_blank" rel="noopener">Span-BERT</a> &lt;- MLM, <a href="https://arxiv.org/abs/1908.04577v1" target="_blank" rel="noopener">StructBERT</a>]</em> </p></li><li><p>Permuted Language Modeling (PLM) <a href="https://github.com/zihangdai/xlnet" target="_blank" rel="noopener">XLNet</a></p></li><li><p>Denoising Autoencoder (DAE) <a href="https://arxiv.org/abs/1910.13461" target="_blank" rel="noopener">BART</a></p></li><li><p>Contrastrive Learning (<a href="https://arxiv.org/abs/1902.09229" target="_blank" rel="noopener">CTL</a>)</p></li><li><p>Deep InfoMax (<a href="https://arxiv.org/abs/1910.08350v2" target="_blank" rel="noopener">DIM</a>)</p></li><li><p>Replaced Token Detection (RTD) <a href="https://arxiv.org/abs/1310.4546" target="_blank" rel="noopener">CBOW-NS</a>, <a href="https://arxiv.org/abs/2003.10555" target="_blank" rel="noopener">ELECTERA</a>, <a href="https://arxiv.org/abs/1912.09637?context=cs" target="_blank" rel="noopener">WKLM</a></p></li><li><p>Next Sentence Prediction (NSP)</p></li><li><p>Sentence Order Prediction (SOP)  <a href="https://arxiv.org/abs/1909.11942?context=cs" target="_blank" rel="noopener">ALBERT</a>, <a href="https://arxiv.org/abs/1908.04577v1" target="_blank" rel="noopener">StructBERT</a>, <a href="https://arxiv.org/abs/1912.09582" target="_blank" rel="noopener">BERTje</a></p></li><li><p>Others</p><ul><li>incorporate factual knowledge</li><li>imporve cross-lingual tasks</li><li>multi-model applicates</li><li>…</li></ul></li></ul><p><img src="/2020/05/23/ptm-survey/tab1.png" alt="Loss Function"></p><h3 id="Adapting-PTMs-to-Downstream-Tasks"><a href="#Adapting-PTMs-to-Downstream-Tasks" class="headerlink" title="Adapting PTMs to Downstream Tasks"></a>Adapting PTMs to Downstream Tasks</h3><p>预训练好模型后，还有一个重要的问题是，如何使用PTMs。这涉及到Transfer Learning.</p><p><img src="/2020/05/23/ptm-survey/fig4.png" alt="transfer learning"></p><ul><li><p>如何迁移?</p><ul><li>选择合适的预训练任务，模型和语料库</li><li>选择合适的层（低层倾向于语法等基本信息，高层有利于用语义等任务）</li><li>是否需要微调(To tune or not to tune)<ul><li>feature extraction (the pre-trained parameters are frozen)</li><li>fine-tuning (the pre-trained parameters are unfrozen and fine-tuned)</li></ul></li></ul></li><li><p>微调策略</p><ul><li>Two-stage fine-tuning<ol><li>通过中间层/语料库进行微调</li><li>在目标任务上微调</li></ol></li><li>Multi-task fine-tuning</li><li>Fine-tuning with extra adapation modules<ul><li>原始参数固定，引入额外的可微调模块</li></ul></li><li>Others<ul><li>self-ensamble and self-distillation</li><li>gradual unfreezing and sequential unfreezing</li></ul></li></ul></li></ul><h3 id="PTM的应用"><a href="#PTM的应用" class="headerlink" title="PTM的应用"></a>PTM的应用</h3><ul><li>General Evaluation Eenchmark (GLUE, SuperGLUE)</li><li>Question Answering</li><li>Sentiment Analysis</li><li>Named Entity Recognition</li><li>Machine Translation</li><li>Summarization</li><li>Adversarial Attacks and Defenses</li></ul><h3 id="发展方向"><a href="#发展方向" class="headerlink" title="发展方向"></a>发展方向</h3><ul><li>Upper Bound of PTMs<ul><li>当前预训练模型还没有达到它的上届，需要更深的网络，更大的语料库，更富有挑战的预训练任务，更高效的损失函数。目前一个比较实际的方式是在现有的软硬件基础上，设计一个有效率的模型，自监督预训练任务，优化器和训练技巧，如ELECTRA</li></ul></li><li>Architecture of PTMs<ul><li>transformer以被证实是一个比较有效的预训练结构。但是由于模型比较复杂，需要设计更加轻量的模型,如Transformer-XL。模型的设计非常困难，neural architecture search (NAS)或许是一个比较好的方式。</li></ul></li><li>Task-oriented Pre-training and Model Compression<ul><li>不同下游任务需要PTM不同的能力。PTMs和下游任务通常有两个差异：模型结构和数据分布。</li><li>通常更大的PTMs对下游更有利，但模型太大，无法在低容量、低延迟设备上使用。因此需要提取特定任务的预训练知识</li><li>使用模型蒸馏技术，根据原PTMs构建一个更小的网络</li></ul></li><li>Knowledge Transfer Beyond Fine-tuning<ul><li>为特定任务引入可微调模块，使PTMs可以复用</li><li>从PTMs中更加灵活的挖掘知识：feature extraction, knowledge distillation, data augmentation</li></ul></li><li>Interpretability and Reliability of PTMs<ul><li>可解释性：深度模型的解释性很差，目前大多利用atteion进行解释</li><li>脆弱性：由于深度模型不可解释，很可能与人的认知不一致。这也导致了模型出现不和直觉的结果。使用对抗机制研究这个方向非常有前景。</li></ul></li></ul><svg style="display: none" id="MJX-SVG-global-cache"><defs/></svg>]]></content>
+      
+      
       <categories>
-        <category>Python</category>
+          
+          <category> NLP </category>
+          
       </categories>
-      <tags>
-        <tag>python</tag>
-        <tag>jupyter</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Pyenv开发环境配置</title>
-    <url>/2020/05/17/pyenv/</url>
-    <content><![CDATA[<h1 id="pyenv开发环境配置"><a href="#pyenv开发环境配置" class="headerlink" title="pyenv开发环境配置"></a>pyenv开发环境配置</h1><h2 id="预安装"><a href="#预安装" class="headerlink" title="预安装"></a>预安装</h2><p>有时安装会因为缺少必要的环境导致失败，因此需要提前安装一下相关环境</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt-get install -y make build-essential libssl-dev \</span><br><span class="line">	zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev \</span><br><span class="line">	wget curl llvm libncurses5-dev libncursesw5-dev \</span><br><span class="line">	xz-utils tk-dev libffi-dev liblzma-dev</span><br></pre></td></tr></table></figure>
-
-<h2 id="安装pyenv"><a href="#安装pyenv" class="headerlink" title="安装pyenv"></a>安装pyenv</h2><ol>
-<li>安装<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -L https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer | bash</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<blockquote>
-<p>如果报连接失败，可以把pyenv-installer手动下载到本地，然后<code>bash pyenv-installer</code>完成安装</p>
-</blockquote>
-<ol start="2">
-<li><p>添加环境至<code>~/.zshrc</code>或<code>~/.bashrc</code></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># XXX 是个人目录地址</span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="string">"/home/XXX/.pyenv/bin:<span class="variable">$PATH</span>"</span></span><br><span class="line"><span class="built_in">eval</span> <span class="string">"<span class="variable">$(pyenv init -)</span>"</span></span><br><span class="line"><span class="built_in">eval</span> <span class="string">"<span class="variable">$(pyenv virtualenv-init -)</span>"</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>刷新终端</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bashrc <span class="comment">#或 source ~/.zshrc</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>安装python环境，官方略慢，可以考虑使用淘宝镜像(v是python的版本号)</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 安装pyenv</span></span><br><span class="line">v=3.7.0;wget https://npm.taobao.org/mirrors/python/<span class="variable">$v</span>/Python-<span class="variable">$v</span>.tar.xz -P ~/.pyenv/cache/;pyenv install <span class="variable">$v</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看python版本</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pyenv versions</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<h2 id="python切换"><a href="#python切换" class="headerlink" title="python切换"></a>python切换</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pyenv global 2.7.3 <span class="comment"># 设置全局的 Python 版本，通过将版本号写入 ~/.pyenv/version 文件的方式。</span></span><br><span class="line">pyenv <span class="built_in">local</span> 2.7.3 <span class="comment"># 设置 Python 本地版本，通过将版本号写入当前目录下的 .python-version 文件的方式。通过这种方式设置的 Python 版本优先级较 global 高。</span></span><br><span class="line">pyenv shell 2.7.3 <span class="comment"># 设置面向 shell 的 Python 版本，通过设置当前 shell 的 PYENV_VERSION 环境变量的方式。这个版本的优先级比 local 和 global 都要高。–unset 参数可以用于取消当前 shell 设定的版本</span></span><br><span class="line">pyenv shell --<span class="built_in">unset</span></span><br><span class="line">pyenv <span class="built_in">rehash</span> <span class="comment"># 创建垫片路径（为所有已安装的可执行文件创建 shims，如：~/.pyenv/versions/*/bin/*，因此，每当你增删了 Python 版本或带有可执行文件的包（如 pip）以后，都应该执行一次本命令）</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>python优先级<br>shelll &gt; local &gt; global</p>
-</blockquote>
-<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pyenv install --list <span class="comment"># 列出可安装的版本</span></span><br><span class="line">pyenv install &lt;version&gt; <span class="comment"># 安装对应版本</span></span><br><span class="line">pyenv install -v &lt;version&gt; <span class="comment"># 安装对应版本，若发生错误，可显示详细的错误信息</span></span><br><span class="line">pyenv versions <span class="comment">#显示当前可用的python版本</span></span><br><span class="line">pyenv <span class="built_in">which</span> python <span class="comment"># 显示当前python安装路径</span></span><br><span class="line">pyenv global &lt;version&gt; <span class="comment"># 设置python版本</span></span><br><span class="line">pyenv <span class="built_in">local</span> &lt;version&gt; <span class="comment"># 当前路径创建一个python-version，以后进入这个目录自动切换改版本</span></span><br><span class="line">pyenv shell &lt;version&gt; <span class="comment">#当前shell的session中启用某版本，优先级大于global和local</span></span><br></pre></td></tr></table></figure><svg style="display: none" id="MJX-SVG-global-cache"><defs/></svg>]]></content>
+      
+      
+        <tags>
+            
+            <tag> nlp </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>论文笔记-Deep Learning Based Recommender System</title>
+      <link href="/2020/05/23/rs-survey/"/>
+      <url>/2020/05/23/rs-survey/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p>该论文发表于ACM2017， 对当前基于深度学习的推荐系统方法做了总结和分类，并给出自己的看法。论文见: <a href="https://arxiv.org/pdf/1707.07435.pdf" target="_blank" rel="noopener">Deep Learning based Recommender System： A Survey and New Perspectives</a></p><p>产生推荐列表的数据来源一般有如下几种:</p><ul><li>user preferences</li><li>item features</li><li>user-item past interactions</li><li>some other features (temporal, spatial)</li></ul><p>推荐模型主要分为三个大类:</p><ul><li>collaborative filtering</li><li>content-based recommender system</li><li>hybrid recommender system</li></ul><p>根据完成的任务可以分为</p><ul><li>rating</li><li>ranking</li><li>classification</li></ul><h2 id="Models"><a href="#Models" class="headerlink" title="Models"></a>Models</h2><h3 id="Traditional-Models"><a href="#Traditional-Models" class="headerlink" title="Traditional Models"></a>Traditional Models</h3><ul><li>matrix factorization (MF)</li><li>factorization machines (FM)</li><li>BPR</li><li>Collaborative Metric Learning (CML)</li><li>funkSVD</li></ul><h3 id="Deep-Models"><a href="#Deep-Models" class="headerlink" title="Deep Models:"></a>Deep Models:</h3><p><img src="/2020/05/23/rs-survey/fig1.png" alt="deep model"></p><p>其中autoencodes包含如下几种：</p><ul><li>denoising autoencoder</li><li>marginalized denoising autoencoder</li><li>sparse autoencoder</li><li>contractive autoencoder</li><li>variational autoencoder (VAE)</li></ul><ul><li>MLP<ul><li>Nerual Network Matrix Factorization (NNMF)</li><li>Nerual Collaborative Filtering (NCF)</li><li>Deep Factorization Machine (DeepFM)</li><li>Wide &amp; deep Model</li><li>Deep Structured Semantic Model (DSSM)</li><li>Deep Semantic Similarity  based Personalized Recommendation (DSPR)</li><li>Multi-View Deep Neural Network ( MV-DNN)</li></ul></li><li>Autoencoder (AE)<ul><li>AutoRec</li><li>CNF</li><li>Collaborative Denoising Auto-Encoder (CDAE)</li><li>Stacked denoising autoencoder (SDAE)</li><li>Collaborative Deep Learning (CDL)</li><li>Relational stacked denoising autoencoders (RSDAE)</li><li>Collaborative variational autoencoder (CVAE)</li><li>Collaborative Deep Ranking (CDR)</li><li>AutoSVD++</li><li>HDCR</li></ul></li><li>CNN<ul><li>Point-of-Interest (POI) recommendation</li><li>VPOI</li><li>VBPR</li><li>DeepCoNN</li><li>ConvMF</li><li>ConvNCF</li></ul></li><li>RNN<ul><li>Session-based Recommendation without User identifier<ul><li>GRU4Rec</li></ul></li><li>Sequential Recommendation with User Identifier<ul><li>Recurrent Recommender Network (RRN)</li></ul></li></ul></li><li>RBM<ul><li>RMB-CF</li></ul></li><li>Neural Autoregressive Distribution Estimation (NADE)<ul><li>CF-NADE</li></ul></li><li>Adversarial Networks (AＮ)<ul><li>IRGAN</li></ul></li><li>Attentional Models (AM)</li><li>Deep Reinforcement Learning (DRL)<ul><li>DEERS</li><li>DeepPage</li><li>DRN</li></ul></li><li>Hybrid Models<ul><li>CNN + AE<ul><li>Collaborative Knowledge Based Embedding (CKE)</li></ul></li><li>CNN + RNN</li><li>RNN + AE<ul><li>CRAE</li></ul></li><li>RNN + DRL</li></ul></li></ul><h2 id="Future-research-directions"><a href="#Future-research-directions" class="headerlink" title="Future research directions"></a>Future research directions</h2><ul><li>Join representation learning user and item content information</li><li>explainable recommendation with deep learning</li><li>going deeper for recommendation</li><li>machine reasoning for recommendation</li><li>cross domain recommendation with dnn</li><li>deep multi-task learning</li><li>scalability of dnn</li><li>better, more unified and harder evaluation</li></ul><h2 id="Top-Conference"><a href="#Top-Conference" class="headerlink" title="Top Conference"></a>Top Conference</h2><p>论文中提到Recommender Systems方向的定会大致有以下这些:</p><ul><li>NIPS</li><li>ICML</li><li>ICLR</li><li>KDD</li><li>WWW</li><li>SIGIR</li><li>WSDM</li><li>RecSys</li></ul><svg style="display: none" id="MJX-SVG-global-cache"><defs/></svg>]]></content>
+      
+      
       <categories>
-        <category>Python</category>
+          
+          <category> Recommender Systems </category>
+          
       </categories>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Jupyter画图中文乱码问题</title>
-    <url>/2020/05/17/jupyter-font/</url>
-    <content><![CDATA[<p>SimHet字体:<br>链接: <a href="https://pan.baidu.com/s/1436h3-j0dkROeGsxpKbNiA" target="_blank" rel="noopener">https://pan.baidu.com/s/1436h3-j0dkROeGsxpKbNiA</a> 提取码: kmtj</p>
-<h2 id="字体复制到matplotlib包中"><a href="#字体复制到matplotlib包中" class="headerlink" title="字体复制到matplotlib包中"></a>字体复制到<code>matplotlib</code>包中</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 以conda为例</span><br><span class="line">lib/python3.7/site-packages/matplotlib/mpl-data/fonts/ttf/</span><br></pre></td></tr></table></figure>
-<h2 id="修改配置matplotlibrc"><a href="#修改配置matplotlibrc" class="headerlink" title="修改配置matplotlibrc"></a>修改配置<code>matplotlibrc</code></h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 以conda为例</span><br><span class="line">lib/python3.7/site-packages/matplotlib/mpl-data/matplotlibrc</span><br></pre></td></tr></table></figure>
-<p>修改如下让内容:</p>
-<ol>
-<li>font.family : sans.serif 取消注释</li>
-<li>添加字体 font.sans.serif: SimHei, …</li>
-<li>axes.unicode_minus: False 取消注释</li>
-</ol>
-<h2 id="删除matplotlib缓存"><a href="#删除matplotlib缓存" class="headerlink" title="删除matplotlib缓存"></a>删除matplotlib缓存</h2><p>macOS: <code>~/matplotlib</code><br>Linux: <code>~/.cache/matplotlib</code></p>
-<svg style="display: none" id="MJX-SVG-global-cache"><defs/></svg>]]></content>
+      
+      
+        <tags>
+            
+            <tag> paper </tag>
+            
+            <tag> recommender systems </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>SSH配置</title>
+      <link href="/2020/05/17/ssh/"/>
+      <url>/2020/05/17/ssh/</url>
+      
+        <content type="html"><![CDATA[<h1 id="SSH配置"><a href="#SSH配置" class="headerlink" title="SSH配置"></a>SSH配置</h1><h2 id="SSH连接服务器"><a href="#SSH连接服务器" class="headerlink" title="SSH连接服务器"></a>SSH连接服务器</h2><p>SSH连接服务器也可以直接使用<code>ssh user@ip -p port</code>来连接，但是有两个缺点：</p><ol><li>繁琐，每次连接的命令太长</li><li>安全性不好，所有人都可以连接</li></ol><p>因此，我们使用密钥连接.</p><h3 id="生成密钥"><a href="#生成密钥" class="headerlink" title="生成密钥"></a>生成密钥</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -b 4096 -C <span class="string">"hlf.hao"</span></span><br></pre></td></tr></table></figure><p>全部按<code>Enter</code>，最后会在<code>~/.ssh/</code>文件夹下生成<code>id_rsa</code>和<code>id_rsa.pub</code>文件，分别为密钥和公钥</p><h3 id="远程服务器连接"><a href="#远程服务器连接" class="headerlink" title="远程服务器连接"></a>远程服务器连接</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir .ssh</span><br><span class="line">touch .ssh/authorized_keys</span><br><span class="line">chmod 700 .ssh</span><br><span class="line">chmod 644 .ssh/authorized_keys</span><br></pre></td></tr></table></figure><p>然后把公钥复制到<code>authorized_keys</code>文件内</p><h3 id="使用ssh连接远程服务器"><a href="#使用ssh连接远程服务器" class="headerlink" title="使用ssh连接远程服务器"></a>使用ssh连接远程服务器</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh user@ip -p port -i id_rsa_path</span><br></pre></td></tr></table></figure><p>这样还是太麻烦了，可以把服务器信息存在本地配置文件中</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># vim ~/.ssh/config</span></span><br><span class="line">Host XXX</span><br><span class="line">    Hostname ip</span><br><span class="line">    User user</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa</span><br></pre></td></tr></table></figure><p>可以通过<code>ssh XXX</code>直接连接</p><h2 id="SSH连接GitHub"><a href="#SSH连接GitHub" class="headerlink" title="SSH连接GitHub"></a>SSH连接GitHub</h2><h3 id="配置本地git"><a href="#配置本地git" class="headerlink" title="配置本地git"></a>配置本地git</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">"username"</span></span><br><span class="line">git config --global user.email <span class="string">"email"</span></span><br></pre></td></tr></table></figure><p>把公钥添加到github网站上,验证是否成功<code>ssh -T git@github.com</code><br>提示如下信息，说明连接成功</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Hi &lt;username&gt;! You&#39;ve successfully authenticated, but GitHub does not provide </span><br><span class="line">shell access.</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
       <categories>
-        <category>Python</category>
+          
+          <category> SSH </category>
+          
       </categories>
-      <tags>
-        <tag>python</tag>
-        <tag>jupyter</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>SSH配置</title>
-    <url>/2020/05/17/ssh/</url>
-    <content><![CDATA[<h1 id="SSH配置"><a href="#SSH配置" class="headerlink" title="SSH配置"></a>SSH配置</h1><h2 id="SSH连接服务器"><a href="#SSH连接服务器" class="headerlink" title="SSH连接服务器"></a>SSH连接服务器</h2><p>SSH连接服务器也可以直接使用<code>ssh user@ip -p port</code>来连接，但是有两个缺点：</p>
-<ol>
-<li>繁琐，每次连接的命令太长</li>
-<li>安全性不好，所有人都可以连接</li>
-</ol>
-<p>因此，我们使用密钥连接.</p>
-<h3 id="生成密钥"><a href="#生成密钥" class="headerlink" title="生成密钥"></a>生成密钥</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -b 4096 -C <span class="string">"hlf.hao"</span></span><br></pre></td></tr></table></figure>
-<p>全部按<code>Enter</code>，最后会在<code>~/.ssh/</code>文件夹下生成<code>id_rsa</code>和<code>id_rsa.pub</code>文件，分别为密钥和公钥</p>
-<h3 id="远程服务器连接"><a href="#远程服务器连接" class="headerlink" title="远程服务器连接"></a>远程服务器连接</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkdir .ssh</span><br><span class="line">touch .ssh/authorized_keys</span><br><span class="line">chmod 700 .ssh</span><br><span class="line">chmod 644 .ssh/authorized_keys</span><br></pre></td></tr></table></figure>
-<p>然后把公钥复制到<code>authorized_keys</code>文件内</p>
-<h3 id="使用ssh连接远程服务器"><a href="#使用ssh连接远程服务器" class="headerlink" title="使用ssh连接远程服务器"></a>使用ssh连接远程服务器</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh user@ip -p port -i id_rsa_path</span><br></pre></td></tr></table></figure>
-<p>这样还是太麻烦了，可以把服务器信息存在本地配置文件中</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># vim ~/.ssh/config</span></span><br><span class="line">Host XXX</span><br><span class="line">    Hostname ip</span><br><span class="line">    User user</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa</span><br></pre></td></tr></table></figure>
-<p>可以通过<code>ssh XXX</code>直接连接</p>
-<h2 id="SSH连接GitHub"><a href="#SSH连接GitHub" class="headerlink" title="SSH连接GitHub"></a>SSH连接GitHub</h2><h3 id="配置本地git"><a href="#配置本地git" class="headerlink" title="配置本地git"></a>配置本地git</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global user.name <span class="string">"username"</span></span><br><span class="line">git config --global user.email <span class="string">"email"</span></span><br></pre></td></tr></table></figure>
-<p>把公钥添加到github网站上,验证是否成功<code>ssh -T git@github.com</code><br>提示如下信息，说明连接成功</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Hi &lt;username&gt;! You&#39;ve successfully authenticated, but GitHub does not provide </span><br><span class="line">shell access.</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+        <tags>
+            
+            <tag> ssh </tag>
+            
+            <tag> github </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Jupyter画图中文乱码问题</title>
+      <link href="/2020/05/17/jupyter-font/"/>
+      <url>/2020/05/17/jupyter-font/</url>
+      
+        <content type="html"><![CDATA[<p>SimHet字体:<br>链接: <a href="https://pan.baidu.com/s/1436h3-j0dkROeGsxpKbNiA" target="_blank" rel="noopener">https://pan.baidu.com/s/1436h3-j0dkROeGsxpKbNiA</a> 提取码: kmtj</p><h2 id="字体复制到matplotlib包中"><a href="#字体复制到matplotlib包中" class="headerlink" title="字体复制到matplotlib包中"></a>字体复制到<code>matplotlib</code>包中</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 以conda为例</span><br><span class="line">lib/python3.7/site-packages/matplotlib/mpl-data/fonts/ttf/</span><br></pre></td></tr></table></figure><h2 id="修改配置matplotlibrc"><a href="#修改配置matplotlibrc" class="headerlink" title="修改配置matplotlibrc"></a>修改配置<code>matplotlibrc</code></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 以conda为例</span><br><span class="line">lib/python3.7/site-packages/matplotlib/mpl-data/matplotlibrc</span><br></pre></td></tr></table></figure><p>修改如下让内容:</p><ol><li>font.family : sans.serif 取消注释</li><li>添加字体 font.sans.serif: SimHei, …</li><li>axes.unicode_minus: False 取消注释</li></ol><h2 id="删除matplotlib缓存"><a href="#删除matplotlib缓存" class="headerlink" title="删除matplotlib缓存"></a>删除matplotlib缓存</h2><p>macOS: <code>~/matplotlib</code><br>Linux: <code>~/.cache/matplotlib</code></p><svg style="display: none" id="MJX-SVG-global-cache"><defs/></svg>]]></content>
+      
+      
       <categories>
-        <category>SSH</category>
+          
+          <category> Python </category>
+          
       </categories>
-      <tags>
-        <tag>ssh</tag>
-        <tag>github</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>论文笔记- Pre-Trained Models for Natural Language Processing</title>
-    <url>/2020/05/23/ptm-survey/</url>
-    <content><![CDATA[<p>本文对NLP预训练模型做了一个全面的总结， 论文见: [Pre-trained Models for Natural Language Processing: A Survey]<a href="https://arxiv.org/abs/2003.08271" target="_blank" rel="noopener">https://arxiv.org/abs/2003.08271</a></p>
-<p>解决NLP问题的深度学习网络一般有: convolutional neural networks (CNNs), recurrent neural networks (RNNs), graph-based neural networks (GNNs), attention mechanism.</p>
-<h2 id="Pre-trained-Models-for-NLP-PTMs-总览"><a href="#Pre-trained-Models-for-NLP-PTMs-总览" class="headerlink" title="Pre-trained Models for NLP (PTMs) 总览"></a>Pre-trained Models for NLP (PTMs) 总览</h2><h3 id="PTMs的优势"><a href="#PTMs的优势" class="headerlink" title="PTMs的优势"></a>PTMs的优势</h3><ol>
-<li>从大语料库中学到通用的representations，用以帮助下游任务</li>
-<li>PTMs提供了更好的模型初始参数</li>
-<li>可以看做一个正则化，防止在小数据集上overfitting</li>
-</ol>
-<h3 id="PTMs的发展"><a href="#PTMs的发展" class="headerlink" title="PTMs的发展"></a>PTMs的发展</h3><p>第一代 PTMs:</p>
-<ul>
-<li><a href="https://arxiv.org/abs/1310.4546" target="_blank" rel="noopener">Skip-Gram</a></li>
-<li>Word2Vec</li>
-<li><a href="https://nlp.stanford.edu/projects/glove/" target="_blank" rel="noopener">GloVe </a></li>
-</ul>
-<p>这些模型context-free而且不能捕捉文本的高层表示, 如 polysemous disambiguation, syntactic structures, semantic roles, anaphora</p>
-<p>第二代PTMs:</p>
-<ul>
-<li><a href="https://arxiv.org/abs/1708.00107" target="_blank" rel="noopener">CoVe </a></li>
-<li><a href="https://arxiv.org/abs/1802.05365" target="_blank" rel="noopener">ELMo </a></li>
-<li><a href="https://arxiv.org/abs/1801.06146" target="_blank" rel="noopener">ULMFiT</a></li>
-<li><a href="https://s3-us-west-2.amazonaws.com/openai-assets/research-covers/language-unsupervised/language_understanding_paper.pdf" target="_blank" rel="noopener">OpenAI GPT</a></li>
-<li><a href="https://arxiv.org/abs/1810.04805" target="_blank" rel="noopener">BERT </a></li>
-</ul>
-<h3 id="PTMs分类"><a href="#PTMs分类" class="headerlink" title="PTMs分类"></a>PTMs分类</h3><p><strong>Representation type</strong></p>
-<ul>
-<li>non-contextual models</li>
-<li>contextual models</li>
-</ul>
-<p><img src="/2020/05/23/ptm-survey/tab2.png" alt="Representation"></p>
-<p><strong>Architectures</strong></p>
-<ul>
-<li>LSTM</li>
-<li>Transformer Encoder</li>
-<li>Transformer Decoder</li>
-<li>full Transofrmer</li>
-</ul>
-<p><strong>Pre-Training Task Types</strong></p>
-<p><strong>Extensions</strong></p>
-<ul>
-<li>Knowledge-enriched PTMs</li>
-<li>multiligual PTMs</li>
-<li>Language-specific PTMs</li>
-<li>Compressed PTMs</li>
-<li>…</li>
-</ul>
-<p><img src="/2020/05/23/ptm-survey/fig3.png" alt="Taxonomy"></p>
-<h3 id="PTMs任务"><a href="#PTMs任务" class="headerlink" title="PTMs任务"></a>PTMs任务</h3><p>机器学习可以分为Supervised Learning (SL)，Unsupervised Learning (UL)，Self-Supervised Learing (SSL)</p>
-<ul>
-<li><p>Language Modeling (LM)</p>
-</li>
-<li><p>Masked Language Modeling (MLM) </p>
-</li>
-<li><p>Seq2Seq MLM  <em>[used in <a href="https://arxiv.org/abs/1905.02450" target="_blank" rel="noopener">MASS</a>, <a href="https://arxiv.org/abs/1910.10683" target="_blank" rel="noopener">T5</a> and benefit the Seq2Seq downstream tasks]</em></p>
-</li>
-<li><p>Enhanced MLM (E-MLM) <em>[<a href="https://arxiv.org/abs/1907.11692" target="_blank" rel="noopener">RoBERTa</a> &lt;- BERT, UniLM, <a href="https://arxiv.org/abs/1901.07291v1" target="_blank" rel="noopener">XLM</a> &lt;- MLM, <a href="https://arxiv.org/abs/1907.10529" target="_blank" rel="noopener">Span-BERT</a> &lt;- MLM, <a href="https://arxiv.org/abs/1908.04577v1" target="_blank" rel="noopener">StructBERT</a>]</em> </p>
-</li>
-<li><p>Permuted Language Modeling (PLM) <a href="https://github.com/zihangdai/xlnet" target="_blank" rel="noopener">XLNet</a></p>
-</li>
-<li><p>Denoising Autoencoder (DAE) <a href="https://arxiv.org/abs/1910.13461" target="_blank" rel="noopener">BART</a></p>
-</li>
-<li><p>Contrastrive Learning (<a href="https://arxiv.org/abs/1902.09229" target="_blank" rel="noopener">CTL</a>)</p>
-</li>
-<li><p>Deep InfoMax (<a href="https://arxiv.org/abs/1910.08350v2" target="_blank" rel="noopener">DIM</a>)</p>
-</li>
-<li><p>Replaced Token Detection (RTD) <a href="https://arxiv.org/abs/1310.4546" target="_blank" rel="noopener">CBOW-NS</a>, <a href="https://arxiv.org/abs/2003.10555" target="_blank" rel="noopener">ELECTERA</a>, <a href="https://arxiv.org/abs/1912.09637?context=cs" target="_blank" rel="noopener">WKLM</a></p>
-</li>
-<li><p>Next Sentence Prediction (NSP)</p>
-</li>
-<li><p>Sentence Order Prediction (SOP)  <a href="https://arxiv.org/abs/1909.11942?context=cs" target="_blank" rel="noopener">ALBERT</a>, <a href="https://arxiv.org/abs/1908.04577v1" target="_blank" rel="noopener">StructBERT</a>, <a href="https://arxiv.org/abs/1912.09582" target="_blank" rel="noopener">BERTje</a></p>
-</li>
-<li><p>Others</p>
-<ul>
-<li>incorporate factual knowledge</li>
-<li>imporve cross-lingual tasks</li>
-<li>multi-model applicates</li>
-<li>…</li>
-</ul>
-</li>
-</ul>
-<p><img src="/2020/05/23/ptm-survey/tab1.png" alt="Loss Function"></p>
-<h2 id="上下文编码器"><a href="#上下文编码器" class="headerlink" title="上下文编码器"></a>上下文编码器</h2><ul>
-<li><p>Sequence Models</p>
-<ul>
-<li>Convolutional Models</li>
-<li>Recurrent Models<ul>
-<li>LSTM, GRU</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>Non-Sequence Models</p>
-<ul>
-<li>Recursive NN, TreeLSTM, GCN</li>
-<li>Transformer</li>
-</ul>
-<blockquote>
-<p>Transformer也用了其他技术：positional embeddings, layer normalization, residual connections, position-wise feed-forward network (FFN)</p>
-</blockquote>
-</li>
-</ul>
-<p><img src="/2020/05/23/ptm-survey/fig2.png" alt="Neural Contextual Encoders"></p>
-<svg style="display: none" id="MJX-SVG-global-cache"><defs/></svg>]]></content>
+      
+      
+        <tags>
+            
+            <tag> python </tag>
+            
+            <tag> jupyter </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>服务器安装Jupyter</title>
+      <link href="/2020/05/17/install-jupyter/"/>
+      <url>/2020/05/17/install-jupyter/</url>
+      
+        <content type="html"><![CDATA[<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install jupyter</span><br></pre></td></tr></table></figure><h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><ol><li><p>初始化配置文件</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter notebook --generate-config</span><br></pre></td></tr></table></figure></li><li><p>配置<code>~/.jupyter/jupyter_notebook_config.py</code></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 修改其中如下字段</span></span><br><span class="line">c.NotebookApp.open_brower = False</span><br><span class="line">c.NotebookApp.ip = <span class="string">'*'</span></span><br><span class="line">c.NotebookApp.port = 8899</span><br></pre></td></tr></table></figure></li><li><p>设置密码</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter notebook password</span><br></pre></td></tr></table></figure></li><li><p>额外可以安装<code>jupyterlab</code>,比原始<code>jupyter</code>好看一点</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install jupyterlab</span><br></pre></td></tr></table></figure></li></ol><h2 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 原始jupyter</span></span><br><span class="line">jupyter notebook</span><br><span class="line"><span class="comment">#  jupyterlab</span></span><br><span class="line">jupyter lab</span><br></pre></td></tr></table></figure><svg style="display: none" id="MJX-SVG-global-cache"><defs/></svg>]]></content>
+      
+      
       <categories>
-        <category>NLP</category>
+          
+          <category> Python </category>
+          
       </categories>
-      <tags>
-        <tag>nlp</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>论文笔记-Deep Learning Based Recommender System</title>
-    <url>/2020/05/23/rs-survey/</url>
-    <content><![CDATA[<h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p>该论文发表于ACM2017， 对当前基于深度学习的推荐系统方法做了总结和分类，并给出自己的看法。论文见: <a href="https://arxiv.org/pdf/1707.07435.pdf" target="_blank" rel="noopener">Deep Learning based Recommender System： A Survey and New Perspectives</a></p>
-<p>产生推荐列表的数据来源一般有如下几种:</p>
-<ul>
-<li>user preferences</li>
-<li>item features</li>
-<li>user-item past interactions</li>
-<li>some other features (temporal, spatial)</li>
-</ul>
-<p>推荐模型主要分为三个大类:</p>
-<ul>
-<li>collaborative filtering</li>
-<li>content-based recommender system</li>
-<li>hybrid recommender system</li>
-</ul>
-<p>根据完成的任务可以分为</p>
-<ul>
-<li>rating</li>
-<li>ranking</li>
-<li>classification</li>
-</ul>
-<h2 id="Models"><a href="#Models" class="headerlink" title="Models"></a>Models</h2><h3 id="Traditional-Models"><a href="#Traditional-Models" class="headerlink" title="Traditional Models"></a>Traditional Models</h3><ul>
-<li>matrix factorization (MF)</li>
-<li>factorization machines (FM)</li>
-<li>BPR</li>
-<li>Collaborative Metric Learning (CML)</li>
-<li>funkSVD</li>
-</ul>
-<h3 id="Deep-Models"><a href="#Deep-Models" class="headerlink" title="Deep Models:"></a>Deep Models:</h3><p><img src="/2020/05/23/rs-survey/fig1.png" alt="deep model"></p>
-<p>其中autoencodes包含如下几种：</p>
-<ul>
-<li>denoising autoencoder</li>
-<li>marginalized denoising autoencoder</li>
-<li>sparse autoencoder</li>
-<li>contractive autoencoder</li>
-<li>variational autoencoder (VAE)</li>
-</ul>
-<ul>
-<li>MLP<ul>
-<li>Nerual Network Matrix Factorization (NNMF)</li>
-<li>Nerual Collaborative Filtering (NCF)</li>
-<li>Deep Factorization Machine (DeepFM)</li>
-<li>Wide &amp; deep Model</li>
-<li>Deep Structured Semantic Model (DSSM)</li>
-<li>Deep Semantic Similarity  based Personalized Recommendation (DSPR)</li>
-<li>Multi-View Deep Neural Network ( MV-DNN)</li>
-</ul>
-</li>
-<li>Autoencoder (AE)<ul>
-<li>AutoRec</li>
-<li>CNF</li>
-<li>Collaborative Denoising Auto-Encoder (CDAE)</li>
-<li>Stacked denoising autoencoder (SDAE)</li>
-<li>Collaborative Deep Learning (CDL)</li>
-<li>Relational stacked denoising autoencoders (RSDAE)</li>
-<li>Collaborative variational autoencoder (CVAE)</li>
-<li>Collaborative Deep Ranking (CDR)</li>
-<li>AutoSVD++</li>
-<li>HDCR</li>
-</ul>
-</li>
-<li>CNN<ul>
-<li>Point-of-Interest (POI) recommendation</li>
-<li>VPOI</li>
-<li>VBPR</li>
-<li>DeepCoNN</li>
-<li>ConvMF</li>
-<li>ConvNCF</li>
-</ul>
-</li>
-<li>RNN<ul>
-<li>Session-based Recommendation without User identifier<ul>
-<li>GRU4Rec</li>
-</ul>
-</li>
-<li>Sequential Recommendation with User Identifier<ul>
-<li>Recurrent Recommender Network (RRN)</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>RBM<ul>
-<li>RMB-CF</li>
-</ul>
-</li>
-<li>Neural Autoregressive Distribution Estimation (NADE)<ul>
-<li>CF-NADE</li>
-</ul>
-</li>
-<li>Adversarial Networks (AＮ)<ul>
-<li>IRGAN</li>
-</ul>
-</li>
-<li>Attentional Models (AM)</li>
-<li>Deep Reinforcement Learning (DRL)<ul>
-<li>DEERS</li>
-<li>DeepPage</li>
-<li>DRN</li>
-</ul>
-</li>
-<li>Hybrid Models<ul>
-<li>CNN + AE<ul>
-<li>Collaborative Knowledge Based Embedding (CKE)</li>
-</ul>
-</li>
-<li>CNN + RNN</li>
-<li>RNN + AE<ul>
-<li>CRAE</li>
-</ul>
-</li>
-<li>RNN + DRL</li>
-</ul>
-</li>
-</ul>
-<h2 id="Future-research-directions"><a href="#Future-research-directions" class="headerlink" title="Future research directions"></a>Future research directions</h2><ul>
-<li>Join representation learning user and item content information</li>
-<li>explainable recommendation with deep learning</li>
-<li>going deeper for recommendation</li>
-<li>machine reasoning for recommendation</li>
-<li>cross domain recommendation with dnn</li>
-<li>deep multi-task learning</li>
-<li>scalability of dnn</li>
-<li>better, more unified and harder evaluation</li>
-</ul>
-<h2 id="Top-Conference"><a href="#Top-Conference" class="headerlink" title="Top Conference"></a>Top Conference</h2><p>论文中提到Recommender Systems方向的定会大致有以下这些:</p>
-<ul>
-<li>NIPS</li>
-<li>ICML</li>
-<li>ICLR</li>
-<li>KDD</li>
-<li>WWW</li>
-<li>SIGIR</li>
-<li>WSDM</li>
-<li>RecSys</li>
-</ul>
-<svg style="display: none" id="MJX-SVG-global-cache"><defs/></svg>]]></content>
+      
+      
+        <tags>
+            
+            <tag> python </tag>
+            
+            <tag> jupyter </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Pyenv开发环境配置</title>
+      <link href="/2020/05/17/pyenv/"/>
+      <url>/2020/05/17/pyenv/</url>
+      
+        <content type="html"><![CDATA[<h1 id="pyenv开发环境配置"><a href="#pyenv开发环境配置" class="headerlink" title="pyenv开发环境配置"></a>pyenv开发环境配置</h1><h2 id="预安装"><a href="#预安装" class="headerlink" title="预安装"></a>预安装</h2><p>有时安装会因为缺少必要的环境导致失败，因此需要提前安装一下相关环境</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install -y make build-essential libssl-dev \</span><br><span class="line">zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev \</span><br><span class="line">wget curl llvm libncurses5-dev libncursesw5-dev \</span><br><span class="line">xz-utils tk-dev libffi-dev liblzma-dev</span><br></pre></td></tr></table></figure><h2 id="安装pyenv"><a href="#安装pyenv" class="headerlink" title="安装pyenv"></a>安装pyenv</h2><ol><li>安装<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -L https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer | bash</span><br></pre></td></tr></table></figure></li></ol><blockquote><p>如果报连接失败，可以把pyenv-installer手动下载到本地，然后<code>bash pyenv-installer</code>完成安装</p></blockquote><ol start="2"><li><p>添加环境至<code>~/.zshrc</code>或<code>~/.bashrc</code></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># XXX 是个人目录地址</span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="string">"/home/XXX/.pyenv/bin:<span class="variable">$PATH</span>"</span></span><br><span class="line"><span class="built_in">eval</span> <span class="string">"<span class="variable">$(pyenv init -)</span>"</span></span><br><span class="line"><span class="built_in">eval</span> <span class="string">"<span class="variable">$(pyenv virtualenv-init -)</span>"</span></span><br></pre></td></tr></table></figure></li><li><p>刷新终端</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bashrc <span class="comment">#或 source ~/.zshrc</span></span><br></pre></td></tr></table></figure></li><li><p>安装python环境，官方略慢，可以考虑使用淘宝镜像(v是python的版本号)</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装pyenv</span></span><br><span class="line">v=3.7.0;wget https://npm.taobao.org/mirrors/python/<span class="variable">$v</span>/Python-<span class="variable">$v</span>.tar.xz -P ~/.pyenv/cache/;pyenv install <span class="variable">$v</span></span><br></pre></td></tr></table></figure></li><li><p>查看python版本</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyenv versions</span><br></pre></td></tr></table></figure></li></ol><h2 id="python切换"><a href="#python切换" class="headerlink" title="python切换"></a>python切换</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">pyenv global 2.7.3 <span class="comment"># 设置全局的 Python 版本，通过将版本号写入 ~/.pyenv/version 文件的方式。</span></span><br><span class="line">pyenv <span class="built_in">local</span> 2.7.3 <span class="comment"># 设置 Python 本地版本，通过将版本号写入当前目录下的 .python-version 文件的方式。通过这种方式设置的 Python 版本优先级较 global 高。</span></span><br><span class="line">pyenv shell 2.7.3 <span class="comment"># 设置面向 shell 的 Python 版本，通过设置当前 shell 的 PYENV_VERSION 环境变量的方式。这个版本的优先级比 local 和 global 都要高。–unset 参数可以用于取消当前 shell 设定的版本</span></span><br><span class="line">pyenv shell --<span class="built_in">unset</span></span><br><span class="line">pyenv <span class="built_in">rehash</span> <span class="comment"># 创建垫片路径（为所有已安装的可执行文件创建 shims，如：~/.pyenv/versions/*/bin/*，因此，每当你增删了 Python 版本或带有可执行文件的包（如 pip）以后，都应该执行一次本命令）</span></span><br></pre></td></tr></table></figure><blockquote><p>python优先级<br>shelll &gt; local &gt; global</p></blockquote><h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">pyenv install --list <span class="comment"># 列出可安装的版本</span></span><br><span class="line">pyenv install &lt;version&gt; <span class="comment"># 安装对应版本</span></span><br><span class="line">pyenv install -v &lt;version&gt; <span class="comment"># 安装对应版本，若发生错误，可显示详细的错误信息</span></span><br><span class="line">pyenv versions <span class="comment">#显示当前可用的python版本</span></span><br><span class="line">pyenv <span class="built_in">which</span> python <span class="comment"># 显示当前python安装路径</span></span><br><span class="line">pyenv global &lt;version&gt; <span class="comment"># 设置python版本</span></span><br><span class="line">pyenv <span class="built_in">local</span> &lt;version&gt; <span class="comment"># 当前路径创建一个python-version，以后进入这个目录自动切换改版本</span></span><br><span class="line">pyenv shell &lt;version&gt; <span class="comment">#当前shell的session中启用某版本，优先级大于global和local</span></span><br></pre></td></tr></table></figure><svg style="display: none" id="MJX-SVG-global-cache"><defs/></svg>]]></content>
+      
+      
       <categories>
-        <category>Recommender Systems</category>
+          
+          <category> Python </category>
+          
       </categories>
-      <tags>
-        <tag>paper</tag>
-        <tag>recommender systems</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo NexT配置说明</title>
-    <url>/2020/05/16/hexo-config/</url>
-    <content><![CDATA[<h1 id="安装环境"><a href="#安装环境" class="headerlink" title="安装环境"></a>安装环境</h1><p>Git, nodejs<br>参考: <a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="noopener">nodejs安装</a></p>
-<p>安装nodejs包：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install -g  hexo-cli</span><br><span class="line">npm install hexo-genertor-search --save</span><br><span class="line">npm install hexo-generator-searchdb --save</span><br><span class="line">npm install hexo-generator-feed --save</span><br><span class="line">npm install hexo-filter-mathjax</span><br></pre></td></tr></table></figure>
-
-<h2 id="hexo博客搭建"><a href="#hexo博客搭建" class="headerlink" title="hexo博客搭建"></a>hexo博客搭建</h2><p>初始化：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo init &lt;folder&gt;</span><br><span class="line">$ <span class="built_in">cd</span> &lt;folder&gt;</span><br><span class="line">$ npm install</span><br></pre></td></tr></table></figure>
-
-<p>设定主题为NexT<br>参考: <a href="https://theme-next.iissnan.com/" target="_blank" rel="noopener">NexT</a></p>
-<h2 id="知乎微博等自定义图标"><a href="#知乎微博等自定义图标" class="headerlink" title="知乎微博等自定义图标"></a>知乎微博等自定义图标</h2><p>参考: <a href="https://blog.dlzhang.com/posts/32/" target="_blank" rel="noopener">图标问题</a></p>
-<h2 id="一些配置细节"><a href="#一些配置细节" class="headerlink" title="一些配置细节"></a>一些配置细节</h2><p>一共两个配置文件，都是<code>_config.yaml</code>。分别称为主配置文件和主题配置文件。细节可根据说明配置。</p>
-<h3 id="评论系统"><a href="#评论系统" class="headerlink" title="评论系统"></a>评论系统</h3><p>比较简单的一个是valine,详细配置可参考<br><a href="https://qianfanguojin.github.io/2019/07/23/Hexo%E5%8D%9A%E5%AE%A2%E8%BF%9B%E9%98%B6%EF%BC%9A%E4%B8%BANext%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0Valine%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/" target="_blank" rel="noopener">valine配置</a></p>
-<h3 id="标签云"><a href="#标签云" class="headerlink" title="标签云"></a>标签云</h3><p>如果想tag安装文字云的形式展示，可参考<a href="https://github.com/MikeCoder/hexo-tag-cloud" target="_blank" rel="noopener">tagcloud</a></p>
-<h3 id="其他配置"><a href="#其他配置" class="headerlink" title="其他配置"></a>其他配置</h3><p>如相册，广告等设置可参考<a href="https://www.qtmuniao.com/2019/10/16/hexo-theme-landscaping/" target="_blank" rel="noopener">其他配置</a></p>
-<h3 id="文章插入图片"><a href="#文章插入图片" class="headerlink" title="文章插入图片"></a>文章插入图片</h3><ol>
-<li>在主配置文件<code>_config.yaml</code>中将<code>post_asset_folder: false</code>改为<code>true</code>。</li>
-<li>安装插件<code>npm install https://github.com/CodeFalling/hexo-asset-image -- save</code></li>
-<li>创建博客时会同时生成一个同名文件夹，将图片放入该文件夹中。如<code>hexo new post title</code>会创建<code>title.md</code>和<code>/title</code></li>
-<li>在<code>title.md</code>插入图片<code>!(note)[title/iamge_file]</code></li>
-</ol>
-<h2 id="发布到github上"><a href="#发布到github上" class="headerlink" title="发布到github上"></a>发布到github上</h2><p>参考: <a href="https://hexo.io/docs/one-command-deployment" target="_blank" rel="noopener">deploy</a></p>
-<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><p>本地部署: <code>hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</code><br>博客部署: <code>hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</code><br>新建博客: <code>hexo new [layout] &lt;title&gt;</code></p>
-<p>参考: <a href="https://hexo.io/zh-cn/docs/writing" target="_blank" rel="noopener">写作</a></p>
-]]></content>
+      
+      
+        <tags>
+            
+            <tag> python </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hexo NexT配置说明</title>
+      <link href="/2020/05/16/hexo-config/"/>
+      <url>/2020/05/16/hexo-config/</url>
+      
+        <content type="html"><![CDATA[<h1 id="安装环境"><a href="#安装环境" class="headerlink" title="安装环境"></a>安装环境</h1><p>Git, nodejs<br>参考: <a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="noopener">nodejs安装</a></p><p>安装nodejs包：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm install -g  hexo-cli</span><br><span class="line">npm install hexo-genertor-search --save</span><br><span class="line">npm install hexo-generator-searchdb --save</span><br><span class="line">npm install hexo-generator-feed --save</span><br><span class="line">npm install hexo-filter-mathjax</span><br></pre></td></tr></table></figure><h2 id="hexo博客搭建"><a href="#hexo博客搭建" class="headerlink" title="hexo博客搭建"></a>hexo博客搭建</h2><p>初始化：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init &lt;folder&gt;</span><br><span class="line">$ <span class="built_in">cd</span> &lt;folder&gt;</span><br><span class="line">$ npm install</span><br></pre></td></tr></table></figure><p>设定主题为NexT<br>参考: <a href="https://theme-next.iissnan.com/" target="_blank" rel="noopener">NexT</a></p><h2 id="知乎微博等自定义图标"><a href="#知乎微博等自定义图标" class="headerlink" title="知乎微博等自定义图标"></a>知乎微博等自定义图标</h2><p>参考: <a href="https://blog.dlzhang.com/posts/32/" target="_blank" rel="noopener">图标问题</a></p><h2 id="一些配置细节"><a href="#一些配置细节" class="headerlink" title="一些配置细节"></a>一些配置细节</h2><p>一共两个配置文件，都是<code>_config.yaml</code>。分别称为主配置文件和主题配置文件。细节可根据说明配置。</p><h3 id="评论系统"><a href="#评论系统" class="headerlink" title="评论系统"></a>评论系统</h3><p>比较简单的一个是valine,详细配置可参考<br><a href="https://qianfanguojin.github.io/2019/07/23/Hexo%E5%8D%9A%E5%AE%A2%E8%BF%9B%E9%98%B6%EF%BC%9A%E4%B8%BANext%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0Valine%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/" target="_blank" rel="noopener">valine配置</a></p><h3 id="标签云"><a href="#标签云" class="headerlink" title="标签云"></a>标签云</h3><p>如果想tag安装文字云的形式展示，可参考<a href="https://github.com/MikeCoder/hexo-tag-cloud" target="_blank" rel="noopener">tagcloud</a></p><h3 id="其他配置"><a href="#其他配置" class="headerlink" title="其他配置"></a>其他配置</h3><p>如相册，广告等设置可参考<a href="https://www.qtmuniao.com/2019/10/16/hexo-theme-landscaping/" target="_blank" rel="noopener">其他配置</a></p><h3 id="文章插入图片"><a href="#文章插入图片" class="headerlink" title="文章插入图片"></a>文章插入图片</h3><ol><li>在主配置文件<code>_config.yaml</code>中将<code>post_asset_folder: false</code>改为<code>true</code>。</li><li>安装插件<code>npm install https://github.com/CodeFalling/hexo-asset-image -- save</code></li><li>创建博客时会同时生成一个同名文件夹，将图片放入该文件夹中。如<code>hexo new post title</code>会创建<code>title.md</code>和<code>/title</code></li><li>在<code>title.md</code>插入图片<code>!(note)[title/iamge_file]</code></li></ol><h2 id="发布到github上"><a href="#发布到github上" class="headerlink" title="发布到github上"></a>发布到github上</h2><p>参考: <a href="https://hexo.io/docs/one-command-deployment" target="_blank" rel="noopener">deploy</a></p><h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><p>本地部署: <code>hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</code><br>博客部署: <code>hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</code><br>新建博客: <code>hexo new [layout] &lt;title&gt;</code></p><p>参考: <a href="https://hexo.io/zh-cn/docs/writing" target="_blank" rel="noopener">写作</a></p>]]></content>
+      
+      
       <categories>
-        <category>Others</category>
+          
+          <category> Others </category>
+          
       </categories>
-      <tags>
-        <tag>hexo-next</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>The Tutorial</title>
-    <url>/2020/05/16/tutorial/</url>
-    <content><![CDATA[<p>This is some sample</p>
-<p>中文显示测试</p>
-<p>中english混合显示</p>
-<h1 id="Elements"><a href="#Elements" class="headerlink" title="Elements"></a>Elements</h1><hr>
-<h2 id="H2"><a href="#H2" class="headerlink" title="H2"></a>H2</h2><h2 id="H3"><a href="#H3" class="headerlink" title="H3"></a>H3</h2><h2 id="H4"><a href="#H4" class="headerlink" title="H4"></a>H4</h2><h2 id="Paragraph"><a href="#Paragraph" class="headerlink" title="Paragraph"></a>Paragraph</h2><p>Test link <a href="www.github.com">github</a></p>
-<p><strong>Bold</strong></p>
-<p><em>Italic</em></p>
-<p><u>Underline</u></p>
-<p><del>Deleted</del></p>
-<p><code>inline code</code></p>
-<blockquote>
-<p>reference</p>
-</blockquote>
-<h2 id="List-Types"><a href="#List-Types" class="headerlink" title="List Types"></a>List Types</h2><h3 id="Ordered-List"><a href="#Ordered-List" class="headerlink" title="Ordered List"></a>Ordered List</h3><ol>
-<li>list 1</li>
-<li>list 2</li>
-<li>list 3</li>
-</ol>
-<h3 id="Unordered-List"><a href="#Unordered-List" class="headerlink" title="Unordered List"></a>Unordered List</h3><ul>
-<li>list</li>
-<li>list</li>
-<li>list</li>
-</ul>
-<h3 id="Task-List"><a href="#Task-List" class="headerlink" title="Task List"></a>Task List</h3><ul>
-<li><input checked disabled type="checkbox"> task1</li>
-<li><input disabled type="checkbox"> task2</li>
-<li><input disabled type="checkbox"> taskk3</li>
-</ul>
-<h1 id="Table"><a href="#Table" class="headerlink" title="Table"></a>Table</h1><table>
-<thead>
-<tr>
-<th>Table Header 1</th>
-<th>Table Header 2</th>
-<th>Table Header 3</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Division 1</td>
-<td>Division 2</td>
-<td>Division 3</td>
-</tr>
-<tr>
-<td>Division 1</td>
-<td>Division 2</td>
-<td>Division 3</td>
-</tr>
-<tr>
-<td>Division 1</td>
-<td>Division 2</td>
-<td>Division 3</td>
-</tr>
-</tbody></table>
-<h1 id="Misc-Stuff"><a href="#Misc-Stuff" class="headerlink" title="Misc Stuff"></a>Misc Stuff</h1><p>sup: Lorem<sup>superscript</sup></p>
-<p>sub: dolor<sub>subscript</sub></p>
-<p>cite: <cite>cite</cite></p>
-<p>acronym: <acronym title="National Basketball Association">NBA</acronym></p>
-<p>abbr: <abbr title="Avenue">AVE</abbr></p>
-<h1 id="Images"><a href="#Images" class="headerlink" title="Images"></a>Images</h1><p>This is a image test post.</p>
-<p><img src="http://ww1.sinaimg.cn/mw690/81b78497jw1emfgwkasznj21hc0u0qb7.jpg" alt></p>
-<p><img src="http://ww3.sinaimg.cn/mw690/81b78497jw1emfgwjrh2pj21hc0u01g3.jpg" alt="Caption"></p>
-<p><img src="http://ww2.sinaimg.cn/mw690/81b78497jw1emfgwil5xkj21hc0u0tpm.jpg" alt></p>
-<p><img src="http://placehold.it/350x150.jpg" alt="Small Picture"></p>
-<h1 id="Highlight"><a href="#Highlight" class="headerlink" title="Highlight"></a>Highlight</h1><h2 id="Normal-block"><a href="#Normal-block" class="headerlink" title="Normal block"></a>Normal block</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">alert('Hello world')</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">print('hello world')</span><br></pre></td></tr></table></figure>
-
-<h2 id="Highlight-block"><a href="#Highlight-block" class="headerlink" title="Highlight block"></a>Highlight block</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">alert(<span class="string">'Hello world'</span>)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">print(<span class="string">'hello world'</span>)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">foo</span></span></span><br><span class="line">    puts <span class="string">'foo'</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">foo</span><span class="params">(<span class="keyword">int</span> arg1, <span class="keyword">int</span> arg2)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line"></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">  <span class="built_in">string</span> str;</span><br><span class="line">  foo(<span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"Hello World"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
-
-
-
-
-<h1 id="MathJax"><a href="#MathJax" class="headerlink" title="MathJax"></a>MathJax</h1><p><mjx-container class="MathJax" jax="SVG" display="true"><svg style="vertical-align: -0.186ex" xmlns="http://www.w3.org/2000/svg" width="11.669ex" height="2.185ex" role="img" focusable="false" viewbox="0 -883.9 5157.7 965.9" xmlns:xlink="http://www.w3.org/1999/xlink"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="msup"><g data-mml-node="mi"><use xlink:href="#MJX-TEX-I-1D44E"/></g><g data-mml-node="mn" transform="translate(529, 413) scale(0.707)"><use xlink:href="#MJX-TEX-N-32"/></g></g><g data-mml-node="mo" transform="translate(1154.8, 0)"><use xlink:href="#MJX-TEX-N-2B"/></g><g data-mml-node="msup" transform="translate(2155, 0)"><g data-mml-node="mi"><use xlink:href="#MJX-TEX-I-1D44F"/></g><g data-mml-node="mn" transform="translate(429, 413) scale(0.707)"><use xlink:href="#MJX-TEX-N-32"/></g></g><g data-mml-node="mo" transform="translate(3265.3, 0)"><use xlink:href="#MJX-TEX-N-3D"/></g><g data-mml-node="msup" transform="translate(4321.1, 0)"><g data-mml-node="mi"><use xlink:href="#MJX-TEX-I-1D450"/></g><g data-mml-node="mn" transform="translate(433, 413) scale(0.707)"><use xlink:href="#MJX-TEX-N-32"/></g></g></g></g></svg></mjx-container></p>
-<p><mjx-container class="MathJax" jax="SVG" display="true"><svg style="vertical-align: -0.186ex" xmlns="http://www.w3.org/2000/svg" width="9.555ex" height="2.221ex" role="img" focusable="false" viewbox="0 -899.5 4223.1 981.5" xmlns:xlink="http://www.w3.org/1999/xlink"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><use xlink:href="#MJX-TEX-B-1D417"/></g></g><g data-mml-node="mo" transform="translate(1146.8, 0)"><use xlink:href="#MJX-TEX-N-3D"/></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(2202.6, 0)"><g data-mml-node="mi"><use xlink:href="#MJX-TEX-B-1D419"/></g></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(2905.6, 0)"><g data-mml-node="msup"><g data-mml-node="mi"><use xlink:href="#MJX-TEX-B-1D40F"/></g><g data-mml-node="TeXAtom" transform="translate(786, 413) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><use xlink:href="#MJX-TEX-SS-1D5B3"/></g></g></g></g></g></g></svg></mjx-container></p>
-<p><mjx-container class="MathJax" jax="SVG" display="true"><svg style="vertical-align: -0.65ex" xmlns="http://www.w3.org/2000/svg" width="15.67ex" height="2.229ex" role="img" focusable="false" viewbox="0 -698 6926 985.2" xmlns:xlink="http://www.w3.org/1999/xlink"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><use xlink:href="#MJX-TEX-B-1D417"/></g></g><g data-mml-node="TeXAtom" transform="translate(869, -150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><use xlink:href="#MJX-TEX-I-1D45B"/></g><g data-mml-node="mo" transform="translate(600, 0)"><use xlink:href="#MJX-TEX-N-2C"/></g><g data-mml-node="mi" transform="translate(878, 0)"><use xlink:href="#MJX-TEX-I-1D45D"/></g></g></g><g data-mml-node="mo" transform="translate(2173.3, 0)"><use xlink:href="#MJX-TEX-N-3D"/></g><g data-mml-node="msub" transform="translate(3229.1, 0)"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><use xlink:href="#MJX-TEX-B-1D400"/></g></g><g data-mml-node="TeXAtom" transform="translate(869, -150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><use xlink:href="#MJX-TEX-I-1D45B"/></g><g data-mml-node="mo" transform="translate(600, 0)"><use xlink:href="#MJX-TEX-N-2C"/></g><g data-mml-node="mi" transform="translate(878, 0)"><use xlink:href="#MJX-TEX-I-1D458"/></g></g></g><g data-mml-node="msub" transform="translate(5137.3, 0)"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><use xlink:href="#MJX-TEX-B-1D401"/></g></g><g data-mml-node="TeXAtom" transform="translate(818, -150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><use xlink:href="#MJX-TEX-I-1D458"/></g><g data-mml-node="mo" transform="translate(521, 0)"><use xlink:href="#MJX-TEX-N-2C"/></g><g data-mml-node="mi" transform="translate(799, 0)"><use xlink:href="#MJX-TEX-I-1D45D"/></g></g></g></g></g></svg></mjx-container></p>
-<p><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex" xmlns="http://www.w3.org/2000/svg" width="7.166ex" height="2.452ex" role="img" focusable="false" viewbox="0 -833.9 3167.6 1083.9" xmlns:xlink="http://www.w3.org/1999/xlink"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mi"><use xlink:href="#MJX-TEX-I-1D460"/></g><g data-mml-node="mi" transform="translate(469, 0)"><use xlink:href="#MJX-TEX-I-1D456"/></g><g data-mml-node="mi" transform="translate(814, 0)"><use xlink:href="#MJX-TEX-I-1D45B"/></g><g data-mml-node="mo" transform="translate(1414, 0)"><use xlink:href="#MJX-TEX-N-28"/></g><g data-mml-node="msup" transform="translate(1803, 0)"><g data-mml-node="mi"><use xlink:href="#MJX-TEX-I-1D465"/></g><g data-mml-node="mn" transform="translate(572, 363) scale(0.707)"><use xlink:href="#MJX-TEX-N-32"/></g></g><g data-mml-node="mo" transform="translate(2778.6, 0)"><use xlink:href="#MJX-TEX-N-29"/></g></g></g></svg></mjx-container></p>
-<svg style="display: none" id="MJX-SVG-global-cache"><defs><path id="MJX-TEX-I-1D44E" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"/><path id="MJX-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"/><path id="MJX-TEX-N-2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"/><path id="MJX-TEX-I-1D44F" d="M73 647Q73 657 77 670T89 683Q90 683 161 688T234 694Q246 694 246 685T212 542Q204 508 195 472T180 418L176 399Q176 396 182 402Q231 442 283 442Q345 442 383 396T422 280Q422 169 343 79T173 -11Q123 -11 82 27T40 150V159Q40 180 48 217T97 414Q147 611 147 623T109 637Q104 637 101 637H96Q86 637 83 637T76 640T73 647ZM336 325V331Q336 405 275 405Q258 405 240 397T207 376T181 352T163 330L157 322L136 236Q114 150 114 114Q114 66 138 42Q154 26 178 26Q211 26 245 58Q270 81 285 114T318 219Q336 291 336 325Z"/><path id="MJX-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"/><path id="MJX-TEX-I-1D450" d="M34 159Q34 268 120 355T306 442Q362 442 394 418T427 355Q427 326 408 306T360 285Q341 285 330 295T319 325T330 359T352 380T366 386H367Q367 388 361 392T340 400T306 404Q276 404 249 390Q228 381 206 359Q162 315 142 235T121 119Q121 73 147 50Q169 26 205 26H209Q321 26 394 111Q403 121 406 121Q410 121 419 112T429 98T420 83T391 55T346 25T282 0T202 -11Q127 -11 81 37T34 159Z"/><path id="MJX-TEX-B-1D417" d="M327 0Q306 3 174 3Q52 3 43 0H33V62H98L162 63L360 333L157 624H48V686H59Q80 683 217 683Q368 683 395 686H408V624H335L393 540L452 458L573 623Q573 624 528 624H483V686H494Q515 683 646 683Q769 683 778 686H787V624H658L575 511Q493 398 493 397L508 376Q522 356 553 312T611 229L727 62H835V0H824Q803 3 667 3Q516 3 489 0H476V62H513L549 63L401 274L247 63Q247 62 292 62H338V0H327Z"/><path id="MJX-TEX-B-1D419" d="M80 430L92 686H358Q624 686 628 684Q638 679 638 656Q638 640 637 639Q637 638 445 353Q401 288 351 214T277 103L253 67L256 66Q258 66 265 66T279 66T298 66H343Q380 66 406 68T464 81T518 110T557 164T579 250Q583 278 583 298Q583 299 614 299H645V291Q643 281 636 150T627 8V0H353Q79 0 75 2Q64 7 64 31Q64 48 66 52L259 340L451 623Q451 624 384 624Q294 623 259 612Q155 581 143 446Q142 440 142 432V430H80Z"/><path id="MJX-TEX-B-1D40F" d="M400 0Q376 3 226 3Q75 3 51 0H39V62H147V624H39V686H253Q435 686 470 685T536 678Q585 668 621 648T675 605T705 557T718 514T721 483T718 451T704 409T673 362T616 322T530 293Q500 288 399 287H304V62H412V0H400ZM553 475Q553 554 537 582T459 622Q451 623 373 624H298V343H372Q457 344 480 350Q527 362 540 390T553 475Z"/><path id="MJX-TEX-SS-1D5B3" d="M36 608V688H644V608H518L392 609V0H288V609L162 608H36Z"/><path id="MJX-TEX-I-1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"/><path id="MJX-TEX-N-2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"/><path id="MJX-TEX-I-1D45D" d="M23 287Q24 290 25 295T30 317T40 348T55 381T75 411T101 433T134 442Q209 442 230 378L240 387Q302 442 358 442Q423 442 460 395T497 281Q497 173 421 82T249 -10Q227 -10 210 -4Q199 1 187 11T168 28L161 36Q160 35 139 -51T118 -138Q118 -144 126 -145T163 -148H188Q194 -155 194 -157T191 -175Q188 -187 185 -190T172 -194Q170 -194 161 -194T127 -193T65 -192Q-5 -192 -24 -194H-32Q-39 -187 -39 -183Q-37 -156 -26 -148H-6Q28 -147 33 -136Q36 -130 94 103T155 350Q156 355 156 364Q156 405 131 405Q109 405 94 377T71 316T59 280Q57 278 43 278H29Q23 284 23 287ZM178 102Q200 26 252 26Q282 26 310 49T356 107Q374 141 392 215T411 325V331Q411 405 350 405Q339 405 328 402T306 393T286 380T269 365T254 350T243 336T235 326L232 322Q232 321 229 308T218 264T204 212Q178 106 178 102Z"/><path id="MJX-TEX-B-1D400" d="M296 0Q278 3 164 3Q58 3 49 0H40V62H92Q144 62 144 64Q388 682 397 689Q403 698 434 698Q463 698 471 689Q475 686 538 530T663 218L724 64Q724 62 776 62H828V0H817Q796 3 658 3Q509 3 485 0H472V62H517Q561 62 561 63L517 175H262L240 120Q218 65 217 64Q217 62 261 62H306V0H296ZM390 237L492 238L440 365Q390 491 388 491Q287 239 287 237H390Z"/><path id="MJX-TEX-I-1D458" d="M121 647Q121 657 125 670T137 683Q138 683 209 688T282 694Q294 694 294 686Q294 679 244 477Q194 279 194 272Q213 282 223 291Q247 309 292 354T362 415Q402 442 438 442Q468 442 485 423T503 369Q503 344 496 327T477 302T456 291T438 288Q418 288 406 299T394 328Q394 353 410 369T442 390L458 393Q446 405 434 405H430Q398 402 367 380T294 316T228 255Q230 254 243 252T267 246T293 238T320 224T342 206T359 180T365 147Q365 130 360 106T354 66Q354 26 381 26Q429 26 459 145Q461 153 479 153H483Q499 153 499 144Q499 139 496 130Q455 -11 378 -11Q333 -11 305 15T277 90Q277 108 280 121T283 145Q283 167 269 183T234 206T200 217T182 220H180Q168 178 159 139T145 81T136 44T129 20T122 7T111 -2Q98 -11 83 -11Q66 -11 57 -1T48 16Q48 26 85 176T158 471L195 616Q196 629 188 632T149 637H144Q134 637 131 637T124 640T121 647Z"/><path id="MJX-TEX-B-1D401" d="M720 510Q720 476 704 448T665 404T619 377T580 362L564 359L583 356Q602 353 632 342T690 312Q712 292 725 276Q752 235 752 189V183Q752 160 741 125Q698 18 547 2Q543 1 288 0H39V62H147V624H39V686H264H409Q502 686 542 681T624 655Q720 607 720 510ZM563 513Q563 553 548 578T518 611T486 622Q479 624 385 624H293V382H375Q458 383 467 385Q563 405 563 513ZM590 192Q590 307 505 329Q504 330 503 330L398 331H293V62H391H400H444Q496 62 528 75T580 131Q590 155 590 192Z"/><path id="MJX-TEX-I-1D460" d="M131 289Q131 321 147 354T203 415T300 442Q362 442 390 415T419 355Q419 323 402 308T364 292Q351 292 340 300T328 326Q328 342 337 354T354 372T367 378Q368 378 368 379Q368 382 361 388T336 399T297 405Q249 405 227 379T204 326Q204 301 223 291T278 274T330 259Q396 230 396 163Q396 135 385 107T352 51T289 7T195 -10Q118 -10 86 19T53 87Q53 126 74 143T118 160Q133 160 146 151T160 120Q160 94 142 76T111 58Q109 57 108 57T107 55Q108 52 115 47T146 34T201 27Q237 27 263 38T301 66T318 97T323 122Q323 150 302 164T254 181T195 196T148 231Q131 256 131 289Z"/><path id="MJX-TEX-I-1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"/><path id="MJX-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"/><path id="MJX-TEX-I-1D465" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"/><path id="MJX-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"/></defs></svg>]]></content>
+      
+      
+        <tags>
+            
+            <tag> hexo-next </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>The Tutorial</title>
+      <link href="/2020/05/16/tutorial/"/>
+      <url>/2020/05/16/tutorial/</url>
+      
+        <content type="html"><![CDATA[<p>This is some sample</p><p>中文显示测试</p><p>中english混合显示</p><h1 id="Elements"><a href="#Elements" class="headerlink" title="Elements"></a>Elements</h1><hr><h2 id="H2"><a href="#H2" class="headerlink" title="H2"></a>H2</h2><h2 id="H3"><a href="#H3" class="headerlink" title="H3"></a>H3</h2><h2 id="H4"><a href="#H4" class="headerlink" title="H4"></a>H4</h2><h2 id="Paragraph"><a href="#Paragraph" class="headerlink" title="Paragraph"></a>Paragraph</h2><p>Test link <a href="www.github.com">github</a></p><p><strong>Bold</strong></p><p><em>Italic</em></p><p><u>Underline</u></p><p><del>Deleted</del></p><p><code>inline code</code></p><blockquote><p>reference</p></blockquote><h2 id="List-Types"><a href="#List-Types" class="headerlink" title="List Types"></a>List Types</h2><h3 id="Ordered-List"><a href="#Ordered-List" class="headerlink" title="Ordered List"></a>Ordered List</h3><ol><li>list 1</li><li>list 2</li><li>list 3</li></ol><h3 id="Unordered-List"><a href="#Unordered-List" class="headerlink" title="Unordered List"></a>Unordered List</h3><ul><li>list</li><li>list</li><li>list</li></ul><h3 id="Task-List"><a href="#Task-List" class="headerlink" title="Task List"></a>Task List</h3><ul><li><input checked disabled type="checkbox"> task1</li><li><input disabled type="checkbox"> task2</li><li><input disabled type="checkbox"> taskk3</li></ul><h1 id="Table"><a href="#Table" class="headerlink" title="Table"></a>Table</h1><table><thead><tr><th>Table Header 1</th><th>Table Header 2</th><th>Table Header 3</th></tr></thead><tbody><tr><td>Division 1</td><td>Division 2</td><td>Division 3</td></tr><tr><td>Division 1</td><td>Division 2</td><td>Division 3</td></tr><tr><td>Division 1</td><td>Division 2</td><td>Division 3</td></tr></tbody></table><h1 id="Misc-Stuff"><a href="#Misc-Stuff" class="headerlink" title="Misc Stuff"></a>Misc Stuff</h1><p>sup: Lorem<sup>superscript</sup></p><p>sub: dolor<sub>subscript</sub></p><p>cite: <cite>cite</cite></p><p>acronym: <acronym title="National Basketball Association">NBA</acronym></p><p>abbr: <abbr title="Avenue">AVE</abbr></p><h1 id="Images"><a href="#Images" class="headerlink" title="Images"></a>Images</h1><p>This is a image test post.</p><p><img src="http://ww1.sinaimg.cn/mw690/81b78497jw1emfgwkasznj21hc0u0qb7.jpg" alt></p><p><img src="http://ww3.sinaimg.cn/mw690/81b78497jw1emfgwjrh2pj21hc0u01g3.jpg" alt="Caption"></p><p><img src="http://ww2.sinaimg.cn/mw690/81b78497jw1emfgwil5xkj21hc0u0tpm.jpg" alt></p><p><img src="http://placehold.it/350x150.jpg" alt="Small Picture"></p><h1 id="Highlight"><a href="#Highlight" class="headerlink" title="Highlight"></a>Highlight</h1><h2 id="Normal-block"><a href="#Normal-block" class="headerlink" title="Normal block"></a>Normal block</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alert('Hello world')</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print('hello world')</span><br></pre></td></tr></table></figure><h2 id="Highlight-block"><a href="#Highlight-block" class="headerlink" title="Highlight block"></a>Highlight block</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alert(<span class="string">'Hello world'</span>)</span><br></pre></td></tr></table></figure><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">'hello world'</span>)</span><br></pre></td></tr></table></figure><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">foo</span></span></span><br><span class="line">    puts <span class="string">'foo'</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">foo</span><span class="params">(<span class="keyword">int</span> arg1, <span class="keyword">int</span> arg2)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line"></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">  <span class="built_in">string</span> str;</span><br><span class="line">  foo(<span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"Hello World"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure><h1 id="MathJax"><a href="#MathJax" class="headerlink" title="MathJax"></a>MathJax</h1><p><mjx-container class="MathJax" jax="SVG" display="true"><svg style="vertical-align: -0.186ex" xmlns="http://www.w3.org/2000/svg" width="11.669ex" height="2.185ex" role="img" focusable="false" viewbox="0 -883.9 5157.7 965.9" xmlns:xlink="http://www.w3.org/1999/xlink"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="msup"><g data-mml-node="mi"><use xlink:href="#MJX-TEX-I-1D44E"/></g><g data-mml-node="mn" transform="translate(529, 413) scale(0.707)"><use xlink:href="#MJX-TEX-N-32"/></g></g><g data-mml-node="mo" transform="translate(1154.8, 0)"><use xlink:href="#MJX-TEX-N-2B"/></g><g data-mml-node="msup" transform="translate(2155, 0)"><g data-mml-node="mi"><use xlink:href="#MJX-TEX-I-1D44F"/></g><g data-mml-node="mn" transform="translate(429, 413) scale(0.707)"><use xlink:href="#MJX-TEX-N-32"/></g></g><g data-mml-node="mo" transform="translate(3265.3, 0)"><use xlink:href="#MJX-TEX-N-3D"/></g><g data-mml-node="msup" transform="translate(4321.1, 0)"><g data-mml-node="mi"><use xlink:href="#MJX-TEX-I-1D450"/></g><g data-mml-node="mn" transform="translate(433, 413) scale(0.707)"><use xlink:href="#MJX-TEX-N-32"/></g></g></g></g></svg></mjx-container></p><p><mjx-container class="MathJax" jax="SVG" display="true"><svg style="vertical-align: -0.186ex" xmlns="http://www.w3.org/2000/svg" width="9.555ex" height="2.221ex" role="img" focusable="false" viewbox="0 -899.5 4223.1 981.5" xmlns:xlink="http://www.w3.org/1999/xlink"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><use xlink:href="#MJX-TEX-B-1D417"/></g></g><g data-mml-node="mo" transform="translate(1146.8, 0)"><use xlink:href="#MJX-TEX-N-3D"/></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(2202.6, 0)"><g data-mml-node="mi"><use xlink:href="#MJX-TEX-B-1D419"/></g></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(2905.6, 0)"><g data-mml-node="msup"><g data-mml-node="mi"><use xlink:href="#MJX-TEX-B-1D40F"/></g><g data-mml-node="TeXAtom" transform="translate(786, 413) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><use xlink:href="#MJX-TEX-SS-1D5B3"/></g></g></g></g></g></g></svg></mjx-container></p><p><mjx-container class="MathJax" jax="SVG" display="true"><svg style="vertical-align: -0.65ex" xmlns="http://www.w3.org/2000/svg" width="15.67ex" height="2.229ex" role="img" focusable="false" viewbox="0 -698 6926 985.2" xmlns:xlink="http://www.w3.org/1999/xlink"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><use xlink:href="#MJX-TEX-B-1D417"/></g></g><g data-mml-node="TeXAtom" transform="translate(869, -150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><use xlink:href="#MJX-TEX-I-1D45B"/></g><g data-mml-node="mo" transform="translate(600, 0)"><use xlink:href="#MJX-TEX-N-2C"/></g><g data-mml-node="mi" transform="translate(878, 0)"><use xlink:href="#MJX-TEX-I-1D45D"/></g></g></g><g data-mml-node="mo" transform="translate(2173.3, 0)"><use xlink:href="#MJX-TEX-N-3D"/></g><g data-mml-node="msub" transform="translate(3229.1, 0)"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><use xlink:href="#MJX-TEX-B-1D400"/></g></g><g data-mml-node="TeXAtom" transform="translate(869, -150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><use xlink:href="#MJX-TEX-I-1D45B"/></g><g data-mml-node="mo" transform="translate(600, 0)"><use xlink:href="#MJX-TEX-N-2C"/></g><g data-mml-node="mi" transform="translate(878, 0)"><use xlink:href="#MJX-TEX-I-1D458"/></g></g></g><g data-mml-node="msub" transform="translate(5137.3, 0)"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><use xlink:href="#MJX-TEX-B-1D401"/></g></g><g data-mml-node="TeXAtom" transform="translate(818, -150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><use xlink:href="#MJX-TEX-I-1D458"/></g><g data-mml-node="mo" transform="translate(521, 0)"><use xlink:href="#MJX-TEX-N-2C"/></g><g data-mml-node="mi" transform="translate(799, 0)"><use xlink:href="#MJX-TEX-I-1D45D"/></g></g></g></g></g></svg></mjx-container></p><p><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex" xmlns="http://www.w3.org/2000/svg" width="7.166ex" height="2.452ex" role="img" focusable="false" viewbox="0 -833.9 3167.6 1083.9" xmlns:xlink="http://www.w3.org/1999/xlink"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mi"><use xlink:href="#MJX-TEX-I-1D460"/></g><g data-mml-node="mi" transform="translate(469, 0)"><use xlink:href="#MJX-TEX-I-1D456"/></g><g data-mml-node="mi" transform="translate(814, 0)"><use xlink:href="#MJX-TEX-I-1D45B"/></g><g data-mml-node="mo" transform="translate(1414, 0)"><use xlink:href="#MJX-TEX-N-28"/></g><g data-mml-node="msup" transform="translate(1803, 0)"><g data-mml-node="mi"><use xlink:href="#MJX-TEX-I-1D465"/></g><g data-mml-node="mn" transform="translate(572, 363) scale(0.707)"><use xlink:href="#MJX-TEX-N-32"/></g></g><g data-mml-node="mo" transform="translate(2778.6, 0)"><use xlink:href="#MJX-TEX-N-29"/></g></g></g></svg></mjx-container></p><svg style="display: none" id="MJX-SVG-global-cache"><defs><path id="MJX-TEX-I-1D44E" d="M33 157Q33 258 109 349T280 441Q331 441 370 392Q386 422 416 422Q429 422 439 414T449 394Q449 381 412 234T374 68Q374 43 381 35T402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487Q506 153 506 144Q506 138 501 117T481 63T449 13Q436 0 417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157ZM351 328Q351 334 346 350T323 385T277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q217 26 254 59T298 110Q300 114 325 217T351 328Z"/><path id="MJX-TEX-N-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"/><path id="MJX-TEX-N-2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"/><path id="MJX-TEX-I-1D44F" d="M73 647Q73 657 77 670T89 683Q90 683 161 688T234 694Q246 694 246 685T212 542Q204 508 195 472T180 418L176 399Q176 396 182 402Q231 442 283 442Q345 442 383 396T422 280Q422 169 343 79T173 -11Q123 -11 82 27T40 150V159Q40 180 48 217T97 414Q147 611 147 623T109 637Q104 637 101 637H96Q86 637 83 637T76 640T73 647ZM336 325V331Q336 405 275 405Q258 405 240 397T207 376T181 352T163 330L157 322L136 236Q114 150 114 114Q114 66 138 42Q154 26 178 26Q211 26 245 58Q270 81 285 114T318 219Q336 291 336 325Z"/><path id="MJX-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"/><path id="MJX-TEX-I-1D450" d="M34 159Q34 268 120 355T306 442Q362 442 394 418T427 355Q427 326 408 306T360 285Q341 285 330 295T319 325T330 359T352 380T366 386H367Q367 388 361 392T340 400T306 404Q276 404 249 390Q228 381 206 359Q162 315 142 235T121 119Q121 73 147 50Q169 26 205 26H209Q321 26 394 111Q403 121 406 121Q410 121 419 112T429 98T420 83T391 55T346 25T282 0T202 -11Q127 -11 81 37T34 159Z"/><path id="MJX-TEX-B-1D417" d="M327 0Q306 3 174 3Q52 3 43 0H33V62H98L162 63L360 333L157 624H48V686H59Q80 683 217 683Q368 683 395 686H408V624H335L393 540L452 458L573 623Q573 624 528 624H483V686H494Q515 683 646 683Q769 683 778 686H787V624H658L575 511Q493 398 493 397L508 376Q522 356 553 312T611 229L727 62H835V0H824Q803 3 667 3Q516 3 489 0H476V62H513L549 63L401 274L247 63Q247 62 292 62H338V0H327Z"/><path id="MJX-TEX-B-1D419" d="M80 430L92 686H358Q624 686 628 684Q638 679 638 656Q638 640 637 639Q637 638 445 353Q401 288 351 214T277 103L253 67L256 66Q258 66 265 66T279 66T298 66H343Q380 66 406 68T464 81T518 110T557 164T579 250Q583 278 583 298Q583 299 614 299H645V291Q643 281 636 150T627 8V0H353Q79 0 75 2Q64 7 64 31Q64 48 66 52L259 340L451 623Q451 624 384 624Q294 623 259 612Q155 581 143 446Q142 440 142 432V430H80Z"/><path id="MJX-TEX-B-1D40F" d="M400 0Q376 3 226 3Q75 3 51 0H39V62H147V624H39V686H253Q435 686 470 685T536 678Q585 668 621 648T675 605T705 557T718 514T721 483T718 451T704 409T673 362T616 322T530 293Q500 288 399 287H304V62H412V0H400ZM553 475Q553 554 537 582T459 622Q451 623 373 624H298V343H372Q457 344 480 350Q527 362 540 390T553 475Z"/><path id="MJX-TEX-SS-1D5B3" d="M36 608V688H644V608H518L392 609V0H288V609L162 608H36Z"/><path id="MJX-TEX-I-1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"/><path id="MJX-TEX-N-2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"/><path id="MJX-TEX-I-1D45D" d="M23 287Q24 290 25 295T30 317T40 348T55 381T75 411T101 433T134 442Q209 442 230 378L240 387Q302 442 358 442Q423 442 460 395T497 281Q497 173 421 82T249 -10Q227 -10 210 -4Q199 1 187 11T168 28L161 36Q160 35 139 -51T118 -138Q118 -144 126 -145T163 -148H188Q194 -155 194 -157T191 -175Q188 -187 185 -190T172 -194Q170 -194 161 -194T127 -193T65 -192Q-5 -192 -24 -194H-32Q-39 -187 -39 -183Q-37 -156 -26 -148H-6Q28 -147 33 -136Q36 -130 94 103T155 350Q156 355 156 364Q156 405 131 405Q109 405 94 377T71 316T59 280Q57 278 43 278H29Q23 284 23 287ZM178 102Q200 26 252 26Q282 26 310 49T356 107Q374 141 392 215T411 325V331Q411 405 350 405Q339 405 328 402T306 393T286 380T269 365T254 350T243 336T235 326L232 322Q232 321 229 308T218 264T204 212Q178 106 178 102Z"/><path id="MJX-TEX-B-1D400" d="M296 0Q278 3 164 3Q58 3 49 0H40V62H92Q144 62 144 64Q388 682 397 689Q403 698 434 698Q463 698 471 689Q475 686 538 530T663 218L724 64Q724 62 776 62H828V0H817Q796 3 658 3Q509 3 485 0H472V62H517Q561 62 561 63L517 175H262L240 120Q218 65 217 64Q217 62 261 62H306V0H296ZM390 237L492 238L440 365Q390 491 388 491Q287 239 287 237H390Z"/><path id="MJX-TEX-I-1D458" d="M121 647Q121 657 125 670T137 683Q138 683 209 688T282 694Q294 694 294 686Q294 679 244 477Q194 279 194 272Q213 282 223 291Q247 309 292 354T362 415Q402 442 438 442Q468 442 485 423T503 369Q503 344 496 327T477 302T456 291T438 288Q418 288 406 299T394 328Q394 353 410 369T442 390L458 393Q446 405 434 405H430Q398 402 367 380T294 316T228 255Q230 254 243 252T267 246T293 238T320 224T342 206T359 180T365 147Q365 130 360 106T354 66Q354 26 381 26Q429 26 459 145Q461 153 479 153H483Q499 153 499 144Q499 139 496 130Q455 -11 378 -11Q333 -11 305 15T277 90Q277 108 280 121T283 145Q283 167 269 183T234 206T200 217T182 220H180Q168 178 159 139T145 81T136 44T129 20T122 7T111 -2Q98 -11 83 -11Q66 -11 57 -1T48 16Q48 26 85 176T158 471L195 616Q196 629 188 632T149 637H144Q134 637 131 637T124 640T121 647Z"/><path id="MJX-TEX-B-1D401" d="M720 510Q720 476 704 448T665 404T619 377T580 362L564 359L583 356Q602 353 632 342T690 312Q712 292 725 276Q752 235 752 189V183Q752 160 741 125Q698 18 547 2Q543 1 288 0H39V62H147V624H39V686H264H409Q502 686 542 681T624 655Q720 607 720 510ZM563 513Q563 553 548 578T518 611T486 622Q479 624 385 624H293V382H375Q458 383 467 385Q563 405 563 513ZM590 192Q590 307 505 329Q504 330 503 330L398 331H293V62H391H400H444Q496 62 528 75T580 131Q590 155 590 192Z"/><path id="MJX-TEX-I-1D460" d="M131 289Q131 321 147 354T203 415T300 442Q362 442 390 415T419 355Q419 323 402 308T364 292Q351 292 340 300T328 326Q328 342 337 354T354 372T367 378Q368 378 368 379Q368 382 361 388T336 399T297 405Q249 405 227 379T204 326Q204 301 223 291T278 274T330 259Q396 230 396 163Q396 135 385 107T352 51T289 7T195 -10Q118 -10 86 19T53 87Q53 126 74 143T118 160Q133 160 146 151T160 120Q160 94 142 76T111 58Q109 57 108 57T107 55Q108 52 115 47T146 34T201 27Q237 27 263 38T301 66T318 97T323 122Q323 150 302 164T254 181T195 196T148 231Q131 256 131 289Z"/><path id="MJX-TEX-I-1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"/><path id="MJX-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"/><path id="MJX-TEX-I-1D465" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"/><path id="MJX-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"/></defs></svg>]]></content>
+      
+      
       <categories>
-        <category>Others</category>
+          
+          <category> Others </category>
+          
       </categories>
-      <tags>
-        <tag>tutorial</tag>
-      </tags>
-  </entry>
+      
+      
+        <tags>
+            
+            <tag> tutorial </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
 </search>
