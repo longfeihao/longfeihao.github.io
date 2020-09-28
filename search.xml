@@ -124,6 +124,152 @@
       </tags>
   </entry>
   <entry>
+    <title>论文笔记-Deep Learning Based Recommender System</title>
+    <url>/2020/05/23/rs-survey/</url>
+    <content><![CDATA[<h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p>该论文发表于ACM2017， 对当前基于深度学习的推荐系统方法做了总结和分类，并给出自己的看法。论文见: <a href="https://arxiv.org/pdf/1707.07435.pdf" target="_blank" rel="noopener">Deep Learning based Recommender System： A Survey and New Perspectives</a></p>
+<p>产生推荐列表的数据来源一般有如下几种:</p>
+<ul>
+<li>user preferences</li>
+<li>item features</li>
+<li>user-item past interactions</li>
+<li>some other features (temporal, spatial)</li>
+</ul>
+<p>推荐模型主要分为三个大类:</p>
+<ul>
+<li>collaborative filtering</li>
+<li>content-based recommender system</li>
+<li>hybrid recommender system</li>
+</ul>
+<p>根据完成的任务可以分为</p>
+<ul>
+<li>rating</li>
+<li>ranking</li>
+<li>classification</li>
+</ul>
+<h2 id="Models"><a href="#Models" class="headerlink" title="Models"></a>Models</h2><h3 id="Traditional-Models"><a href="#Traditional-Models" class="headerlink" title="Traditional Models"></a>Traditional Models</h3><ul>
+<li>matrix factorization (MF)</li>
+<li>factorization machines (FM)</li>
+<li>BPR</li>
+<li>Collaborative Metric Learning (CML)</li>
+<li>funkSVD</li>
+</ul>
+<h3 id="Deep-Models"><a href="#Deep-Models" class="headerlink" title="Deep Models:"></a>Deep Models:</h3><p><img src="/2020/05/23/rs-survey/fig1.png" alt="deep model"></p>
+<p>其中autoencodes包含如下几种：</p>
+<ul>
+<li>denoising autoencoder</li>
+<li>marginalized denoising autoencoder</li>
+<li>sparse autoencoder</li>
+<li>contractive autoencoder</li>
+<li>variational autoencoder (VAE)</li>
+</ul>
+<ul>
+<li>MLP<ul>
+<li>Nerual Network Matrix Factorization (NNMF)</li>
+<li>Nerual Collaborative Filtering (NCF)</li>
+<li>Deep Factorization Machine (DeepFM)</li>
+<li>Wide &amp; deep Model</li>
+<li>Deep Structured Semantic Model (DSSM)</li>
+<li>Deep Semantic Similarity  based Personalized Recommendation (DSPR)</li>
+<li>Multi-View Deep Neural Network ( MV-DNN)</li>
+</ul>
+</li>
+<li>Autoencoder (AE)<ul>
+<li>AutoRec</li>
+<li>CNF</li>
+<li>Collaborative Denoising Auto-Encoder (CDAE)</li>
+<li>Stacked denoising autoencoder (SDAE)</li>
+<li>Collaborative Deep Learning (CDL)</li>
+<li>Relational stacked denoising autoencoders (RSDAE)</li>
+<li>Collaborative variational autoencoder (CVAE)</li>
+<li>Collaborative Deep Ranking (CDR)</li>
+<li>AutoSVD++</li>
+<li>HDCR</li>
+</ul>
+</li>
+<li>CNN<ul>
+<li>Point-of-Interest (POI) recommendation</li>
+<li>VPOI</li>
+<li>VBPR</li>
+<li>DeepCoNN</li>
+<li>ConvMF</li>
+<li>ConvNCF</li>
+</ul>
+</li>
+<li>RNN<ul>
+<li>Session-based Recommendation without User identifier<ul>
+<li>GRU4Rec</li>
+</ul>
+</li>
+<li>Sequential Recommendation with User Identifier<ul>
+<li>Recurrent Recommender Network (RRN)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>RBM<ul>
+<li>RMB-CF</li>
+</ul>
+</li>
+<li>Neural Autoregressive Distribution Estimation (NADE)<ul>
+<li>CF-NADE</li>
+</ul>
+</li>
+<li>Adversarial Networks (AＮ)<ul>
+<li>IRGAN</li>
+</ul>
+</li>
+<li>Attentional Models (AM)</li>
+<li>Deep Reinforcement Learning (DRL)<ul>
+<li>DEERS</li>
+<li>DeepPage</li>
+<li>DRN</li>
+</ul>
+</li>
+<li>Hybrid Models<ul>
+<li>CNN + AE<ul>
+<li>Collaborative Knowledge Based Embedding (CKE)</li>
+</ul>
+</li>
+<li>CNN + RNN</li>
+<li>RNN + AE<ul>
+<li>CRAE</li>
+</ul>
+</li>
+<li>RNN + DRL</li>
+</ul>
+</li>
+</ul>
+<h2 id="Future-research-directions"><a href="#Future-research-directions" class="headerlink" title="Future research directions"></a>Future research directions</h2><ul>
+<li>Join representation learning user and item content information</li>
+<li>explainable recommendation with deep learning</li>
+<li>going deeper for recommendation</li>
+<li>machine reasoning for recommendation</li>
+<li>cross domain recommendation with dnn</li>
+<li>deep multi-task learning</li>
+<li>scalability of dnn</li>
+<li>better, more unified and harder evaluation</li>
+</ul>
+<h2 id="Top-Conference"><a href="#Top-Conference" class="headerlink" title="Top Conference"></a>Top Conference</h2><p>论文中提到Recommender Systems方向的定会大致有以下这些:</p>
+<ul>
+<li>NIPS</li>
+<li>ICML</li>
+<li>ICLR</li>
+<li>KDD</li>
+<li>WWW</li>
+<li>SIGIR</li>
+<li>WSDM</li>
+<li>RecSys</li>
+</ul>
+<svg style="display: none" id="MJX-SVG-global-cache"><defs/></svg>]]></content>
+      <categories>
+        <category>Recommender Systems</category>
+      </categories>
+      <tags>
+        <tag>paper</tag>
+        <tag>recommender systems</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>论文笔记- Pre-Trained Models for Natural Language Processing</title>
     <url>/2020/05/23/ptm-survey/</url>
     <content><![CDATA[<p>本文对NLP预训练模型做了一个全面的总结 <a href="https://arxiv.org/abs/2003.08271" target="_blank" rel="noopener">Pre-trained Models for Natural Language Processing: A Survey</a></p>
@@ -313,152 +459,6 @@
       </categories>
       <tags>
         <tag>nlp</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>论文笔记-Deep Learning Based Recommender System</title>
-    <url>/2020/05/23/rs-survey/</url>
-    <content><![CDATA[<h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p>该论文发表于ACM2017， 对当前基于深度学习的推荐系统方法做了总结和分类，并给出自己的看法。论文见: <a href="https://arxiv.org/pdf/1707.07435.pdf" target="_blank" rel="noopener">Deep Learning based Recommender System： A Survey and New Perspectives</a></p>
-<p>产生推荐列表的数据来源一般有如下几种:</p>
-<ul>
-<li>user preferences</li>
-<li>item features</li>
-<li>user-item past interactions</li>
-<li>some other features (temporal, spatial)</li>
-</ul>
-<p>推荐模型主要分为三个大类:</p>
-<ul>
-<li>collaborative filtering</li>
-<li>content-based recommender system</li>
-<li>hybrid recommender system</li>
-</ul>
-<p>根据完成的任务可以分为</p>
-<ul>
-<li>rating</li>
-<li>ranking</li>
-<li>classification</li>
-</ul>
-<h2 id="Models"><a href="#Models" class="headerlink" title="Models"></a>Models</h2><h3 id="Traditional-Models"><a href="#Traditional-Models" class="headerlink" title="Traditional Models"></a>Traditional Models</h3><ul>
-<li>matrix factorization (MF)</li>
-<li>factorization machines (FM)</li>
-<li>BPR</li>
-<li>Collaborative Metric Learning (CML)</li>
-<li>funkSVD</li>
-</ul>
-<h3 id="Deep-Models"><a href="#Deep-Models" class="headerlink" title="Deep Models:"></a>Deep Models:</h3><p><img src="/2020/05/23/rs-survey/fig1.png" alt="deep model"></p>
-<p>其中autoencodes包含如下几种：</p>
-<ul>
-<li>denoising autoencoder</li>
-<li>marginalized denoising autoencoder</li>
-<li>sparse autoencoder</li>
-<li>contractive autoencoder</li>
-<li>variational autoencoder (VAE)</li>
-</ul>
-<ul>
-<li>MLP<ul>
-<li>Nerual Network Matrix Factorization (NNMF)</li>
-<li>Nerual Collaborative Filtering (NCF)</li>
-<li>Deep Factorization Machine (DeepFM)</li>
-<li>Wide &amp; deep Model</li>
-<li>Deep Structured Semantic Model (DSSM)</li>
-<li>Deep Semantic Similarity  based Personalized Recommendation (DSPR)</li>
-<li>Multi-View Deep Neural Network ( MV-DNN)</li>
-</ul>
-</li>
-<li>Autoencoder (AE)<ul>
-<li>AutoRec</li>
-<li>CNF</li>
-<li>Collaborative Denoising Auto-Encoder (CDAE)</li>
-<li>Stacked denoising autoencoder (SDAE)</li>
-<li>Collaborative Deep Learning (CDL)</li>
-<li>Relational stacked denoising autoencoders (RSDAE)</li>
-<li>Collaborative variational autoencoder (CVAE)</li>
-<li>Collaborative Deep Ranking (CDR)</li>
-<li>AutoSVD++</li>
-<li>HDCR</li>
-</ul>
-</li>
-<li>CNN<ul>
-<li>Point-of-Interest (POI) recommendation</li>
-<li>VPOI</li>
-<li>VBPR</li>
-<li>DeepCoNN</li>
-<li>ConvMF</li>
-<li>ConvNCF</li>
-</ul>
-</li>
-<li>RNN<ul>
-<li>Session-based Recommendation without User identifier<ul>
-<li>GRU4Rec</li>
-</ul>
-</li>
-<li>Sequential Recommendation with User Identifier<ul>
-<li>Recurrent Recommender Network (RRN)</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>RBM<ul>
-<li>RMB-CF</li>
-</ul>
-</li>
-<li>Neural Autoregressive Distribution Estimation (NADE)<ul>
-<li>CF-NADE</li>
-</ul>
-</li>
-<li>Adversarial Networks (AＮ)<ul>
-<li>IRGAN</li>
-</ul>
-</li>
-<li>Attentional Models (AM)</li>
-<li>Deep Reinforcement Learning (DRL)<ul>
-<li>DEERS</li>
-<li>DeepPage</li>
-<li>DRN</li>
-</ul>
-</li>
-<li>Hybrid Models<ul>
-<li>CNN + AE<ul>
-<li>Collaborative Knowledge Based Embedding (CKE)</li>
-</ul>
-</li>
-<li>CNN + RNN</li>
-<li>RNN + AE<ul>
-<li>CRAE</li>
-</ul>
-</li>
-<li>RNN + DRL</li>
-</ul>
-</li>
-</ul>
-<h2 id="Future-research-directions"><a href="#Future-research-directions" class="headerlink" title="Future research directions"></a>Future research directions</h2><ul>
-<li>Join representation learning user and item content information</li>
-<li>explainable recommendation with deep learning</li>
-<li>going deeper for recommendation</li>
-<li>machine reasoning for recommendation</li>
-<li>cross domain recommendation with dnn</li>
-<li>deep multi-task learning</li>
-<li>scalability of dnn</li>
-<li>better, more unified and harder evaluation</li>
-</ul>
-<h2 id="Top-Conference"><a href="#Top-Conference" class="headerlink" title="Top Conference"></a>Top Conference</h2><p>论文中提到Recommender Systems方向的定会大致有以下这些:</p>
-<ul>
-<li>NIPS</li>
-<li>ICML</li>
-<li>ICLR</li>
-<li>KDD</li>
-<li>WWW</li>
-<li>SIGIR</li>
-<li>WSDM</li>
-<li>RecSys</li>
-</ul>
-<svg style="display: none" id="MJX-SVG-global-cache"><defs/></svg>]]></content>
-      <categories>
-        <category>Recommender Systems</category>
-      </categories>
-      <tags>
-        <tag>paper</tag>
-        <tag>recommender systems</tag>
       </tags>
   </entry>
   <entry>
