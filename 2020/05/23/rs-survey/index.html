@@ -31,8 +31,8 @@
 <meta property="article:published_time" content="2020-05-23T02:47:46.000Z">
 <meta property="article:modified_time" content="2022-09-12T14:32:42.437Z">
 <meta property="article:author" content="Longfei Hao">
-<meta property="article:tag" content="paper">
 <meta property="article:tag" content="recommender systems">
+<meta property="article:tag" content="paper">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://longfeihao.github.io/2020/05/23/rs-survey/2020-05-23-rs-survey/fig1.png">
 
@@ -349,54 +349,48 @@ mjx-container[display="true"] + br {
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p>该论文发表于ACM2017， 对当前基于深度学习的推荐系统方法做了总结和分类，并给出自己的看法。论文见: <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1707.07435.pdf">Deep Learning based Recommender System： A Survey and New Perspectives</a></p>
-<p>产生推荐列表的数据来源一般有如下几种:</p>
+        <h2 id="overview">Overview</h2>
+<p>该论文发表于ACM2017，
+对当前基于深度学习的推荐系统方法做了总结和分类，并给出自己的看法。论文见:
+<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1707.07435.pdf">Deep Learning based
+Recommender System： A Survey and New Perspectives</a></p>
+<p>产生推荐列表的数据来源一般有如下几种: - user preferences - item
+features - user-item past interactions - some other features (temporal,
+spatial)</p>
+<p>推荐模型主要分为三个大类: - collaborative filtering - content-based
+recommender system - hybrid recommender system</p>
+<p>根据完成的任务可以分为 - rating - ranking - classification</p>
+<h2 id="models">Models</h2>
+<h3 id="traditional-models">Traditional Models</h3>
 <ul>
-<li>user preferences</li>
-<li>item features</li>
-<li>user-item past interactions</li>
-<li>some other features (temporal, spatial)</li>
-</ul>
-<p>推荐模型主要分为三个大类:</p>
-<ul>
-<li>collaborative filtering</li>
-<li>content-based recommender system</li>
-<li>hybrid recommender system</li>
-</ul>
-<p>根据完成的任务可以分为</p>
-<ul>
-<li>rating</li>
-<li>ranking</li>
-<li>classification</li>
-</ul>
-<h2 id="Models"><a href="#Models" class="headerlink" title="Models"></a>Models</h2><h3 id="Traditional-Models"><a href="#Traditional-Models" class="headerlink" title="Traditional Models"></a>Traditional Models</h3><ul>
 <li>matrix factorization (MF)</li>
 <li>factorization machines (FM)</li>
 <li>BPR</li>
 <li>Collaborative Metric Learning (CML)</li>
 <li>funkSVD</li>
 </ul>
-<h3 id="Deep-Models"><a href="#Deep-Models" class="headerlink" title="Deep Models:"></a>Deep Models:</h3><p><img src="./2020-05-23-rs-survey/fig1.png" alt="deep model"></p>
-<p>其中autoencodes包含如下几种：</p>
+<h3 id="deep-models">Deep Models:</h3>
+<figure>
+<img src="./2020-05-23-rs-survey/fig1.png" alt="deep model">
+<figcaption aria-hidden="true">deep model</figcaption>
+</figure>
+<p>其中autoencodes包含如下几种： - denoising autoencoder - marginalized
+denoising autoencoder - sparse autoencoder - contractive autoencoder -
+variational autoencoder (VAE)</p>
 <ul>
-<li>denoising autoencoder</li>
-<li>marginalized denoising autoencoder</li>
-<li>sparse autoencoder</li>
-<li>contractive autoencoder</li>
-<li>variational autoencoder (VAE)</li>
-</ul>
+<li>MLP
 <ul>
-<li>MLP<ul>
 <li>Nerual Network Matrix Factorization (NNMF)</li>
 <li>Nerual Collaborative Filtering (NCF)</li>
 <li>Deep Factorization Machine (DeepFM)</li>
 <li>Wide &amp; deep Model</li>
 <li>Deep Structured Semantic Model (DSSM)</li>
-<li>Deep Semantic Similarity  based Personalized Recommendation (DSPR)</li>
+<li>Deep Semantic Similarity based Personalized Recommendation
+(DSPR)</li>
 <li>Multi-View Deep Neural Network ( MV-DNN)</li>
-</ul>
-</li>
-<li>Autoencoder (AE)<ul>
+</ul></li>
+<li>Autoencoder (AE)
+<ul>
 <li>AutoRec</li>
 <li>CNF</li>
 <li>Collaborative Denoising Auto-Encoder (CDAE)</li>
@@ -407,62 +401,62 @@ mjx-container[display="true"] + br {
 <li>Collaborative Deep Ranking (CDR)</li>
 <li>AutoSVD++</li>
 <li>HDCR</li>
-</ul>
-</li>
-<li>CNN<ul>
+</ul></li>
+<li>CNN
+<ul>
 <li>Point-of-Interest (POI) recommendation</li>
 <li>VPOI</li>
 <li>VBPR</li>
 <li>DeepCoNN</li>
 <li>ConvMF</li>
 <li>ConvNCF</li>
-</ul>
-</li>
-<li>RNN<ul>
-<li>Session-based Recommendation without User identifier<ul>
+</ul></li>
+<li>RNN
+<ul>
+<li>Session-based Recommendation without User identifier
+<ul>
 <li>GRU4Rec</li>
-</ul>
-</li>
-<li>Sequential Recommendation with User Identifier<ul>
+</ul></li>
+<li>Sequential Recommendation with User Identifier
+<ul>
 <li>Recurrent Recommender Network (RRN)</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>RBM<ul>
+</ul></li>
+</ul></li>
+<li>RBM
+<ul>
 <li>RMB-CF</li>
-</ul>
-</li>
-<li>Neural Autoregressive Distribution Estimation (NADE)<ul>
+</ul></li>
+<li>Neural Autoregressive Distribution Estimation (NADE)
+<ul>
 <li>CF-NADE</li>
-</ul>
-</li>
-<li>Adversarial Networks (AＮ)<ul>
+</ul></li>
+<li>Adversarial Networks (AＮ)
+<ul>
 <li>IRGAN</li>
-</ul>
-</li>
+</ul></li>
 <li>Attentional Models (AM)</li>
-<li>Deep Reinforcement Learning (DRL)<ul>
+<li>Deep Reinforcement Learning (DRL)
+<ul>
 <li>DEERS</li>
 <li>DeepPage</li>
 <li>DRN</li>
-</ul>
-</li>
-<li>Hybrid Models<ul>
-<li>CNN + AE<ul>
+</ul></li>
+<li>Hybrid Models
+<ul>
+<li>CNN + AE
+<ul>
 <li>Collaborative Knowledge Based Embedding (CKE)</li>
-</ul>
-</li>
+</ul></li>
 <li>CNN + RNN</li>
-<li>RNN + AE<ul>
+<li>RNN + AE
+<ul>
 <li>CRAE</li>
-</ul>
-</li>
+</ul></li>
 <li>RNN + DRL</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<h2 id="Future-research-directions"><a href="#Future-research-directions" class="headerlink" title="Future research directions"></a>Future research directions</h2><ul>
+<h2 id="future-research-directions">Future research directions</h2>
+<ul>
 <li>Join representation learning user and item content information</li>
 <li>explainable recommendation with deep learning</li>
 <li>going deeper for recommendation</li>
@@ -472,17 +466,9 @@ mjx-container[display="true"] + br {
 <li>scalability of dnn</li>
 <li>better, more unified and harder evaluation</li>
 </ul>
-<h2 id="Top-Conference"><a href="#Top-Conference" class="headerlink" title="Top Conference"></a>Top Conference</h2><p>论文中提到Recommender Systems方向的定会大致有以下这些:</p>
-<ul>
-<li>NIPS</li>
-<li>ICML</li>
-<li>ICLR</li>
-<li>KDD</li>
-<li>WWW</li>
-<li>SIGIR</li>
-<li>WSDM</li>
-<li>RecSys</li>
-</ul>
+<h2 id="top-conference">Top Conference</h2>
+<p>论文中提到Recommender Systems方向的定会大致有以下这些: - NIPS - ICML
+- ICLR - KDD - WWW - SIGIR - WSDM - RecSys</p>
 
     </div>
 
@@ -492,8 +478,8 @@ mjx-container[display="true"] + br {
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/paper/" rel="tag"># paper</a>
               <a href="/tags/recommender-systems/" rel="tag"># recommender systems</a>
+              <a href="/tags/paper/" rel="tag"># paper</a>
           </div>
 
         
@@ -568,7 +554,7 @@ mjx-container[display="true"] + br {
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Overview"><span class="nav-number">1.</span> <span class="nav-text">Overview</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Models"><span class="nav-number">2.</span> <span class="nav-text">Models</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Traditional-Models"><span class="nav-number">2.1.</span> <span class="nav-text">Traditional Models</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deep-Models"><span class="nav-number">2.2.</span> <span class="nav-text">Deep Models:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Future-research-directions"><span class="nav-number">3.</span> <span class="nav-text">Future research directions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Top-Conference"><span class="nav-number">4.</span> <span class="nav-text">Top Conference</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#overview"><span class="nav-number">1.</span> <span class="nav-text">Overview</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#models"><span class="nav-number">2.</span> <span class="nav-text">Models</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#traditional-models"><span class="nav-number">2.1.</span> <span class="nav-text">Traditional Models</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#deep-models"><span class="nav-number">2.2.</span> <span class="nav-text">Deep Models:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#future-research-directions"><span class="nav-number">3.</span> <span class="nav-text">Future research directions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#top-conference"><span class="nav-number">4.</span> <span class="nav-text">Top Conference</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
