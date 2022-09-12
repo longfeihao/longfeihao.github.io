@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"longfeihao.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"hide","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="该论文对当前基于深度学习的推荐系统方法做了总结和分类，并给出自己的看法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="论文笔记-Deep Learning Based Recommender System">
+<meta property="og:url" content="https://longfeihao.github.io/2020/05/23/rs-survey/index.html">
+<meta property="og:site_name" content="Notes">
+<meta property="og:description" content="该论文对当前基于深度学习的推荐系统方法做了总结和分类，并给出自己的看法">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://longfeihao.github.io/.io//fig1.png">
+<meta property="article:published_time" content="2020-05-23T02:47:46.000Z">
+<meta property="article:modified_time" content="2022-09-12T14:32:42.437Z">
+<meta property="article:author" content="Longfei Hao">
+<meta property="article:tag" content="paper">
+<meta property="article:tag" content="recommender systems">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://longfeihao.github.io/.io//fig1.png">
+
+<link rel="canonical" href="https://longfeihao.github.io/2020/05/23/rs-survey/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>论文笔记-Deep Learning Based Recommender System | Notes</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Notes</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://longfeihao.github.io/2020/05/23/rs-survey/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Longfei Hao">
+      <meta itemprop="description" content="Many a little makes a mickle">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Notes">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          论文笔记-Deep Learning Based Recommender System
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-05-23 10:47:46" itemprop="dateCreated datePublished" datetime="2020-05-23T10:47:46+08:00">2020-05-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-09-12 22:32:42" itemprop="dateModified" datetime="2022-09-12T22:32:42+08:00">2022-09-12</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Recommender-Systems/" itemprop="url" rel="index"><span itemprop="name">Recommender Systems</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/05/23/rs-survey/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/05/23/rs-survey/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+            <div class="post-description">该论文对当前基于深度学习的推荐系统方法做了总结和分类，并给出自己的看法</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="overview">Overview</h2>
+<p>该论文发表于ACM2017，
+对当前基于深度学习的推荐系统方法做了总结和分类，并给出自己的看法。论文见:
+<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1707.07435.pdf">Deep Learning based
+Recommender System： A Survey and New Perspectives</a></p>
+<p>产生推荐列表的数据来源一般有如下几种: - user preferences - item
+features - user-item past interactions - some other features (temporal,
+spatial)</p>
+<p>推荐模型主要分为三个大类: - collaborative filtering - content-based
+recommender system - hybrid recommender system</p>
+<p>根据完成的任务可以分为 - rating - ranking - classification</p>
+<h2 id="models">Models</h2>
+<h3 id="traditional-models">Traditional Models</h3>
+<ul>
+<li>matrix factorization (MF)</li>
+<li>factorization machines (FM)</li>
+<li>BPR</li>
+<li>Collaborative Metric Learning (CML)</li>
+<li>funkSVD</li>
+</ul>
+<h3 id="deep-models">Deep Models:</h3>
+<figure>
+<img src="/.io//fig1.png" alt="deep model">
+<figcaption aria-hidden="true">deep model</figcaption>
+</figure>
+<p>其中autoencodes包含如下几种： - denoising autoencoder - marginalized
+denoising autoencoder - sparse autoencoder - contractive autoencoder -
+variational autoencoder (VAE)</p>
+<ul>
+<li>MLP
+<ul>
+<li>Nerual Network Matrix Factorization (NNMF)</li>
+<li>Nerual Collaborative Filtering (NCF)</li>
+<li>Deep Factorization Machine (DeepFM)</li>
+<li>Wide &amp; deep Model</li>
+<li>Deep Structured Semantic Model (DSSM)</li>
+<li>Deep Semantic Similarity based Personalized Recommendation
+(DSPR)</li>
+<li>Multi-View Deep Neural Network ( MV-DNN)</li>
+</ul></li>
+<li>Autoencoder (AE)
+<ul>
+<li>AutoRec</li>
+<li>CNF</li>
+<li>Collaborative Denoising Auto-Encoder (CDAE)</li>
+<li>Stacked denoising autoencoder (SDAE)</li>
+<li>Collaborative Deep Learning (CDL)</li>
+<li>Relational stacked denoising autoencoders (RSDAE)</li>
+<li>Collaborative variational autoencoder (CVAE)</li>
+<li>Collaborative Deep Ranking (CDR)</li>
+<li>AutoSVD++</li>
+<li>HDCR</li>
+</ul></li>
+<li>CNN
+<ul>
+<li>Point-of-Interest (POI) recommendation</li>
+<li>VPOI</li>
+<li>VBPR</li>
+<li>DeepCoNN</li>
+<li>ConvMF</li>
+<li>ConvNCF</li>
+</ul></li>
+<li>RNN
+<ul>
+<li>Session-based Recommendation without User identifier
+<ul>
+<li>GRU4Rec</li>
+</ul></li>
+<li>Sequential Recommendation with User Identifier
+<ul>
+<li>Recurrent Recommender Network (RRN)</li>
+</ul></li>
+</ul></li>
+<li>RBM
+<ul>
+<li>RMB-CF</li>
+</ul></li>
+<li>Neural Autoregressive Distribution Estimation (NADE)
+<ul>
+<li>CF-NADE</li>
+</ul></li>
+<li>Adversarial Networks (AＮ)
+<ul>
+<li>IRGAN</li>
+</ul></li>
+<li>Attentional Models (AM)</li>
+<li>Deep Reinforcement Learning (DRL)
+<ul>
+<li>DEERS</li>
+<li>DeepPage</li>
+<li>DRN</li>
+</ul></li>
+<li>Hybrid Models
+<ul>
+<li>CNN + AE
+<ul>
+<li>Collaborative Knowledge Based Embedding (CKE)</li>
+</ul></li>
+<li>CNN + RNN</li>
+<li>RNN + AE
+<ul>
+<li>CRAE</li>
+</ul></li>
+<li>RNN + DRL</li>
+</ul></li>
+</ul>
+<h2 id="future-research-directions">Future research directions</h2>
+<ul>
+<li>Join representation learning user and item content information</li>
+<li>explainable recommendation with deep learning</li>
+<li>going deeper for recommendation</li>
+<li>machine reasoning for recommendation</li>
+<li>cross domain recommendation with dnn</li>
+<li>deep multi-task learning</li>
+<li>scalability of dnn</li>
+<li>better, more unified and harder evaluation</li>
+</ul>
+<h2 id="top-conference">Top Conference</h2>
+<p>论文中提到Recommender Systems方向的定会大致有以下这些: - NIPS - ICML
+- ICLR - KDD - WWW - SIGIR - WSDM - RecSys</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/paper/" rel="tag"># paper</a>
+              <a href="/tags/recommender-systems/" rel="tag"># recommender systems</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/05/17/ssh/" rel="prev" title="SSH配置">
+      <i class="fa fa-chevron-left"></i> SSH配置
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/05/23/ptm-survey/" rel="next" title="论文笔记- Pre-Trained Models for Natural Language Processing">
+      论文笔记- Pre-Trained Models for Natural Language Processing <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#overview"><span class="nav-number">1.</span> <span class="nav-text">Overview</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#models"><span class="nav-number">2.</span> <span class="nav-text">Models</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#traditional-models"><span class="nav-number">2.1.</span> <span class="nav-text">Traditional Models</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#deep-models"><span class="nav-number">2.2.</span> <span class="nav-text">Deep Models:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#future-research-directions"><span class="nav-number">3.</span> <span class="nav-text">Future research directions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#top-conference"><span class="nav-number">4.</span> <span class="nav-text">Top Conference</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Longfei Hao</p>
+  <div class="site-description" itemprop="description">Many a little makes a mickle</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/longfeihao" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;longfeihao" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:hlf.hao@gmail.com" title="E-Mail → mailto:hlf.hao@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Longfei Hao</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'MaTOOK9y2gWrsk5ncKwj3eYn-gzGzoHsz',
+      appKey     : 'Ci1t3kObEo9Y40BSgPnJoQB8',
+      placeholder: "Just go go",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>
