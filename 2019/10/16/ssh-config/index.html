@@ -20,21 +20,21 @@
     var CONFIG = {"hostname":"longfeihao.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"hide","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="用于远程使用jupyter">
+  <meta name="description" content="远程服务器使用SSH连接方法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="服务器安装Jupyter">
-<meta property="og:url" content="https://longfeihao.github.io/2020/05/17/install-jupyter/index.html">
+<meta property="og:title" content="Ssh-Config">
+<meta property="og:url" content="https://longfeihao.github.io/2019/10/16/ssh-config/index.html">
 <meta property="og:site_name" content="Notes">
-<meta property="og:description" content="用于远程使用jupyter">
+<meta property="og:description" content="远程服务器使用SSH连接方法">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-05-17T09:14:40.000Z">
-<meta property="article:modified_time" content="2022-09-12T14:32:42.447Z">
+<meta property="article:published_time" content="2019-10-15T23:48:32.000Z">
+<meta property="article:modified_time" content="2022-09-20T23:56:38.447Z">
 <meta property="article:author" content="Longfei Hao">
-<meta property="article:tag" content="python">
-<meta property="article:tag" content="jupyter">
+<meta property="article:tag" content="ssh">
+<meta property="article:tag" content="git">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://longfeihao.github.io/2020/05/17/install-jupyter/">
+<link rel="canonical" href="https://longfeihao.github.io/2019/10/16/ssh-config/">
 
 
 <script id="page-configurations">
@@ -47,7 +47,7 @@
   };
 </script>
 
-  <title>服务器安装Jupyter | Notes</title>
+  <title>Ssh-Config | Notes</title>
   
 
 
@@ -78,119 +78,7 @@
   </style>
 </noscript>
 
-<style>mjx-container[jax="SVG"] {
-  direction: ltr;
-}
-
-mjx-container[jax="SVG"] > svg {
-  overflow: visible;
-}
-
-mjx-container[jax="SVG"][display="true"] {
-  display: block;
-  text-align: center;
-  margin: 1em 0;
-}
-
-mjx-container[jax="SVG"][justify="left"] {
-  text-align: left;
-}
-
-mjx-container[jax="SVG"][justify="right"] {
-  text-align: right;
-}
-
-g[data-mml-node="merror"] > g {
-  fill: red;
-  stroke: red;
-}
-
-g[data-mml-node="merror"] > rect[data-background] {
-  fill: yellow;
-  stroke: none;
-}
-
-g[data-mml-node="mtable"] > line[data-line] {
-  stroke-width: 70px;
-  fill: none;
-}
-
-g[data-mml-node="mtable"] > rect[data-frame] {
-  stroke-width: 70px;
-  fill: none;
-}
-
-g[data-mml-node="mtable"] > .mjx-dashed {
-  stroke-dasharray: 140;
-}
-
-g[data-mml-node="mtable"] > .mjx-dotted {
-  stroke-linecap: round;
-  stroke-dasharray: 0,140;
-}
-
-g[data-mml-node="mtable"] > svg {
-  overflow: visible;
-}
-
-[jax="SVG"] mjx-tool {
-  display: inline-block;
-  position: relative;
-  width: 0;
-  height: 0;
-}
-
-[jax="SVG"] mjx-tool > mjx-tip {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-mjx-tool > mjx-tip {
-  display: inline-block;
-  padding: .2em;
-  border: 1px solid #888;
-  font-size: 70%;
-  background-color: #F8F8F8;
-  color: black;
-  box-shadow: 2px 2px 5px #AAAAAA;
-}
-
-g[data-mml-node="maction"][data-toggle] {
-  cursor: pointer;
-}
-
-mjx-status {
-  display: block;
-  position: fixed;
-  left: 1em;
-  bottom: 1em;
-  min-width: 25%;
-  padding: .2em .4em;
-  border: 1px solid #888;
-  font-size: 90%;
-  background-color: #F8F8F8;
-  color: black;
-}
-
-foreignObject[data-mjx-xml] {
-  font-family: initial;
-  line-height: normal;
-  overflow: visible;
-}
-
-.MathJax path {
-  stroke-width: 3;
-}
-
-mjx-container[display="true"] {
-  overflow: auto hidden;
-}
-
-mjx-container[display="true"] + br {
-  display: none;
-}
-</style></head>
+</head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
@@ -279,7 +167,7 @@ mjx-container[display="true"] + br {
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://longfeihao.github.io/2020/05/17/install-jupyter/">
+    <link itemprop="mainEntityOfPage" href="https://longfeihao.github.io/2019/10/16/ssh-config/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -292,7 +180,7 @@ mjx-container[display="true"] + br {
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          服务器安装Jupyter
+          Ssh-Config
         </h1>
 
         <div class="post-meta">
@@ -302,14 +190,14 @@ mjx-container[display="true"] + br {
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-05-17 17:14:40" itemprop="dateCreated datePublished" datetime="2020-05-17T17:14:40+08:00">2020-05-17</time>
+              <time title="创建时间：2019-10-16 07:48:32" itemprop="dateCreated datePublished" datetime="2019-10-16T07:48:32+08:00">2019-10-16</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-09-12 22:32:42" itemprop="dateModified" datetime="2022-09-12T22:32:42+08:00">2022-09-12</time>
+                <time title="修改时间：2022-09-21 07:56:38" itemprop="dateModified" datetime="2022-09-21T07:56:38+08:00">2022-09-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -317,7 +205,7 @@ mjx-container[display="true"] + br {
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+                  <a href="/categories/SSH/" itemprop="url" rel="index"><span itemprop="name">SSH</span></a>
                 </span>
             </span>
 
@@ -330,13 +218,13 @@ mjx-container[display="true"] + br {
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2020/05/17/install-jupyter/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/05/17/install-jupyter/" itemprop="commentCount"></span>
+    <a title="valine" href="/2019/10/16/ssh-config/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/10/16/ssh-config/" itemprop="commentCount"></span>
     </a>
   </span>
   
   
-            <div class="post-description">用于远程使用jupyter</div>
+            <div class="post-description">远程服务器使用SSH连接方法</div>
 
         </div>
       </header>
@@ -347,25 +235,40 @@ mjx-container[display="true"] + br {
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install jupyter</span><br></pre></td></tr></table></figure>
-
-<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><ol>
-<li><p>初始化配置文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter notebook --generate-config</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>配置<code>~/.jupyter/jupyter_notebook_config.py</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 修改其中如下字段</span></span><br><span class="line">c.NotebookApp.open_brower = False</span><br><span class="line">c.NotebookApp.ip = <span class="string">'*'</span></span><br><span class="line">c.NotebookApp.port = 8899</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>设置密码</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter notebook password</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>额外可以安装<code>jupyterlab</code>,比原始<code>jupyter</code>好看一点</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install jupyterlab</span><br></pre></td></tr></table></figure>
-
-</li>
+        <h1 id="SSH配置"><a href="#SSH配置" class="headerlink" title="SSH配置"></a>SSH配置</h1><h2 id="SSH链接服务器"><a href="#SSH链接服务器" class="headerlink" title="SSH链接服务器"></a>SSH链接服务器</h2><p>SSH链接服务器等，本可以直接用<code>ssh name@ip -p 端口号</code>,然后根据提示输入密码，但是有两个缺点</p>
+<ol>
+<li>繁琐，每次联结搜需要输入好长的字符</li>
+<li>安全性不如SSH</li>
 </ol>
-<h2 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 原始jupyter</span></span><br><span class="line">jupyter notebook</span><br><span class="line"><span class="comment">#  jupyterlab</span></span><br><span class="line">jupyter lab</span><br></pre></td></tr></table></figure>
+<h3 id="生成密钥"><a href="#生成密钥" class="headerlink" title="生成密钥"></a>生成密钥</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -b 4096 -C <span class="string">&quot;yaoguang.hlf&quot;</span></span><br></pre></td></tr></table></figure>
+<p>全部按<code>Enter</code>，最后会在<code>~/.ssh/</code>下生成<code>id_rsa</code>和<code>id_rsa.pub</code>分别为密钥和公钥</p>
+<h3 id="远程服务器连写公钥"><a href="#远程服务器连写公钥" class="headerlink" title="远程服务器连写公钥"></a>远程服务器连写公钥</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> .ssh  //创建文件夹</span><br><span class="line"><span class="built_in">touch</span> .ssh/authorized_keys  // 创建文件</span><br><span class="line"><span class="built_in">chmod</span> 700 .ssh      //设置权限</span><br><span class="line"><span class="built_in">chmod</span> 644 .ssh/auauthorized_keys  //设置权限</span><br></pre></td></tr></table></figure>
+<p>然后把公钥复制到<code>authorized_keys</code>文件内</p>
+<h3 id="使用SSH联结远程服务器"><a href="#使用SSH联结远程服务器" class="headerlink" title="使用SSH联结远程服务器"></a>使用SSH联结远程服务器</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh name@ip -p 端口号 -i 密钥路径</span><br></pre></td></tr></table></figure>
 
+<p>可以将该服务器存在配置文件内，这样就不要输入上述那么长的命令了</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.ssh/config</span><br><span class="line"><span class="comment"># 输入如下内容</span></span><br><span class="line">Host 209</span><br><span class="line">     Hostname 11.239.155.209</span><br><span class="line">     User yaoguang.hlf</span><br><span class="line">     IdentityFile ~/.ssh/id_rsa</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="SSH链接GitLab"><a href="#SSH链接GitLab" class="headerlink" title="SSH链接GitLab"></a>SSH链接GitLab</h2><ul>
+<li><p>配置本地git</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">&quot;遥光&quot;</span></span><br><span class="line">git config --global user.email <span class="string">&quot;yaoguang.hlf@alibaba-inc.com&quot;</span></span><br></pre></td></tr></table></figure></li>
+<li><p>直接使用上面生成的密钥和公钥，把公钥添加到gitlab网站</p>
+</li>
+<li><p>验证是否成功</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@gitlab.alibaba-inc.com</span><br></pre></td></tr></table></figure>
+<h1 id="成功会提示"><a href="#成功会提示" class="headerlink" title="成功会提示"></a>成功会提示</h1><p>Welcome to GIT, 遥光!</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">* 创建新的仓库</span><br><span class="line">```sh</span><br><span class="line">git clone git@gitlab.alibaba-inc.com:yaoguang.hlf/ddd.git</span><br><span class="line">cd ddd</span><br><span class="line">touch README.md</span><br><span class="line">git add README.md</span><br><span class="line">git commit -m &quot;add README&quot;</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>已有代码创建仓库</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> existing_folder</span><br><span class="line">git init</span><br><span class="line">git remote add origin git@gitlab.alibaba-inc.com:yaoguang.hlf/ddd.git</span><br><span class="line">git add .</span><br><span class="line">git commit</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure></li>
+<li><p>配置<br>编辑`~/.ssh/config<br>添加GitLab</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># GitLab</span></span><br><span class="line">Host gitlab.alibaba.com</span><br><span class="line">    Preferredauthentications publickey</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在每个git仓库中如下配置，可以使用密钥操作</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config core.sshCommand <span class="string">&quot;ssh -o IdentitiesOnly=yes -i ~/.ssh/id_ras -F /dev/null&quot;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 
     </div>
 
@@ -375,8 +278,8 @@ mjx-container[display="true"] + br {
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/python/" rel="tag"># python</a>
-              <a href="/tags/jupyter/" rel="tag"># jupyter</a>
+              <a href="/tags/ssh/" rel="tag"># ssh</a>
+              <a href="/tags/git/" rel="tag"># git</a>
           </div>
 
         
@@ -384,13 +287,10 @@ mjx-container[display="true"] + br {
 
         
     <div class="post-nav">
+      <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/2020/05/17/pyenv/" rel="prev" title="Pyenv开发环境配置">
-      <i class="fa fa-chevron-left"></i> Pyenv开发环境配置
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/05/17/jupyter-font/" rel="next" title="Jupyter画图中文乱码问题">
-      Jupyter画图中文乱码问题 <i class="fa fa-chevron-right"></i>
+    <a href="/2020/05/16/tutorial/" rel="next" title="The Tutorial">
+      The Tutorial <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -451,7 +351,7 @@ mjx-container[display="true"] + br {
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C"><span class="nav-number">3.</span> <span class="nav-text">运行</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SSH%E9%85%8D%E7%BD%AE"><span class="nav-number">1.</span> <span class="nav-text">SSH配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SSH%E9%93%BE%E6%8E%A5%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">1.1.</span> <span class="nav-text">SSH链接服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E5%AF%86%E9%92%A5"><span class="nav-number">1.1.1.</span> <span class="nav-text">生成密钥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%9E%E5%86%99%E5%85%AC%E9%92%A5"><span class="nav-number">1.1.2.</span> <span class="nav-text">远程服务器连写公钥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8SSH%E8%81%94%E7%BB%93%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">1.1.3.</span> <span class="nav-text">使用SSH联结远程服务器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSH%E9%93%BE%E6%8E%A5GitLab"><span class="nav-number">1.2.</span> <span class="nav-text">SSH链接GitLab</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%88%90%E5%8A%9F%E4%BC%9A%E6%8F%90%E7%A4%BA"><span class="nav-number">2.</span> <span class="nav-text">成功会提示</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -572,59 +472,6 @@ mjx-container[display="true"] + br {
   
 
   
-      
-
-<script>
-  if (typeof MathJax === 'undefined') {
-    window.MathJax = {
-      loader: {
-        source: {
-          '[tex]/amsCd': '[tex]/amscd',
-          '[tex]/AMScd': '[tex]/amscd'
-        }
-      },
-      tex: {
-        inlineMath: {'[+]': [['$', '$']]},
-        tags: 'ams'
-      },
-      options: {
-        renderActions: {
-          findScript: [10, doc => {
-            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
-              const display = !!node.type.match(/; *mode=display/);
-              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
-              const text = document.createTextNode('');
-              node.parentNode.replaceChild(text, node);
-              math.start = {node: text, delim: '', n: 0};
-              math.end = {node: text, delim: '', n: 0};
-              doc.math.push(math);
-            });
-          }, '', false],
-          insertedScript: [200, () => {
-            document.querySelectorAll('mjx-container').forEach(node => {
-              let target = node.parentNode;
-              if (target.nodeName.toLowerCase() === 'li') {
-                target.parentNode.classList.add('has-jax');
-              }
-            });
-          }, '', false]
-        }
-      }
-    };
-    (function () {
-      var script = document.createElement('script');
-      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
-      script.defer = true;
-      document.head.appendChild(script);
-    })();
-  } else {
-    MathJax.startup.document.state(0);
-    MathJax.texReset();
-    MathJax.typeset();
-  }
-</script>
-
-    
 
   
 
