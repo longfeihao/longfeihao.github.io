@@ -347,25 +347,19 @@ mjx-container[display="true"] + br {
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install jupyter</span><br></pre></td></tr></table></figure>
-
-<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><ol>
-<li><p>初始化配置文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter notebook --generate-config</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>配置<code>~/.jupyter/jupyter_notebook_config.py</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 修改其中如下字段</span></span><br><span class="line">c.NotebookApp.open_brower = False</span><br><span class="line">c.NotebookApp.ip = <span class="string">'*'</span></span><br><span class="line">c.NotebookApp.port = 8899</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>设置密码</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter notebook password</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>额外可以安装<code>jupyterlab</code>,比原始<code>jupyter</code>好看一点</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install jupyterlab</span><br></pre></td></tr></table></figure>
-
-</li>
+        <h2 id="安装">安装</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install jupyter</span><br></pre></td></tr></table></figure>
+<h2 id="配置">配置</h2>
+<ol type="1">
+<li><p>初始化配置文件 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter notebook --generate-config</span><br></pre></td></tr></table></figure></p></li>
+<li><p>配置<code>~/.jupyter/jupyter_notebook_config.py</code>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 修改其中如下字段</span></span><br><span class="line">c.NotebookApp.open_brower = False</span><br><span class="line">c.NotebookApp.ip = <span class="string">'*'</span></span><br><span class="line">c.NotebookApp.port = 8899</span><br></pre></td></tr></table></figure></p></li>
+<li><p>设置密码 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter notebook password</span><br></pre></td></tr></table></figure></p></li>
+<li><p>额外可以安装<code>jupyterlab</code>,比原始<code>jupyter</code>好看一点
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install jupyterlab</span><br></pre></td></tr></table></figure></p></li>
 </ol>
-<h2 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 原始jupyter</span></span><br><span class="line">jupyter notebook</span><br><span class="line"><span class="comment">#  jupyterlab</span></span><br><span class="line">jupyter lab</span><br></pre></td></tr></table></figure>
-
+<h2 id="运行">运行</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 原始jupyter</span></span><br><span class="line">jupyter notebook</span><br><span class="line"><span class="comment">#  jupyterlab</span></span><br><span class="line">jupyter lab</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -570,61 +564,6 @@ mjx-container[display="true"] + br {
 
 
   
-
-  
-      
-
-<script>
-  if (typeof MathJax === 'undefined') {
-    window.MathJax = {
-      loader: {
-        source: {
-          '[tex]/amsCd': '[tex]/amscd',
-          '[tex]/AMScd': '[tex]/amscd'
-        }
-      },
-      tex: {
-        inlineMath: {'[+]': [['$', '$']]},
-        tags: 'ams'
-      },
-      options: {
-        renderActions: {
-          findScript: [10, doc => {
-            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
-              const display = !!node.type.match(/; *mode=display/);
-              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
-              const text = document.createTextNode('');
-              node.parentNode.replaceChild(text, node);
-              math.start = {node: text, delim: '', n: 0};
-              math.end = {node: text, delim: '', n: 0};
-              doc.math.push(math);
-            });
-          }, '', false],
-          insertedScript: [200, () => {
-            document.querySelectorAll('mjx-container').forEach(node => {
-              let target = node.parentNode;
-              if (target.nodeName.toLowerCase() === 'li') {
-                target.parentNode.classList.add('has-jax');
-              }
-            });
-          }, '', false]
-        }
-      }
-    };
-    (function () {
-      var script = document.createElement('script');
-      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
-      script.defer = true;
-      document.head.appendChild(script);
-    })();
-  } else {
-    MathJax.startup.document.state(0);
-    MathJax.texReset();
-    MathJax.typeset();
-  }
-</script>
-
-    
 
   
 

@@ -236,14 +236,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="分块分别计数"><a href="#分块分别计数" class="headerlink" title="分块分别计数"></a>分块分别计数</h1><p>按理说SQL是并行对数据处理的，对于有序的数据处理非常困难。其中窗口函数可以实现对数据的串行操作，如对表格中数据按照成绩排名，分组排名等。这些操作其实是块间计数，要实现块内计数比较复杂。如下图，目标是实现，对A，B，C等块内计数。</p>
+        <h1 id="分块分别计数">分块分别计数</h1>
+<p>按理说SQL是并行对数据处理的，对于有序的数据处理非常困难。其中窗口函数可以实现对数据的串行操作，如对表格中数据按照成绩排名，分组排名等。这些操作其实是块间计数，要实现块内计数比较复杂。如下图，目标是实现，对A，B，C等块内计数。</p>
 <img src="/2019/10/30/sql-count-by-block/sample.jpg" class="" title="sample">
-
-
-
 <p>实现这种计数的原理还是窗口函数，但是需要定位每块的起始位置，具体代码如下：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>  num</span><br><span class="line">        ,seq</span><br><span class="line">        ,class</span><br><span class="line">        ,la</span><br><span class="line">        ,diff</span><br><span class="line">        ,cum</span><br><span class="line">        ,<span class="built_in">ROW_NUMBER</span>() <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> num, cum <span class="keyword">ORDER</span> <span class="keyword">BY</span> seq) <span class="keyword">AS</span> rn</span><br><span class="line"><span class="keyword">FROM</span>    (</span><br><span class="line">            <span class="keyword">SELECT</span>  num</span><br><span class="line">                    ,seq</span><br><span class="line">                    ,class</span><br><span class="line">                    ,la</span><br><span class="line">                    ,diff</span><br><span class="line">                    ,<span class="built_in">SUM</span>(diff) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> num <span class="keyword">ORDER</span> <span class="keyword">BY</span> seq) <span class="keyword">AS</span> cum</span><br><span class="line">            <span class="keyword">FROM</span>    (</span><br><span class="line">                        <span class="keyword">SELECT</span>  num</span><br><span class="line">                                ,seq</span><br><span class="line">                                ,class</span><br><span class="line">                                ,<span class="built_in">LAG</span>(class, <span class="number">1</span>) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> num <span class="keyword">ORDER</span> <span class="keyword">BY</span> seq) <span class="keyword">AS</span> la</span><br><span class="line">                                ,IF( class <span class="operator">=</span> <span class="built_in">LAG</span>(class, <span class="number">1</span>) <span class="keyword">OVER</span>(<span class="keyword">PARTITION</span> <span class="keyword">BY</span> num <span class="keyword">ORDER</span> <span class="keyword">BY</span> seq) ,<span class="number">0</span> ,<span class="number">1</span> ) <span class="keyword">AS</span> diff</span><br><span class="line">                        <span class="keyword">FROM</span>    (</span><br><span class="line">                                    <span class="keyword">SELECT</span>  <span class="number">1</span> <span class="keyword">AS</span> num</span><br><span class="line">                                            ,seq</span><br><span class="line">                                            ,class</span><br><span class="line">                                    <span class="keyword">FROM</span>    alihealth_algo_dev.toy_yaoguang</span><br><span class="line">                                ) org_tab</span><br><span class="line">                    ) block_tb</span><br><span class="line">        ) res_tb</span><br><span class="line">;</span><br></pre></td></tr></table></figure>
-
 
     </div>
 
@@ -445,8 +442,6 @@
 
 
 
-
-  
 
   
 

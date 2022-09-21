@@ -235,39 +235,29 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="SSH配置"><a href="#SSH配置" class="headerlink" title="SSH配置"></a>SSH配置</h1><h2 id="SSH链接服务器"><a href="#SSH链接服务器" class="headerlink" title="SSH链接服务器"></a>SSH链接服务器</h2><p>SSH链接服务器等，本可以直接用<code>ssh name@ip -p 端口号</code>,然后根据提示输入密码，但是有两个缺点</p>
-<ol>
-<li>繁琐，每次联结搜需要输入好长的字符</li>
-<li>安全性不如SSH</li>
-</ol>
-<h3 id="生成密钥"><a href="#生成密钥" class="headerlink" title="生成密钥"></a>生成密钥</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -b 4096 -C <span class="string">&quot;yaoguang.hlf&quot;</span></span><br></pre></td></tr></table></figure>
+        <h1 id="ssh配置">SSH配置</h1>
+<h2 id="ssh链接服务器">SSH链接服务器</h2>
+<p>SSH链接服务器等，本可以直接用<code>ssh name@ip -p 端口号</code>,然后根据提示输入密码，但是有两个缺点
+1. 繁琐，每次联结搜需要输入好长的字符 2. 安全性不如SSH</p>
+<h3 id="生成密钥">生成密钥</h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -b 4096 -C <span class="string">&quot;yaoguang.hlf&quot;</span></span><br></pre></td></tr></table></figure>
 <p>全部按<code>Enter</code>，最后会在<code>~/.ssh/</code>下生成<code>id_rsa</code>和<code>id_rsa.pub</code>分别为密钥和公钥</p>
-<h3 id="远程服务器连写公钥"><a href="#远程服务器连写公钥" class="headerlink" title="远程服务器连写公钥"></a>远程服务器连写公钥</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> .ssh  //创建文件夹</span><br><span class="line"><span class="built_in">touch</span> .ssh/authorized_keys  // 创建文件</span><br><span class="line"><span class="built_in">chmod</span> 700 .ssh      //设置权限</span><br><span class="line"><span class="built_in">chmod</span> 644 .ssh/auauthorized_keys  //设置权限</span><br></pre></td></tr></table></figure>
+<h3 id="远程服务器连写公钥">远程服务器连写公钥</h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> .ssh  //创建文件夹</span><br><span class="line"><span class="built_in">touch</span> .ssh/authorized_keys  // 创建文件</span><br><span class="line"><span class="built_in">chmod</span> 700 .ssh      //设置权限</span><br><span class="line"><span class="built_in">chmod</span> 644 .ssh/auauthorized_keys  //设置权限</span><br></pre></td></tr></table></figure>
 <p>然后把公钥复制到<code>authorized_keys</code>文件内</p>
-<h3 id="使用SSH联结远程服务器"><a href="#使用SSH联结远程服务器" class="headerlink" title="使用SSH联结远程服务器"></a>使用SSH联结远程服务器</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh name@ip -p 端口号 -i 密钥路径</span><br></pre></td></tr></table></figure>
-
+<h3 id="使用ssh联结远程服务器">使用SSH联结远程服务器</h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh name@ip -p 端口号 -i 密钥路径</span><br></pre></td></tr></table></figure>
 <p>可以将该服务器存在配置文件内，这样就不要输入上述那么长的命令了</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.ssh/config</span><br><span class="line"><span class="comment"># 输入如下内容</span></span><br><span class="line">Host 209</span><br><span class="line">     Hostname 11.239.155.209</span><br><span class="line">     User yaoguang.hlf</span><br><span class="line">     IdentityFile ~/.ssh/id_rsa</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="SSH链接GitLab"><a href="#SSH链接GitLab" class="headerlink" title="SSH链接GitLab"></a>SSH链接GitLab</h2><ul>
-<li><p>配置本地git</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">&quot;遥光&quot;</span></span><br><span class="line">git config --global user.email <span class="string">&quot;yaoguang.hlf@alibaba-inc.com&quot;</span></span><br></pre></td></tr></table></figure></li>
-<li><p>直接使用上面生成的密钥和公钥，把公钥添加到gitlab网站</p>
-</li>
-<li><p>验证是否成功</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@gitlab.alibaba-inc.com</span><br></pre></td></tr></table></figure>
-<h1 id="成功会提示"><a href="#成功会提示" class="headerlink" title="成功会提示"></a>成功会提示</h1><p>Welcome to GIT, 遥光!</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">* 创建新的仓库</span><br><span class="line">```sh</span><br><span class="line">git clone git@gitlab.alibaba-inc.com:yaoguang.hlf/ddd.git</span><br><span class="line">cd ddd</span><br><span class="line">touch README.md</span><br><span class="line">git add README.md</span><br><span class="line">git commit -m &quot;add README&quot;</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>已有代码创建仓库</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> existing_folder</span><br><span class="line">git init</span><br><span class="line">git remote add origin git@gitlab.alibaba-inc.com:yaoguang.hlf/ddd.git</span><br><span class="line">git add .</span><br><span class="line">git commit</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure></li>
-<li><p>配置<br>编辑`~/.ssh/config<br>添加GitLab</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># GitLab</span></span><br><span class="line">Host gitlab.alibaba.com</span><br><span class="line">    Preferredauthentications publickey</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在每个git仓库中如下配置，可以使用密钥操作</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config core.sshCommand <span class="string">&quot;ssh -o IdentitiesOnly=yes -i ~/.ssh/id_ras -F /dev/null&quot;</span></span><br></pre></td></tr></table></figure>
-</li>
+<h2 id="ssh链接gitlab">SSH链接GitLab</h2>
+<ul>
+<li><p>配置本地git <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">&quot;遥光&quot;</span></span><br><span class="line">git config --global user.email <span class="string">&quot;yaoguang.hlf@alibaba-inc.com&quot;</span></span><br></pre></td></tr></table></figure></p></li>
+<li><p>直接使用上面生成的密钥和公钥，把公钥添加到gitlab网站</p></li>
+<li><p>验证是否成功 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@gitlab.alibaba-inc.com</span><br></pre></td></tr></table></figure> # 成功会提示 Welcome to GIT, 遥光!
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">* 创建新的仓库</span><br><span class="line">```sh</span><br><span class="line">git clone git@gitlab.alibaba-inc.com:yaoguang.hlf/ddd.git</span><br><span class="line">cd ddd</span><br><span class="line">touch README.md</span><br><span class="line">git add README.md</span><br><span class="line">git commit -m &quot;add README&quot;</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure></p></li>
+<li><p>已有代码创建仓库 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> existing_folder</span><br><span class="line">git init</span><br><span class="line">git remote add origin git@gitlab.alibaba-inc.com:yaoguang.hlf/ddd.git</span><br><span class="line">git add .</span><br><span class="line">git commit</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure></p></li>
+<li><p>配置 编辑`~/.ssh/config 添加GitLab <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># GitLab</span></span><br><span class="line">Host gitlab.alibaba.com</span><br><span class="line">    Preferredauthentications publickey</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa</span><br></pre></td></tr></table></figure></p></li>
+<li><p>在每个git仓库中如下配置，可以使用密钥操作 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config core.sshCommand <span class="string">&quot;ssh -o IdentitiesOnly=yes -i ~/.ssh/id_ras -F /dev/null&quot;</span></span><br></pre></td></tr></table></figure></p></li>
 </ul>
 
     </div>
@@ -351,7 +341,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SSH%E9%85%8D%E7%BD%AE"><span class="nav-number">1.</span> <span class="nav-text">SSH配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SSH%E9%93%BE%E6%8E%A5%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">1.1.</span> <span class="nav-text">SSH链接服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E5%AF%86%E9%92%A5"><span class="nav-number">1.1.1.</span> <span class="nav-text">生成密钥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%9E%E5%86%99%E5%85%AC%E9%92%A5"><span class="nav-number">1.1.2.</span> <span class="nav-text">远程服务器连写公钥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8SSH%E8%81%94%E7%BB%93%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">1.1.3.</span> <span class="nav-text">使用SSH联结远程服务器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSH%E9%93%BE%E6%8E%A5GitLab"><span class="nav-number">1.2.</span> <span class="nav-text">SSH链接GitLab</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%88%90%E5%8A%9F%E4%BC%9A%E6%8F%90%E7%A4%BA"><span class="nav-number">2.</span> <span class="nav-text">成功会提示</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ssh%E9%85%8D%E7%BD%AE"><span class="nav-number">1.</span> <span class="nav-text">SSH配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ssh%E9%93%BE%E6%8E%A5%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">1.1.</span> <span class="nav-text">SSH链接服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E5%AF%86%E9%92%A5"><span class="nav-number">1.1.1.</span> <span class="nav-text">生成密钥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%9E%E5%86%99%E5%85%AC%E9%92%A5"><span class="nav-number">1.1.2.</span> <span class="nav-text">远程服务器连写公钥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8ssh%E8%81%94%E7%BB%93%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">1.1.3.</span> <span class="nav-text">使用SSH联结远程服务器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ssh%E9%93%BE%E6%8E%A5gitlab"><span class="nav-number">1.2.</span> <span class="nav-text">SSH链接GitLab</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -468,8 +458,6 @@
 
 
 
-
-  
 
   
 

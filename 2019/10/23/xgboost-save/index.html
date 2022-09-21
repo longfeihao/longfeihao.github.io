@@ -235,9 +235,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="XGBoost保存模型的两个方法"><a href="#XGBoost保存模型的两个方法" class="headerlink" title="XGBoost保存模型的两个方法"></a>XGBoost保存模型的两个方法</h1><h2 id="pickle"><a href="#pickle" class="headerlink" title="pickle"></a>pickle</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> svm</span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</span><br><span class="line">clf = svm.SVC(gamma=<span class="string">&#x27;scale&#x27;</span>)</span><br><span class="line">iris = datasets.load_iris()</span><br><span class="line">X, y = iris.data, iris.target</span><br><span class="line">clf.fit(X, y)  </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line">s = pickle.dumps(clf)</span><br><span class="line">clf2 = pickle.loads(s)</span><br><span class="line">clf2.predict(X[<span class="number">0</span>:<span class="number">1</span>])</span><br></pre></td></tr></table></figure>
-
-<h2 id="joblib"><a href="#joblib" class="headerlink" title="joblib"></a>joblib</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> joblib <span class="keyword">import</span> dump, load</span><br><span class="line">dump(clf, <span class="string">&#x27;filename.joblib&#x27;</span>) </span><br><span class="line"></span><br><span class="line">clf = load(<span class="string">&#x27;filename.joblib&#x27;</span>) </span><br></pre></td></tr></table></figure>
+        <h1 id="xgboost保存模型的两个方法">XGBoost保存模型的两个方法</h1>
+<h2 id="pickle">pickle</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> svm</span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</span><br><span class="line">clf = svm.SVC(gamma=<span class="string">&#x27;scale&#x27;</span>)</span><br><span class="line">iris = datasets.load_iris()</span><br><span class="line">X, y = iris.data, iris.target</span><br><span class="line">clf.fit(X, y)  </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> pickle</span><br><span class="line">s = pickle.dumps(clf)</span><br><span class="line">clf2 = pickle.loads(s)</span><br><span class="line">clf2.predict(X[<span class="number">0</span>:<span class="number">1</span>])</span><br></pre></td></tr></table></figure>
+<h2 id="joblib">joblib</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> joblib <span class="keyword">import</span> dump, load</span><br><span class="line">dump(clf, <span class="string">&#x27;filename.joblib&#x27;</span>) </span><br><span class="line"></span><br><span class="line">clf = load(<span class="string">&#x27;filename.joblib&#x27;</span>) </span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -323,7 +325,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#XGBoost%E4%BF%9D%E5%AD%98%E6%A8%A1%E5%9E%8B%E7%9A%84%E4%B8%A4%E4%B8%AA%E6%96%B9%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">XGBoost保存模型的两个方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#pickle"><span class="nav-number">1.1.</span> <span class="nav-text">pickle</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#joblib"><span class="nav-number">1.2.</span> <span class="nav-text">joblib</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#xgboost%E4%BF%9D%E5%AD%98%E6%A8%A1%E5%9E%8B%E7%9A%84%E4%B8%A4%E4%B8%AA%E6%96%B9%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">XGBoost保存模型的两个方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#pickle"><span class="nav-number">1.1.</span> <span class="nav-text">pickle</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#joblib"><span class="nav-number">1.2.</span> <span class="nav-text">joblib</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -440,8 +442,6 @@
 
 
 
-
-  
 
   
 
