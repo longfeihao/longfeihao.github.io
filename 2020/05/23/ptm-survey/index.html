@@ -352,41 +352,45 @@ mjx-container[display="true"] + br {
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>本文对NLP预训练模型做了一个全面的总结 <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2003.08271">Pre-trained Models for Natural Language Processing: A Survey</a></p>
-<p>解决NLP问题的深度学习网络一般有: convolutional neural networks (CNNs), recurrent neural networks (RNNs), graph-based neural networks (GNNs), attention mechanism.</p>
-<h2 id="Pre-trained-Models-for-NLP-PTMs-总览"><a href="#Pre-trained-Models-for-NLP-PTMs-总览" class="headerlink" title="Pre-trained Models for NLP (PTMs) 总览"></a>Pre-trained Models for NLP (PTMs) 总览</h2><img src="/2020/05/23/ptm-survey/fig3.png" class="" title="Taxonomy">
-
-
-
-<h3 id="PTMs的优势"><a href="#PTMs的优势" class="headerlink" title="PTMs的优势"></a>PTMs的优势</h3><ol>
+        <p>本文对NLP预训练模型做了一个全面的总结 <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2003.08271">Pre-trained Models for Natural
+Language Processing: A Survey</a></p>
+<p>解决NLP问题的深度学习网络一般有: convolutional neural networks
+(CNNs), recurrent neural networks (RNNs), graph-based neural networks
+(GNNs), attention mechanism.</p>
+<h2 id="pre-trained-models-for-nlp-ptms-总览">Pre-trained Models for NLP
+(PTMs) 总览</h2>
+<img src="/2020/05/23/ptm-survey/fig3.png" class="" title="Taxonomy">
+<h3 id="ptms的优势">PTMs的优势</h3>
+<ol type="1">
 <li>从大语料库中学到通用的representations，用以帮助下游任务</li>
 <li>PTMs提供了更好的模型初始参数</li>
 <li>可以看做一个正则化，防止在小数据集上overfitting</li>
 </ol>
-<h3 id="PTMs的发展"><a href="#PTMs的发展" class="headerlink" title="PTMs的发展"></a>PTMs的发展</h3><p>第一代 PTMs:</p>
+<h3 id="ptms的发展">PTMs的发展</h3>
+<p>第一代 PTMs:</p>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://arxiv.org/abs/1310.4546">Skip-Gram</a></li>
 <li>Word2Vec</li>
-<li><a target="_blank" rel="noopener" href="https://nlp.stanford.edu/projects/glove/">GloVe </a></li>
+<li><a target="_blank" rel="noopener" href="https://nlp.stanford.edu/projects/glove/">GloVe</a></li>
 </ul>
-<p>这些模型context-free而且不能捕捉文本的高层表示, 如 polysemous disambiguation, syntactic structures, semantic roles, anaphora</p>
+<p>这些模型context-free而且不能捕捉文本的高层表示, 如 polysemous
+disambiguation, syntactic structures, semantic roles, anaphora</p>
 <p>第二代PTMs:</p>
 <ul>
-<li><a target="_blank" rel="noopener" href="https://arxiv.org/abs/1708.00107">CoVe </a></li>
-<li><a target="_blank" rel="noopener" href="https://arxiv.org/abs/1802.05365">ELMo </a></li>
+<li><a target="_blank" rel="noopener" href="https://arxiv.org/abs/1708.00107">CoVe</a></li>
+<li><a target="_blank" rel="noopener" href="https://arxiv.org/abs/1802.05365">ELMo</a></li>
 <li><a target="_blank" rel="noopener" href="https://arxiv.org/abs/1801.06146">ULMFiT</a></li>
-<li><a target="_blank" rel="noopener" href="https://s3-us-west-2.amazonaws.com/openai-assets/research-covers/language-unsupervised/language_understanding_paper.pdf">OpenAI GPT</a></li>
-<li><a target="_blank" rel="noopener" href="https://arxiv.org/abs/1810.04805">BERT </a></li>
+<li><a target="_blank" rel="noopener" href="https://s3-us-west-2.amazonaws.com/openai-assets/research-covers/language-unsupervised/language_understanding_paper.pdf">OpenAI
+GPT</a></li>
+<li><a target="_blank" rel="noopener" href="https://arxiv.org/abs/1810.04805">BERT</a></li>
 </ul>
-<h3 id="PTMs分类"><a href="#PTMs分类" class="headerlink" title="PTMs分类"></a>PTMs分类</h3><p><strong>Representation type</strong></p>
+<h3 id="ptms分类">PTMs分类</h3>
+<p><strong>Representation type</strong></p>
 <ul>
 <li>non-contextual models</li>
 <li>contextual models</li>
 </ul>
 <img src="/2020/05/23/ptm-survey/tab2.png" class="" title="Representation">
-
-
-
 <p><strong>Architectures</strong></p>
 <ul>
 <li>LSTM</li>
@@ -397,121 +401,112 @@ mjx-container[display="true"] + br {
 <p><strong>Pre-Training Task Types</strong></p>
 <p><strong>Extensions</strong></p>
 <ul>
-<li>Knowledge-enriched PTMs<ul>
+<li>Knowledge-enriched PTMs
+<ul>
 <li>linguistic</li>
 <li>semantic</li>
 <li>commomsense</li>
 <li>factual</li>
 <li>domain-specific knowledge</li>
-</ul>
-</li>
-<li>Multiligual and language-specific PTMs<ul>
-<li>Multilingual PTMs<ul>
+</ul></li>
+<li>Multiligual and language-specific PTMs
+<ul>
+<li>Multilingual PTMs
+<ul>
 <li>cross-lingual language understanding</li>
 <li>cross-lingual language generation</li>
-</ul>
-</li>
+</ul></li>
 <li>Language-specific PTMs</li>
-</ul>
-</li>
-<li>Multi-Modal PTMs<ul>
-<li>Video-Text PTMs <a target="_blank" rel="noopener" href="https://arxiv.org/abs/1906.05743">CBT</a>, <a target="_blank" rel="noopener" href="https://arxiv.org/abs/1904.01766">VideoBERT</a>, <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2002.06353">ViLM</a></li>
-<li>Image-Text PTMs [ViLBERT, LXMERT, VisualBERT, B2Ts, VLBERT, Unicoder-VL, UNITER]</li>
+</ul></li>
+<li>Multi-Modal PTMs
+<ul>
+<li>Video-Text PTMs <a target="_blank" rel="noopener" href="https://arxiv.org/abs/1906.05743">CBT</a>,
+<a target="_blank" rel="noopener" href="https://arxiv.org/abs/1904.01766">VideoBERT</a>, <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2002.06353">ViLM</a></li>
+<li>Image-Text PTMs [ViLBERT, LXMERT, VisualBERT, B2Ts, VLBERT,
+Unicoder-VL, UNITER]</li>
 <li>Audio-Text PTMs [SpeechBERT]</li>
-</ul>
-</li>
-<li>Compressed PTMs<ul>
+</ul></li>
+<li>Compressed PTMs
+<ul>
 <li>model prruning: 去除不重要的参数</li>
 <li>weight quantization: 用比特表示参数</li>
 <li>parameter sharing: 类似结构共享参数</li>
-<li>knowledge distillation: 训练一个学会更小的学生模型学习原始模型<ul>
+<li>knowledge distillation: 训练一个学会更小的学生模型学习原始模型
+<ul>
 <li>distillation from soft target probabilities [DistillBERT]</li>
-<li>distillation from other knowledge [TinyBERT, MobileBERT, MimiLM]</li>
+<li>distillation from other knowledge [TinyBERT, MobileBERT,
+MimiLM]</li>
 <li>distillation fto other stuctures</li>
-</ul>
-</li>
+</ul></li>
 <li>model replacing: 用更紧凑的模型取代原模型</li>
-</ul>
-</li>
-<li>…</li>
+</ul></li>
+<li>...</li>
 </ul>
 <img src="/2020/05/23/ptm-survey/tab3.png" class="" title="tab3">
-
-
-
-<h3 id="PTMs任务"><a href="#PTMs任务" class="headerlink" title="PTMs任务"></a>PTMs任务</h3><p>机器学习可以分为Supervised Learning (SL)，Unsupervised Learning (UL)，Self-Supervised Learing (SSL)</p>
+<h3 id="ptms任务">PTMs任务</h3>
+<p>机器学习可以分为Supervised Learning (SL)，Unsupervised Learning
+(UL)，Self-Supervised Learing (SSL)</p>
 <ul>
-<li><p>Language Modeling (LM)</p>
-</li>
-<li><p>Masked Language Modeling (MLM) </p>
-</li>
-<li><p>Seq2Seq MLM  <em>[used in <a target="_blank" rel="noopener" href="https://arxiv.org/abs/1905.02450">MASS</a>, <a target="_blank" rel="noopener" href="https://arxiv.org/abs/1910.10683">T5</a> and benefit the Seq2Seq downstream tasks]</em></p>
-</li>
-<li><p>Enhanced MLM (E-MLM) <em>[<a target="_blank" rel="noopener" href="https://arxiv.org/abs/1907.11692">RoBERTa</a> &lt;- BERT, UniLM, <a target="_blank" rel="noopener" href="https://arxiv.org/abs/1901.07291v1">XLM</a> &lt;- MLM, <a target="_blank" rel="noopener" href="https://arxiv.org/abs/1907.10529">Span-BERT</a> &lt;- MLM, <a target="_blank" rel="noopener" href="https://arxiv.org/abs/1908.04577v1">StructBERT</a>]</em> </p>
-</li>
-<li><p>Permuted Language Modeling (PLM) <a target="_blank" rel="noopener" href="https://github.com/zihangdai/xlnet">XLNet</a></p>
-</li>
-<li><p>Denoising Autoencoder (DAE) <a target="_blank" rel="noopener" href="https://arxiv.org/abs/1910.13461">BART</a></p>
-</li>
-<li><p>Contrastrive Learning (<a target="_blank" rel="noopener" href="https://arxiv.org/abs/1902.09229">CTL</a>)</p>
-</li>
-<li><p>Deep InfoMax (<a target="_blank" rel="noopener" href="https://arxiv.org/abs/1910.08350v2">DIM</a>)</p>
-</li>
-<li><p>Replaced Token Detection (RTD) <a target="_blank" rel="noopener" href="https://arxiv.org/abs/1310.4546">CBOW-NS</a>, <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2003.10555">ELECTERA</a>, <a target="_blank" rel="noopener" href="https://arxiv.org/abs/1912.09637?context=cs">WKLM</a></p>
-</li>
-<li><p>Next Sentence Prediction (NSP)</p>
-</li>
-<li><p>Sentence Order Prediction (SOP)  <a target="_blank" rel="noopener" href="https://arxiv.org/abs/1909.11942?context=cs">ALBERT</a>, <a target="_blank" rel="noopener" href="https://arxiv.org/abs/1908.04577v1">StructBERT</a>, <a target="_blank" rel="noopener" href="https://arxiv.org/abs/1912.09582">BERTje</a></p>
-</li>
+<li><p>Language Modeling (LM)</p></li>
+<li><p>Masked Language Modeling (MLM)</p></li>
+<li><p>Seq2Seq MLM <em>[used in <a target="_blank" rel="noopener" href="https://arxiv.org/abs/1905.02450">MASS</a>, <a target="_blank" rel="noopener" href="https://arxiv.org/abs/1910.10683">T5</a> and benefit the Seq2Seq
+downstream tasks]</em></p></li>
+<li><p>Enhanced MLM (E-MLM) <em>[<a target="_blank" rel="noopener" href="https://arxiv.org/abs/1907.11692">RoBERTa</a> &lt;- BERT, UniLM,
+<a target="_blank" rel="noopener" href="https://arxiv.org/abs/1901.07291v1">XLM</a> &lt;- MLM, <a target="_blank" rel="noopener" href="https://arxiv.org/abs/1907.10529">Span-BERT</a> &lt;- MLM, <a target="_blank" rel="noopener" href="https://arxiv.org/abs/1908.04577v1">StructBERT</a>]</em></p></li>
+<li><p>Permuted Language Modeling (PLM) <a target="_blank" rel="noopener" href="https://github.com/zihangdai/xlnet">XLNet</a></p></li>
+<li><p>Denoising Autoencoder (DAE) <a target="_blank" rel="noopener" href="https://arxiv.org/abs/1910.13461">BART</a></p></li>
+<li><p>Contrastrive Learning (<a target="_blank" rel="noopener" href="https://arxiv.org/abs/1902.09229">CTL</a>)</p></li>
+<li><p>Deep InfoMax (<a target="_blank" rel="noopener" href="https://arxiv.org/abs/1910.08350v2">DIM</a>)</p></li>
+<li><p>Replaced Token Detection (RTD) <a target="_blank" rel="noopener" href="https://arxiv.org/abs/1310.4546">CBOW-NS</a>, <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2003.10555">ELECTERA</a>, <a target="_blank" rel="noopener" href="https://arxiv.org/abs/1912.09637?context=cs">WKLM</a></p></li>
+<li><p>Next Sentence Prediction (NSP)</p></li>
+<li><p>Sentence Order Prediction (SOP) <a target="_blank" rel="noopener" href="https://arxiv.org/abs/1909.11942?context=cs">ALBERT</a>, <a target="_blank" rel="noopener" href="https://arxiv.org/abs/1908.04577v1">StructBERT</a>, <a target="_blank" rel="noopener" href="https://arxiv.org/abs/1912.09582">BERTje</a></p></li>
 <li><p>Others</p>
 <ul>
 <li>incorporate factual knowledge</li>
 <li>imporve cross-lingual tasks</li>
 <li>multi-model applicates</li>
-<li>…</li>
-</ul>
-</li>
+<li>...</li>
+</ul></li>
 </ul>
 <img src="/2020/05/23/ptm-survey/tab1.png" class="" title="Loss Function">
-
-
-
-<h3 id="Adapting-PTMs-to-Downstream-Tasks"><a href="#Adapting-PTMs-to-Downstream-Tasks" class="headerlink" title="Adapting PTMs to Downstream Tasks"></a>Adapting PTMs to Downstream Tasks</h3><p>预训练好模型后，还有一个重要的问题是，如何使用PTMs。这涉及到Transfer Learning.</p>
+<h3 id="adapting-ptms-to-downstream-tasks">Adapting PTMs to Downstream
+Tasks</h3>
+<p>预训练好模型后，还有一个重要的问题是，如何使用PTMs。这涉及到Transfer
+Learning.</p>
 <img src="/2020/05/23/ptm-survey/fig4.png" class="" title="transfer learning">
-
 <ul>
-<li><p>如何迁移?</p>
+<li>如何迁移?
 <ul>
 <li>选择合适的预训练任务，模型和语料库</li>
 <li>选择合适的层（低层倾向于语法等基本信息，高层有利于用语义等任务）</li>
-<li>是否需要微调(To tune or not to tune)<ul>
-<li>feature extraction (the pre-trained parameters are frozen)</li>
-<li>fine-tuning (the pre-trained parameters are unfrozen and fine-tuned)</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>微调策略</p>
+<li>是否需要微调(To tune or not to tune)
 <ul>
-<li>Two-stage fine-tuning<ol>
+<li>feature extraction (the pre-trained parameters are frozen)</li>
+<li>fine-tuning (the pre-trained parameters are unfrozen and
+fine-tuned)</li>
+</ul></li>
+</ul></li>
+<li>微调策略
+<ul>
+<li>Two-stage fine-tuning
+<ol type="1">
 <li>通过中间层/语料库进行微调</li>
 <li>在目标任务上微调</li>
-</ol>
-</li>
+</ol></li>
 <li>Multi-task fine-tuning</li>
-<li>Fine-tuning with extra adapation modules<ul>
+<li>Fine-tuning with extra adapation modules
+<ul>
 <li>原始参数固定，引入额外的可微调模块</li>
-</ul>
-</li>
-<li>Others<ul>
+</ul></li>
+<li>Others
+<ul>
 <li>self-ensamble and self-distillation</li>
 <li>gradual unfreezing and sequential unfreezing</li>
+</ul></li>
+</ul></li>
 </ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="PTM的应用"><a href="#PTM的应用" class="headerlink" title="PTM的应用"></a>PTM的应用</h3><ul>
+<h3 id="ptm的应用">PTM的应用</h3>
+<ul>
 <li>General Evaluation Eenchmark (GLUE, SuperGLUE)</li>
 <li>Question Answering</li>
 <li>Sentiment Analysis</li>
@@ -520,31 +515,34 @@ mjx-container[display="true"] + br {
 <li>Summarization</li>
 <li>Adversarial Attacks and Defenses</li>
 </ul>
-<h3 id="发展方向"><a href="#发展方向" class="headerlink" title="发展方向"></a>发展方向</h3><ul>
-<li>Upper Bound of PTMs<ul>
+<h3 id="发展方向">发展方向</h3>
+<ul>
+<li>Upper Bound of PTMs
+<ul>
 <li>当前预训练模型还没有达到它的上届，需要更深的网络，更大的语料库，更富有挑战的预训练任务，更高效的损失函数。目前一个比较实际的方式是在现有的软硬件基础上，设计一个有效率的模型，自监督预训练任务，优化器和训练技巧，如ELECTRA</li>
-</ul>
-</li>
-<li>Architecture of PTMs<ul>
-<li>transformer以被证实是一个比较有效的预训练结构。但是由于模型比较复杂，需要设计更加轻量的模型,如Transformer-XL。模型的设计非常困难，neural architecture search (NAS)或许是一个比较好的方式。</li>
-</ul>
-</li>
-<li>Task-oriented Pre-training and Model Compression<ul>
+</ul></li>
+<li>Architecture of PTMs
+<ul>
+<li>transformer以被证实是一个比较有效的预训练结构。但是由于模型比较复杂，需要设计更加轻量的模型,如Transformer-XL。模型的设计非常困难，neural
+architecture search (NAS)或许是一个比较好的方式。</li>
+</ul></li>
+<li>Task-oriented Pre-training and Model Compression
+<ul>
 <li>不同下游任务需要PTM不同的能力。PTMs和下游任务通常有两个差异：模型结构和数据分布。</li>
 <li>通常更大的PTMs对下游更有利，但模型太大，无法在低容量、低延迟设备上使用。因此需要提取特定任务的预训练知识</li>
 <li>使用模型蒸馏技术，根据原PTMs构建一个更小的网络</li>
-</ul>
-</li>
-<li>Knowledge Transfer Beyond Fine-tuning<ul>
+</ul></li>
+<li>Knowledge Transfer Beyond Fine-tuning
+<ul>
 <li>为特定任务引入可微调模块，使PTMs可以复用</li>
-<li>从PTMs中更加灵活的挖掘知识：feature extraction, knowledge distillation, data augmentation</li>
-</ul>
-</li>
-<li>Interpretability and Reliability of PTMs<ul>
+<li>从PTMs中更加灵活的挖掘知识：feature extraction, knowledge
+distillation, data augmentation</li>
+</ul></li>
+<li>Interpretability and Reliability of PTMs
+<ul>
 <li>可解释性：深度模型的解释性很差，目前大多利用atteion进行解释</li>
 <li>脆弱性：由于深度模型不可解释，很可能与人的认知不一致。这也导致了模型出现不和直觉的结果。使用对抗机制研究这个方向非常有前景。</li>
-</ul>
-</li>
+</ul></li>
 </ul>
 
     </div>
@@ -630,7 +628,9 @@ mjx-container[display="true"] + br {
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Pre-trained-Models-for-NLP-PTMs-%E6%80%BB%E8%A7%88"><span class="nav-number">1.</span> <span class="nav-text">Pre-trained Models for NLP (PTMs) 总览</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#PTMs%E7%9A%84%E4%BC%98%E5%8A%BF"><span class="nav-number">1.1.</span> <span class="nav-text">PTMs的优势</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PTMs%E7%9A%84%E5%8F%91%E5%B1%95"><span class="nav-number">1.2.</span> <span class="nav-text">PTMs的发展</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PTMs%E5%88%86%E7%B1%BB"><span class="nav-number">1.3.</span> <span class="nav-text">PTMs分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PTMs%E4%BB%BB%E5%8A%A1"><span class="nav-number">1.4.</span> <span class="nav-text">PTMs任务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Adapting-PTMs-to-Downstream-Tasks"><span class="nav-number">1.5.</span> <span class="nav-text">Adapting PTMs to Downstream Tasks</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PTM%E7%9A%84%E5%BA%94%E7%94%A8"><span class="nav-number">1.6.</span> <span class="nav-text">PTM的应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%91%E5%B1%95%E6%96%B9%E5%90%91"><span class="nav-number">1.7.</span> <span class="nav-text">发展方向</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#pre-trained-models-for-nlp-ptms-%E6%80%BB%E8%A7%88"><span class="nav-number">1.</span> <span class="nav-text">Pre-trained Models for NLP
+(PTMs) 总览</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ptms%E7%9A%84%E4%BC%98%E5%8A%BF"><span class="nav-number">1.1.</span> <span class="nav-text">PTMs的优势</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ptms%E7%9A%84%E5%8F%91%E5%B1%95"><span class="nav-number">1.2.</span> <span class="nav-text">PTMs的发展</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ptms%E5%88%86%E7%B1%BB"><span class="nav-number">1.3.</span> <span class="nav-text">PTMs分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ptms%E4%BB%BB%E5%8A%A1"><span class="nav-number">1.4.</span> <span class="nav-text">PTMs任务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#adapting-ptms-to-downstream-tasks"><span class="nav-number">1.5.</span> <span class="nav-text">Adapting PTMs to Downstream
+Tasks</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ptm%E7%9A%84%E5%BA%94%E7%94%A8"><span class="nav-number">1.6.</span> <span class="nav-text">PTM的应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%91%E5%B1%95%E6%96%B9%E5%90%91"><span class="nav-number">1.7.</span> <span class="nav-text">发展方向</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

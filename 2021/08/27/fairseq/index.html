@@ -347,38 +347,37 @@ mjx-container[display="true"] + br {
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="Fairseq"><a href="#Fairseq" class="headerlink" title="Fairseq"></a>Fairseq</h1><p>fairseq基于pytorch，是一个比较完善的seq2seq库。</p>
+        <h1 id="fairseq">Fairseq</h1>
+<p>fairseq基于pytorch，是一个比较完善的seq2seq库。</p>
 <p>官方文档对它的介绍如下:</p>
 <blockquote>
-<p>Fairseq(-py) is a sequence modeling toolkit that allows researchers and developers to train custom models for translation, summarization, language modeling and other text generation tasks.</p>
+<p>Fairseq(-py) is a sequence modeling toolkit that allows researchers
+and developers to train custom models for translation, summarization,
+language modeling and other text generation tasks.</p>
 </blockquote>
 <p>官方代码: <a target="_blank" rel="noopener" href="https://github.com/pytorch/fairseq">code</a></p>
 <p>Tutorial: <a target="_blank" rel="noopener" href="https://fairseq.readthedocs.io/">Tutorial</a></p>
 <p>基本的使用，可直接参考tutorial。本文主要介绍fairseq的安装和自定义使用及工程使用时代码结构。</p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>环境：</p>
+<h2 id="安装">安装</h2>
+<p>环境：</p>
 <ul>
-<li><p>python建议使用3.6，且用虚拟环境</p>
-</li>
-<li><p>pytorch&gt;=1.5</p>
-</li>
-<li><p>本地安装</p>
-</li>
+<li><p>python建议使用3.6，且用虚拟环境</p></li>
+<li><p>pytorch&gt;=1.5</p></li>
+<li><p>本地安装</p></li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/pytorch/fairseq</span><br><span class="line"><span class="built_in">cd</span> fairseq</span><br><span class="line">pip install --editable ./  <span class="comment"># 这种方式安装会代码运行会使用本目录的代码，因此不要轻易改动改目录代码</span></span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>安装一些辅助包</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/NVIDIA/apex</span><br><span class="line"><span class="built_in">cd</span> apex</span><br><span class="line">pip install -v --no-cache-dir --global-option=<span class="string">"--cpp_ext"</span> --global-option=<span class="string">"--cuda_ext"</span> \</span><br><span class="line">  --global-option=<span class="string">"--deprecated_fused_adam"</span> --global-option=<span class="string">"--xentropy"</span> \</span><br><span class="line">  --global-option=<span class="string">"--fast_multihead_attn"</span> ./</span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">pip install pyarrow</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="fairseq框架结构理解"><a href="#fairseq框架结构理解" class="headerlink" title="fairseq框架结构理解"></a>fairseq框架结构理解</h2><p>fairseq出自Facebook。代码框架利用python的注册机制使得整个训练和评估流程各个解耦。方便用户使用且在原来的代码基础上修改也非常简单。</p>
+<h2 id="fairseq框架结构理解">fairseq框架结构理解</h2>
+<p>fairseq出自Facebook。代码框架利用python的注册机制使得整个训练和评估流程各个解耦。方便用户使用且在原来的代码基础上修改也非常简单。</p>
 <p>一个完成的训练模型的流程包括：数据预处理，数据加载，模型，训练流程，目标函数，推理等。</p>
-<ol>
+<ol type="1">
 <li>fairseq可利用fairseq-preprocess对数据进行预处理，如数据格式特殊，可自行修改；</li>
 <li>因为fairseq出自Facebook，自然基于pytorch。模型由pytorch构建；</li>
-<li>构建模型和模型的相关参数（如embed_size, hidden_size等）由注册模型模块完成（register_model）；</li>
+<li>构建模型和模型的相关参数（如embed_size,
+hidden_size等）由注册模型模块完成（register_model）；</li>
 <li>注册模型之外还有一层注册修饰，设置模型的默认参数(register_model_architeture)；</li>
 <li>再高一层，就是加载本地数据，学习率，epoch等等一些训练模型所需参数。这些由注册task实现(register_task)；</li>
 <li>在之后是一些细节的修改：如需自定义loss，需要注册loss，实现相关函数。如需自定义数据输入，自定义data。更细的参数增加以使用模型灵活性，可按照需要，修改register_model和register_task两个部分中参数设置；</li>
@@ -387,7 +386,8 @@ mjx-container[display="true"] + br {
 <blockquote>
 <p>注：自定义模型，需要在<code>__init__.py</code>中导入，且在训练和评估中加入<code>--user-dir</code>参数</p>
 </blockquote>
-<p>详细细节操作，需要仔细阅读官方tutorial。 但官方说明没有一个工程性的代码结构。因此本博客对tutorial的一个示例进行工程结构化，如需修改官方代码进行深度自定义，可根据简单的示例进行修改和扩充。</p>
+<p>详细细节操作，需要仔细阅读官方tutorial。
+但官方说明没有一个工程性的代码结构。因此本博客对tutorial的一个示例进行工程结构化，如需修改官方代码进行深度自定义，可根据简单的示例进行修改和扩充。</p>
 <p>工程示例: <a target="_blank" rel="noopener" href="https://github.com/longfeihao/rnn_classifier">rnn_classifier</a></p>
 
     </div>
@@ -474,7 +474,7 @@ mjx-container[display="true"] + br {
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Fairseq"><span class="nav-number">1.</span> <span class="nav-text">Fairseq</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">1.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fairseq%E6%A1%86%E6%9E%B6%E7%BB%93%E6%9E%84%E7%90%86%E8%A7%A3"><span class="nav-number">1.2.</span> <span class="nav-text">fairseq框架结构理解</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#fairseq"><span class="nav-number">1.</span> <span class="nav-text">Fairseq</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">1.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fairseq%E6%A1%86%E6%9E%B6%E7%BB%93%E6%9E%84%E7%90%86%E8%A7%A3"><span class="nav-number">1.2.</span> <span class="nav-text">fairseq框架结构理解</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
